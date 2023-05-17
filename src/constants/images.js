@@ -34,6 +34,13 @@ import bolt from "../assets/bolt.png";
 import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
+import cryptodorm from "../assets/cryptodorm.png";
+import perry from "../assets/perry.png";
+import sumz from "../assets/sumz.png";
+import todo from "../assets/todo.png";
+import tailwind from "../assets/tailwind.png";
+import next from "../assets/next.png";
+import whatsapp from "../assets/whatsapp.png";
 
 export default {
   email,
@@ -69,4 +76,11 @@ export default {
   nb,
   skype,
   spotify,
+  cryptodorm,
+  perry,
+  sumz,
+  todo,
+  tailwind,
+  next,
+  whatsapp,
 };

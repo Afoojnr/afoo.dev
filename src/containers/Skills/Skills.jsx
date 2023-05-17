@@ -36,9 +36,9 @@ const skills = [
     image: images.git,
   },
   {
-    name: "Typescript",
+    name: "NextJS",
     proficiency: 65,
-    image: images.typescript,
+    image: images.next,
   },
   {
     name: "Sass",
@@ -48,41 +48,32 @@ const skills = [
   {
     name: "Tailwind",
     proficiency: 65,
-    image: images.flutter,
+    image: images.tailwind,
   },
 ];
 
 const experiences = [
   {
-    name: "Bootcamp",
-    company: "Altschool Africa",
-    description: "Alt school is in nigeria and very cool place",
+    name: " Bootcamp",
+    company: " Google",
+    description:
+      "I participated in the bootcamp organized by the Google Developer Student Club in my Alma Mater ",
     year: 2020,
   },
   {
     name: "Internship ",
     company: "Altschool Africa",
-    description: "I worked as a frontend dev ",
-    year: 2021,
-  },
-  {
-    name: "Junior Dev",
-    company: "Altschool Africa",
-    description: "I worked as a frontend dev ",
+    description: "I gained some technical skills at Altschool Africa",
     year: 2022,
-  },
-  {
-    name: "Senior Dev",
-    company: "Altschool Africa",
-    description: "I worked as a frontend dev ",
-    year: 2023,
   },
 ];
 
 const Skills = () => {
   return (
     <>
-      <h2 className="head-text"> Skills & Experience</h2>
+      <h2 className="head-text">
+        Skills <span>&</span> Experience
+      </h2>
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
           {skills.map((skill, index) => (

@@ -7,37 +7,37 @@ import { AppWrap, MotionWrap } from "../../wrapper";
 import "./Work.scss";
 const works = [
   {
-    title: "Bakery Website",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: images.about01,
-    url: "https://www.example.com/project-a",
-    gitUrl: "https://www.github.com",
-    technologies: ["React", "Node.js", "MongoDB"],
+    title: "Perry Luscious",
+    description: "Website for a baking brand",
+    image: images.perry,
+    url: "http://perry-luscious.vercel.app/",
+    gitUrl: "https://github.com/Afoojnr/perry_luscious",
+    technologies: ["React", "CommerceJS", "Tailwind CSS"],
   },
   {
-    title: "Project B",
+    title: "CryptoDorm",
     description:
-      "Praesent vel libero euismod, malesuada nulla eget, eleifend mi.",
-    image: images.about02,
-    url: "https://www.example.com/project-b",
-    gitUrl: "https://www.github.com",
-    technologies: ["React", "Firebase", "Bootstrap"],
+      "CryptoDorm is a coin tracker app that gives live update of the crypto Market.",
+    image: images.cryptodorm,
+    url: "https://cryptodorm.vercel.app/",
+    gitUrl: "https://github.com/Afoojnr/cryptodorm",
+    technologies: ["React", "AntDesign", "Redux"],
   },
   {
-    title: "Project C",
-    description: "Nam sit amet elit sed nibh sollicitudin congue.",
-    image: images.about03,
-    url: "https://www.example.com/project-c",
-    gitUrl: "https://www.github.com",
-    technologies: ["Vue.js", "AWS", "Sass"],
+    title: " Sumz AI",
+    description: "Sumz AI is an article summarizer with GPT-4",
+    image: images.sumz,
+    url: "https://sumz-ai-phi.vercel.app/",
+    gitUrl: "https://github.com/Afoojnr/sumz_ai",
+    technologies: ["React", "Redux", "Tailwind CSS"],
   },
   {
-    title: "Project C",
-    description: "Nam sit amet elit sed nibh sollicitudin congue.",
-    image: images.about04,
-    url: "https://www.example.com/project-c",
-    gitUrl: "https://www.github.com",
-    technologies: ["Vue.js", "AWS", "Sass"],
+    title: "Task Tracker",
+    description: "Task tracker keeps track of your todos",
+    image: images.todo,
+    url: "https://task-tracker-pearl.vercel.app/",
+    gitUrl: "https://github.com/Afoojnr/task-tracker",
+    technologies: ["React JS"],
   },
 ];
 
@@ -63,7 +63,7 @@ const Work = () => {
                   ease: "easeInOut",
                   staggerChildren: 0.5,
                 }}
-                className="app__work-hover app__flex"
+                className="app__flex app__work-hover "
               >
                 <a href={work.url} target="_blank" rel="noreferrer">
                   <motion.div
@@ -96,6 +96,32 @@ const Work = () => {
               <p className="p-text " style={{ marginTop: 10 }}>
                 {work.description}
               </p>
+              <div className="app__work-link">
+                <a href={work.url} target="_blank" rel="noreferrer">
+                  <motion.div
+                    whileHover={{ scale: [1, 0.9] }}
+                    whileInView={{ scale: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                    }}
+                    className="app__flex"
+                  >
+                    <AiFillEye />
+                  </motion.div>
+                </a>
+                <a href={work.gitUrl} target="_blank" rel="noreferrer">
+                  <motion.div
+                    whileHover={{ scale: [1, 0.9] }}
+                    whileInView={{ scale: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                    }}
+                    className="app__flex"
+                  >
+                    <AiFillGithub />
+                  </motion.div>
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -104,8 +130,4 @@ const Work = () => {
   );
 };
 
-export default AppWrap(
-  MotionWrap(Work, "app__work"),
-  "work",
-  "app__primarybg"
-);
+export default AppWrap(MotionWrap(Work, "app__work"), "work", "app__primarybg");
