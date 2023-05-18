@@ -45,7 +45,7 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">
-        My Creative <span>Portfolio</span> Section
+        My <span>Portfolio</span>
       </h2>
       <motion.div
         animate={{ y: 0, opacity: 1 }}
