@@ -58,7 +58,7 @@ const experiences = [
     company: " Google",
     description:
       "I participated in the bootcamp organized by the Google Developer Student Club in my Alma Mater ",
-    year: 2020,
+    year: 2021,
   },
   {
     name: "Internship ",
