@@ -66,6 +66,12 @@ const experiences = [
     description: "I gained some technical skills at Altschool Africa",
     year: 2022,
   },
+    {
+    name: "Work Study",
+    company: "Neo64 GmbH",
+    description: "I’ve worked as a front-end developer, focusing on building responsive and user-friendly interfaces using Svelte and Flutte",
+    year: "July 2023 - August 2024",
+  },
 ];
 
 const Skills = () => {
