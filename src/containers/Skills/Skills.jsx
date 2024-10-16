@@ -50,6 +50,11 @@ const skills = [
     proficiency: 65,
     image: images.tailwind,
   },
+   {
+    name: "Flutter",
+    proficiency: 75,
+    image: images.flutter,
+  },
 ];
 
 const experiences = [
