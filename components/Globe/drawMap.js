@@ -266,11 +266,11 @@ export function drawMap({ json, radius, materalOptions }) {
     }
     lineGeo.setPositions(verts);
 
-    const color = options?.color;
+    const color = options.color;
     const lineMaterial = new LineMaterial({
       color,
       linewidth: 2,
-      fog: true
+      fog: false
     });
 
     const line = new Line2(lineGeo, lineMaterial);
