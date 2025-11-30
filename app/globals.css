@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  /* Light theme colors */
+  --background: #ffffff;
+  --foreground: #6b7688;
+  --primary: #313bac;
+  --primary-foreground: #ffffff;
+  --secondary: #f59e0b;
+  --secondary-foreground: #ffffff;
+  --accent: #edf2f8;
+  --accent-foreground: #6b7688;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --destructive: #ef4444;
+  --success: #5d9a17;
+  --destructive-foreground: #ffffff;
+  --dark: #030303;
+  --font-base: "DM Sans", sans-serif;
+}
+
+.dark {
+  /* Dark theme colors */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --dark: #ffffff;
+  --primary: #818cf8;
+  --primary-foreground: #1e1b4b;
+  --secondary: #fbbf24;
+  --secondary-foreground: #78350f;
+  --accent: #1c212a;
+  --accent-foreground: #aab4c6;
+  --muted: #1f2937;
+  --muted-foreground: #9ca3af;
+  --border: #374151;
+  --card: #111827;
+  --card-foreground: #ededed;
+  --destructive: #f87171;
+  --success: #a6e05a;
+  --destructive-foreground: #7f1d1d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-dark: var(--dark);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-mokoto: var(--font-mokoto);
+}
+
+@layer components {
+  .section-title {
+    @apply text-dark mb-10 text-center text-3xl font-extrabold capitalize md:text-4xl lg:text-5xl;
+  }
+
+  section {
+    @apply min-h-screen px-8 pt-16 pb-8 md:px-18 lg:px-32 lg:pt-22 lg:pb-20;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-xl px-8 py-3 font-medium shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .btn-circle {
+    @apply bg-card lg:border-border hover:bg-primary hover:border-primary m-1 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-300 ease-in-out lg:border 2xl:m-2 2xl:h-[70px] 2xl:w-[70px];
+  }
+
+  .btn-circle-icon {
+    @apply text-primary group-hover:text-card h-4 w-4 2xl:h-8 2xl:w-8;
+  }
+
+  .link {
+    @apply relative no-underline;
+  }
+
+  .link::after {
+    content: "";
+    @apply absolute left-0 h-0.5 w-0;
+    bottom: -2px;
+    background-color: currentColor; /* underline matches text color */
+    transition: width 0.3s ease;
+  }
+
+  .link:hover::after {
+    @apply w-full;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-base);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
