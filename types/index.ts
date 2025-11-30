@@ -5,8 +5,8 @@ export type WorkItem = {
   title: string;
   shortDescription?: string;
   fullDescription?: string;
-  image: string;
-  images?: string[];
+  image: StaticImageData;
+  images?: StaticImageData[];
   type: "web" | "mobile" | "fullstack" | "other";
   tech: string[];
   webUrl?: string;
@@ -17,12 +17,13 @@ export type WorkItem = {
 export type ExperienceItem = {
   title: string;
   company_name: string;
-  icon: string | StaticImageData;
+  icon: StaticImageData;
   date: string;
   points: string[];
 }
 
 export type SkillItem = {
   name: string;
-  icon: string | StaticImageData;
+  icon: StaticImageData;
 }
+

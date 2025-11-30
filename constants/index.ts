@@ -57,7 +57,7 @@ export const works: WorkItem[] = [
       "• Request workflow handling\n" +
       "• Real estate listings with search and filter\n" +
       "• Cross-platform availability (Web & Mobile)",
-    image: images.propatis.src,
+    image: images.propatis,
     type: "mobile",
     tech: ["React Native", "Next.js", "TypeScript", "Figma"],
     mobileUrl: "https://propatis.com",
@@ -76,7 +76,7 @@ export const works: WorkItem[] = [
       "• Built UI components and screens, connecting them to the backend\n" +
       "• Implemented shared preferences for persistent user data\n" +
       "• Ensured smooth, responsive user interactions across the app",
-    image: images.rungis.src,
+    image: images.rungis,
     type: "mobile",
     tech: ["Flutter", "Riverpod", "Dart"],
     mobileUrl: "https://apps.apple.com/de/app/r-express-shop/id6476933208",
@@ -90,7 +90,7 @@ export const works: WorkItem[] = [
       "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
     fullDescription:
       "Created for Fideco AG, a Swiss partner of Rungis Express. This project utilized a parallel development approach.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
-    image: images.fideco.src,
+    image: images.fideco,
     type: "mobile",
     tech: ["Flutter", "Riverpod", "Dart"],
     mobileUrl: "https://apps.apple.com/ch/app/fideco-shop/id6738232286",
@@ -109,7 +109,7 @@ export const works: WorkItem[] = [
       "• Wrote comprehensive unit and end-to-end (E2E) tests\n" +
       "• Collaborated on secure onboarding and authentication flows\n" +
       "• Supported dashboard features for document tracking",
-    image: images.digisign.src,
+    image: images.digisign,
     type: "web",
     tech: ["Next.js", "TypeScript", "Ant Design", "Redux", "Jest"],
     webUrl: "https://www.digisignit.com/",
@@ -122,7 +122,7 @@ export const works: WorkItem[] = [
       "A modern corporate profile website for a photovoltaic installation service provider.",
     fullDescription:
       "A highly responsive corporate site designed to showcase Klierfeld's green energy services.\n\nKey Contributions:\n• Seamless content management integration using Storyblok CMS\n• Styled using SCSS for a bespoke, modern look\n• Optimized for speed and SEO performance.",
-    image: images.klierfeld.src,
+    image: images.klierfeld,
     type: "web",
     tech: ["SvelteKit", "SCSS", "TypeScript", "Storyblok"],
     webUrl: "http://www.klierfeld-gmbh.com/",
@@ -132,7 +132,7 @@ export const works: WorkItem[] = [
 
 
 
-export const skills:SkillItem[] = [
+export const skills: SkillItem[] = [
   { name: "React", icon: images.react },
   { name: "Next.js", icon: images.next },
   { name: "TypeScript", icon: images.typescript },
