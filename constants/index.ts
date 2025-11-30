@@ -1,4 +1,4 @@
-import { ExperienceItem, WorkItem } from "@/types";
+import { ExperienceItem, SkillItem, WorkItem } from "@/types";
 import { images } from "./images";
 
 export const navItems = ["home", "about", "experience", "works", "contact"];
@@ -8,7 +8,6 @@ export const experiences: ExperienceItem[] = [
     title: "Founding Engineer & Product Lead",
     company_name: "Propatis HQ",
     icon: images.propatisLogo,
-    iconBg: "#E6DEDD",
     date: "May 2024 - Present",
     points: [
       "Co-founded the startup and architected the frontend infrastructure for both mobile (React Native) and the B2C web platform.",
@@ -21,7 +20,6 @@ export const experiences: ExperienceItem[] = [
     title: "Frontend Developer",
     company_name: "Neo64 GmbH",
     icon: images.neo64,
-    iconBg: "#E6DEDD",
     date: "Jul 2023 – Aug 2024",
     points: [
       "Contributed to the development of Rungis Express and Fideco e-commerce mobile apps using Flutter",
@@ -33,7 +31,6 @@ export const experiences: ExperienceItem[] = [
     title: "Frontend Developer",
     company_name: "DigiSign Technologies Limited",
     icon: images.digisignLogo,
-    iconBg: "#E6DEDD",
     date: "Dec 2022 – May 2023",
     points: [
       "Contributed to the development of DigiSign, a secure document management system featuring biometric signing capabilities.",
@@ -60,14 +57,13 @@ export const works: WorkItem[] = [
       "• Request workflow handling\n" +
       "• Real estate listings with search and filter\n" +
       "• Cross-platform availability (Web & Mobile)",
-    image: images.propatis.src, // Ensure this image exists in your imports
+    image: images.propatis.src,
     type: "mobile",
     tech: ["React Native", "Next.js", "TypeScript", "Figma"],
     mobileUrl: "https://propatis.com",
     webUrl: "https://propatis.com",
     githubUrl: ""
   },
-
   {
     id: 2,
     title: "Rungis Express App",
@@ -80,7 +76,7 @@ export const works: WorkItem[] = [
       "• Built UI components and screens, connecting them to the backend\n" +
       "• Implemented shared preferences for persistent user data\n" +
       "• Ensured smooth, responsive user interactions across the app",
-    image: images.rungis.src, // Ensure this image exists in your imports
+    image: images.rungis.src,
     type: "mobile",
     tech: ["Flutter", "Riverpod", "Dart"],
     mobileUrl: "https://apps.apple.com/de/app/r-express-shop/id6476933208",
@@ -94,10 +90,10 @@ export const works: WorkItem[] = [
       "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
     fullDescription:
       "Created for Fideco AG, a Swiss partner of Rungis Express. This project utilized a parallel development approach.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
-    image: images.fideco.src, // Ensure this image exists in your imports
+    image: images.fideco.src,
     type: "mobile",
     tech: ["Flutter", "Riverpod", "Dart"],
-    mobileUrl: "https://apps.apple.com/ch/app/fideco-shop/id6738232286", // Add link if available, or keep empty
+    mobileUrl: "https://apps.apple.com/ch/app/fideco-shop/id6738232286",
     // webUrl: "https://fideco.ch/",
     githubUrl: ""
   },
@@ -113,9 +109,7 @@ export const works: WorkItem[] = [
       "• Wrote comprehensive unit and end-to-end (E2E) tests\n" +
       "• Collaborated on secure onboarding and authentication flows\n" +
       "• Supported dashboard features for document tracking",
-    // fullDescription:
-    //   "A high-security dashboard designed to ensure the authenticity of digital signers.\n\nKey Features:\n• Biometric signing integration\n• Secure user authentication and onboarding flows\n• Comprehensive dashboard for document tracking\n• Rigorous End-to-End (E2E) and unit testing implementation.",
-    image: images.digisign.src, // Ensure this image exists in your imports
+    image: images.digisign.src,
     type: "web",
     tech: ["Next.js", "TypeScript", "Ant Design", "Redux", "Jest"],
     webUrl: "https://www.digisignit.com/",
@@ -128,7 +122,7 @@ export const works: WorkItem[] = [
       "A modern corporate profile website for a photovoltaic installation service provider.",
     fullDescription:
       "A highly responsive corporate site designed to showcase Klierfeld's green energy services.\n\nKey Contributions:\n• Seamless content management integration using Storyblok CMS\n• Styled using SCSS for a bespoke, modern look\n• Optimized for speed and SEO performance.",
-    image: images.klierfeld.src, // Ensure this image exists in your imports
+    image: images.klierfeld.src,
     type: "web",
     tech: ["SvelteKit", "SCSS", "TypeScript", "Storyblok"],
     webUrl: "http://www.klierfeld-gmbh.com/",
@@ -136,7 +130,9 @@ export const works: WorkItem[] = [
   }
 ];
 
-export const skills = [
+
+
+export const skills:SkillItem[] = [
   { name: "React", icon: images.react },
   { name: "Next.js", icon: images.next },
   { name: "TypeScript", icon: images.typescript },

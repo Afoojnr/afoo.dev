@@ -14,11 +14,15 @@ export type WorkItem = {
   githubUrl?: string;
 };
 
-export interface ExperienceItem {
+export type ExperienceItem = {
   title: string;
   company_name: string;
   icon: string | StaticImageData;
-  iconBg: string;
   date: string;
   points: string[];
+}
+
+export type SkillItem = {
+  name: string;
+  icon: string | StaticImageData;
 }

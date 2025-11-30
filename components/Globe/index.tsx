@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { useTheme } from "next-themes";
 
 import { drawMap } from "./drawMap";
+import React from "react";
 
 type GlobeProps = {
   lat: number;
@@ -15,10 +16,10 @@ type GlobeProps = {
 
 const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
-  const bgColor = theme === "dark" ? "#0a0a0a" : "#ffffff";
-  const lineColor = theme === "dark" ? "#818cf8" : "#313bac";
+  const bgColor = resolvedTheme === "dark" ? "#0a0a0a" : "#ffffff";
+  const lineColor = resolvedTheme === "dark" ? "#818cf8" : "#313bac";
 
   useEffect(() => {
     if (!mountRef.current) return;
