@@ -125,8 +125,8 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-foreground/60 fixed inset-0 z-70 cursor-pointer touch-none backdrop-blur-sm transition-opacity duration-300"
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-foreground/60 fixed inset-0 z-70 cursor-pointer touch-none backdrop-blur-sm"
               onClick={() => setToggle(false)}
             />
 
@@ -136,10 +136,10 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className={`bg-accent border-border fixed top-0 right-0 bottom-0 z-80 flex h-screen w-3/4 max-w-xs min-w-60 flex-col items-center overflow-y-auto border-l px-6 pt-24 pb-8 shadow-2xl md:hidden`}
+              className={`bg-accent border-border fixed top-0 right-0 bottom-0 z-80 flex h-screen w-3/4 max-w-xs min-w-60 flex-col items-center overflow-hidden border-l px-6 pt-24 pb-8 shadow-2xl md:hidden`}
               onClick={e => e.stopPropagation()}
             >
-              <ul className="mb-6 flex h-[80%] w-full flex-col items-center justify-center gap-3">
+              <ul className="mb-6 flex h-[65%] w-full flex-col items-center justify-center gap-3">
                 {navItems.map(item => (
                   <li key={item} className="my-2 w-full text-center">
                     <a
@@ -154,6 +154,7 @@ const Navbar = () => {
               </ul>
 
               <UtilityBar />
+              
               <FloatingOrb
                 size={56}
                 delay={1}
@@ -168,7 +169,7 @@ const Navbar = () => {
                 duration={4.5}
                 yOffset={18}
                 shadow={null}
-                className="-top-10 left-2 rounded-full"
+                className="top-2 left-2 rounded-full"
               />
               <FloatingOrb
                 size={80}

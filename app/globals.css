@@ -80,11 +80,11 @@
   }
 
   .btn-circle {
-    @apply bg-card lg:border-border hover:bg-primary hover:border-primary m-1 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-300 ease-in-out lg:border 2xl:m-2 2xl:h-[70px] 2xl:w-[70px];
+    @apply bg-card lg:border-border hover:bg-primary hover:border-primary m-1 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full transition-all duration-300 ease-in-out lg:border 2xl:m-2 2xl:h-[70px] 2xl:w-[70px];
   }
 
   .btn-circle-icon {
-    @apply text-primary group-hover:text-card h-4 w-4 2xl:h-8 2xl:w-8;
+    @apply text-primary group-hover:text-card h-5 w-5 2xl:h-8 2xl:w-8;
   }
 
   .link {

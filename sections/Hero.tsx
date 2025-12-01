@@ -48,8 +48,8 @@ const Hero = () => {
             Afolabi <span>Abdulhamid.</span>
           </h1>
 
-          <h2 className="text-primary flex flex-col text-3xl font-bold md:flex-row md:gap-5 md:text-5xl">
-            I build and ship real products.
+          <h2 className="text-primary flex flex-col text-3xl font-bold md:flex-row md:gap-5 md:text-[3.5rem]">
+            I turn ideas into products.
           </h2>
         </motion.div>
 
@@ -99,7 +99,14 @@ const Hero = () => {
         size={200}
         yOffset={20}
         duration={6}
-        className="top-2 right-0 -translate-y-1/2 rounded-full"
+        className="top-2 right-0 hidden md:block -translate-y-1/2 rounded-full"
+        style={{ opacity: 0.75 }}
+      />
+       <FloatingOrb
+        size={150}
+        yOffset={20}
+        duration={6}
+        className="top-1 right-0 md:hidden  rounded-full"
         style={{ opacity: 0.75 }}
       />
       <FloatingOrb

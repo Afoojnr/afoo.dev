@@ -6,10 +6,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const UtilityBar = () => {
   return (
-    <div className="flex items-end justify-center md:flex-col">
+    <div className="flex items-end gap-5 md:gap-0 justify-center md:flex-col">
       <ThemeToggle />
 
-      <a href="/cv.pdf" download aria-label="Download CV">
+      <a href="/afoo_cv.pdf" download aria-label="Download CV">
         <div className="group btn-circle">
           <FaFileDownload className="btn-circle-icon" />
         </div>
