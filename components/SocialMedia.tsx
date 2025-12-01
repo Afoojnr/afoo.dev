@@ -1,47 +1,44 @@
 "use client";
 
-import { BsTwitter, BsLinkedin } from "react-icons/bs";
-import { AiFillGithub } from "react-icons/ai";
+import { motion } from "framer-motion";
+import { socialLinks } from "@/constants";
+
+
 
 const SocialMedia = () => {
   return (
-    <div className="flex items-end justify-center md:flex-col">
-      {/* GitHub */}
-      <a
-        href="https://github.com/Afoojnr"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-      >
-        <div className="group btn-circle">
-          <AiFillGithub className="btn-circle-icon" />
-        </div>
-      </a>
-
-      {/* LinkedIn */}
-      <a
-        href="https://www.linkedin.com/in/abdulhamid-afolabi-065b38160"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
-        <div className="group btn-circle">
-          <BsLinkedin className="btn-circle-icon" />
-        </div>
-      </a>
-
-      {/* Twitter */}
-      <a
-        href="http://twitter.com/Afoojnr"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Twitter"
-      >
-        <div className="group btn-circle">
-          <BsTwitter className="btn-circle-icon" />
-        </div>
-      </a>
-    </div>
+    <motion.div
+      className="flex items-end justify-center md:flex-col "
+      
+      initial="hidden"
+      animate="show"
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { staggerChildren: 0.15, ease: "easeOut" }
+        }
+      }}
+    >
+      {socialLinks.map(({ icon: Icon, href, label }, i) => (
+        <motion.a
+          key={label + i}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+          // whileHover={{ y: -2, scale: 1.01 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18 }}
+        >
+          <div className="group btn-circle">
+            <Icon className="btn-circle-icon" />
+          </div>
+        </motion.a>
+      ))}
+    </motion.div>
   );
 };
 

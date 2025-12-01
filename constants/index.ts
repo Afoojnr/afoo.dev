@@ -1,5 +1,7 @@
 import { ExperienceItem, SkillItem, WorkItem } from "@/types";
 import { images } from "./images";
+import { AiFillGithub } from "react-icons/ai";
+import { BsLinkedin, BsTwitter } from "react-icons/bs";
 
 export const navItems = ["home", "about", "experience", "works", "contact"];
 
@@ -143,4 +145,22 @@ export const skills: SkillItem[] = [
   { name: "Express", icon: images.express },
   { name: "Python", icon: images.python },
   { name: "Figma", icon: images.figma }
+];
+
+export const socialLinks = [
+  {
+    icon: AiFillGithub,
+    href: "https://github.com/Afoojnr",
+    label: "GitHub"
+  },
+  {
+    icon: BsLinkedin,
+    href: "https://www.linkedin.com/in/abdulhamid-afolabi-065b38160",
+    label: "LinkedIn"
+  },
+  {
+    icon: BsTwitter,
+    href: "http://twitter.com/Afoojnr",
+    label: "Twitter"
+  }
 ];
