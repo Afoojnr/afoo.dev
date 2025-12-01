@@ -85,22 +85,9 @@ export const works: WorkItem[] = [
     // webUrl: "https://www.rungisexpress.com/",
     githubUrl: ""
   },
+ 
   {
     id: 3,
-    title: "Fideco App",
-    shortDescription:
-      "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
-    fullDescription:
-      "Created for Fideco AG, a Swiss partner of Rungis Express. This project utilized a parallel development approach.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
-    image: images.fideco,
-    type: "mobile",
-    tech: ["Flutter", "Riverpod", "Dart"],
-    mobileUrl: "https://apps.apple.com/ch/app/fideco-shop/id6738232286",
-    // webUrl: "https://fideco.ch/",
-    githubUrl: ""
-  },
-  {
-    id: 4,
     title: "DigiSign System",
     shortDescription:
       "A secure document management dashboard featuring biometric signing capabilities for identity verification.",
@@ -115,6 +102,20 @@ export const works: WorkItem[] = [
     type: "web",
     tech: ["Next.js", "TypeScript", "Ant Design", "Redux", "Jest"],
     webUrl: "https://www.digisignit.com/",
+    githubUrl: ""
+  },
+   {
+    id: 4,
+    title: "Fideco App",
+    shortDescription:
+      "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
+    fullDescription:
+      "Created for Fideco AG, a Swiss partner of Rungis Express. This project utilized a parallel development approach.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
+    image: images.fideco,
+    type: "mobile",
+    tech: ["Flutter", "Riverpod", "Dart"],
+    mobileUrl: "https://apps.apple.com/ch/app/fideco-shop/id6738232286",
+    // webUrl: "https://fideco.ch/",
     githubUrl: ""
   },
   {
