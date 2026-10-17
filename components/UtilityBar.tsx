@@ -29,7 +29,7 @@ import { motion } from "framer-motion";
 const UtilityBar = () => {
   return (
     <motion.div
-      className="flex items-end gap-5 md:gap-0 justify-center md:flex-col"
+      className="flex items-end justify-center gap-5 md:flex-col md:gap-0"
 
       initial="hidden"
       animate="show"

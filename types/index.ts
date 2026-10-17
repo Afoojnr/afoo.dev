@@ -20,10 +20,9 @@ export type ExperienceItem = {
   icon: StaticImageData;
   date: string;
   points: string[];
-}
+};
 
 export type SkillItem = {
   name: string;
   icon: StaticImageData;
-}
-
+};

@@ -1,14 +1,19 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
+
+const subscribe = () => () => {};
 
 const ThemeToggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  React.useEffect(() => setMounted(true), []);
+  // false during SSR/hydration, true on the client afterwards
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
+  );
 
   return (
     <button

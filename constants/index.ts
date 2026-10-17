@@ -85,7 +85,7 @@ export const works: WorkItem[] = [
     // webUrl: "https://www.rungisexpress.com/",
     githubUrl: ""
   },
- 
+
   {
     id: 3,
     title: "DigiSign System",
@@ -104,7 +104,7 @@ export const works: WorkItem[] = [
     webUrl: "https://www.digisignit.com/",
     githubUrl: ""
   },
-   {
+  {
     id: 4,
     title: "Fideco App",
     shortDescription:
@@ -132,8 +132,6 @@ export const works: WorkItem[] = [
     githubUrl: ""
   }
 ];
-
-
 
 export const skills: SkillItem[] = [
   { name: "React", icon: images.react },

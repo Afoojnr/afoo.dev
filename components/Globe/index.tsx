@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { useTheme } from "next-themes";
@@ -22,10 +22,11 @@ const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
   const lineColor = resolvedTheme === "dark" ? "#818cf8" : "#313bac";
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mountNode = mountRef.current;
+    if (!mountNode) return;
 
-    const width = mountRef.current.clientWidth;
-    const height = mountRef.current.clientHeight;
+    const width = mountNode.clientWidth;
+    const height = mountNode.clientHeight;
 
     // === Scene & Camera ===
     const scene = new THREE.Scene();
@@ -39,7 +40,7 @@ const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
     // === Renderer ===
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
-    mountRef.current.appendChild(renderer.domElement);
+    mountNode.appendChild(renderer.domElement);
 
     // === Controls ===
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -82,8 +83,8 @@ const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
         });
 
         globeGroup.add(countries);
-      } catch (err) {
-        console.error("Error loading GeoJSON:", err);
+      } catch {
+        // Countries are decorative; the outline and pin still render without them
       }
     };
     loadGeoJSON();
@@ -163,9 +164,8 @@ const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
 
     // === Resize Handler ===
     const handleResize = () => {
-      if (!mountRef.current) return;
-      const w = mountRef.current.clientWidth;
-      const h = mountRef.current.clientHeight;
+      const w = mountNode.clientWidth;
+      const h = mountNode.clientHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
@@ -176,7 +176,7 @@ const Globe = ({ lat, lon, pinColor = "#ff0000" }: GlobeProps) => {
     // === Cleanup ===
     return () => {
       window.removeEventListener("resize", handleResize);
-      mountRef.current?.removeChild(renderer.domElement);
+      mountNode.removeChild(renderer.domElement);
       renderer.dispose();
 
       scene.traverse(obj => {
