@@ -154,7 +154,7 @@ const Navbar = () => {
               </ul>
 
               <UtilityBar />
-              
+
               <FloatingOrb
                 size={56}
                 delay={1}

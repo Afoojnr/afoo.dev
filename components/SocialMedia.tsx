@@ -3,13 +3,11 @@
 import { motion } from "framer-motion";
 import { socialLinks } from "@/constants";
 
-
-
 const SocialMedia = () => {
   return (
     <motion.div
-      className="flex items-end justify-center md:flex-col "
-      
+      className="flex items-end justify-center md:flex-col"
+
       initial="hidden"
       animate="show"
       variants={{
@@ -28,7 +26,10 @@ const SocialMedia = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0 }
+          }}
           // whileHover={{ y: -2, scale: 1.01 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 260, damping: 18 }}

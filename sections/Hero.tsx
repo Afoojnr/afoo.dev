@@ -99,14 +99,14 @@ const Hero = () => {
         size={200}
         yOffset={20}
         duration={6}
-        className="top-2 right-0 hidden md:block -translate-y-1/2 rounded-full"
+        className="top-2 right-0 hidden -translate-y-1/2 rounded-full md:block"
         style={{ opacity: 0.75 }}
       />
-       <FloatingOrb
+      <FloatingOrb
         size={150}
         yOffset={20}
         duration={6}
-        className="top-1 right-0 md:hidden  rounded-full"
+        className="top-1 right-0 rounded-full md:hidden"
         style={{ opacity: 0.75 }}
       />
       <FloatingOrb

@@ -7,18 +7,18 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const mokoto = localFont({
   src: "../public/Mokoto.ttf",
   variable: "--font-mokoto",
-  display: "swap",
+  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -29,25 +29,27 @@ export const metadata: Metadata = {
       {
         media: "(prefers-color-scheme: light)",
         url: images.logoLight.src,
-        href: images.logoLight.src,
+        href: images.logoLight.src
       },
       {
         media: "(prefers-color-scheme: dark)",
         url: images.logoDark.src,
-        href: images.logoDark.src,
-      },
-    ],
-  },
+        href: images.logoDark.src
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${mokoto.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${mokoto.variable} antialiased`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
