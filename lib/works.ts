@@ -2,19 +2,12 @@ import type { WorkItem } from "@/types";
 
 export type WorkBlock = {
   heading?: string;
-  /** Plain lines, such as "B2B: Manage properties…". */
   lines: string[];
   bullets: string[];
 };
 
-/**
- * Splits a project's long description into an intro and blocks of plain
- * lines and bullet lists, so the case study can set each properly. Blocks are
- * separated by blank lines, bullets start with "•", and a line ending in a
- * colon above bullets is their heading.
- * @param text - the project's fullDescription
- * @returns the intro sentence(s) and the blocks that follow
- */
+// fullDescription format: blocks split by blank lines, bullets start with "•",
+// and a line ending in ":" right above bullets becomes their heading
 export const parseDescription = (text = "") => {
   const [rawIntro = "", ...rest] = text
     .split("\n\n")
@@ -38,7 +31,6 @@ export const parseDescription = (text = "") => {
     return { heading, lines: heading ? plain.slice(1) : plain, bullets };
   });
 
-  // An intro that ends in a colon leads into the plain lines that follow
   const intro = blocks[0]?.lines.length
     ? rawIntro.replace(/:$/, ".")
     : rawIntro;
@@ -46,7 +38,6 @@ export const parseDescription = (text = "") => {
   return { intro, blocks };
 };
 
-/** "Web & Mobile", "Mobile" and so on, from what the project ships on. */
 export const workKind = (work: WorkItem) => {
   if (work.webUrl && (work.mobileUrl || work.playStoreUrl))
     return "Web & Mobile";
@@ -59,7 +50,6 @@ export const workKind = (work: WorkItem) => {
   return kinds[work.type];
 };
 
-/** The links a project actually has, with the same address listed once. */
 export const workLinks = (work: WorkItem) => {
   const links: { label: string; short: string; href: string }[] = [];
 

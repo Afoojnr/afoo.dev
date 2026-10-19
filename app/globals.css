@@ -2,10 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*
- * Product Catalogue world: matte plastic grey ground, graphite ink,
- * signal orange reserved for the one primary action, power-green for "live".
- */
 :root {
   --ground: #e4e3df;
   --surface: #eeedea;
@@ -16,7 +12,6 @@
   --signal-ink: #b13d0e;
   --live: #5b7f5a;
   --danger: #b3261e;
-  /* The mouse-following glow: a lift of light on the light page */
   --spot: rgb(255 255 255 / 0.6);
   --track: #d3d1cb;
   --knob: #fafaf8;
@@ -37,7 +32,6 @@
   --signal-ink: #ff8350;
   --live: #7fa77e;
   --danger: #f2827a;
-  /* ...and a faint warm glow on the dark one */
   --spot: rgb(255 214 180 / 0.075);
   --track: #111110;
   --knob: #4a4945;
@@ -69,8 +63,7 @@
 }
 
 @theme {
-  /* Type scale: one display voice, steps you can see */
-  /* Sized from its container so the longest name line always fits */
+  /* display size uses cqi so the name fits its container */
   --text-display: clamp(3.25rem, 18.2cqi, 10.5rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.02em;
@@ -94,9 +87,7 @@
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* The download arrow drops into its tray, overshoots a hair, and settles */
   --animate-dip: dip 0.6s var(--ease-out-expo);
-  /* A soft ring that breathes out from the live role's dot */
   --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
 
   @keyframes pulse-ring {
@@ -171,7 +162,7 @@
     caret-color: var(--signal);
   }
 
-  /* Theme changes crossfade the whole page as one image */
+  /* theme switch crossfade, see lib/theme.ts */
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation-duration: 0.45s;
@@ -186,7 +177,7 @@
     }
   }
 
-  /* The system cursor is hidden only while the custom one is running */
+  /* class is added by Cursor.tsx when the custom cursor is active */
   html.custom-cursor,
   html.custom-cursor * {
     cursor: none !important;
@@ -214,10 +205,6 @@
 }
 
 @layer components {
-  /*
-   * The role label: regular-width semibold caps with open tracking. Tracking
-   * eases on phones so the full title stays on one line.
-   */
   .role-label {
     font-size: 0.875rem;
     letter-spacing: 0.08em;

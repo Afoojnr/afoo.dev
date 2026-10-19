@@ -19,11 +19,10 @@ import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 type Piece = {
   node: ReactNode;
-  /** Set apart in a wider, lighter shape. */
   emphasis?: boolean;
 };
 
-// Where on the pinned scroll the words sweep, and when the quote follows
+// scroll progress points (0-1) for the word sweep and the quote
 const SWEEP_START = 0.04;
 const SWEEP_END = 0.8;
 const WINDOW = 0.14;
@@ -112,14 +111,6 @@ const Quote = () => (
   </p>
 );
 
-/**
- * The story: one pinned scene with the portrait on the left and the text on
- * the right. The section is taller than the screen and the scene is pinned in
- * it (CSS sticky, not scroll jacking), so as you scroll the words brighten one
- * by one and the quote fades in last. Only opacity animates. Reduced motion
- * gets the whole thing lit, unpinned.
- * @returns the pinned portrait-and-story scene
- */
 const Story = () => {
   const reduceMotion = usePrefersReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -151,8 +142,7 @@ const Story = () => {
               sizes="(min-width: 1024px) 28rem, 12rem"
               className="ease-out-expo object-cover object-[56%_25%]"
             />
-            {/* A blue tint that wipes away upward as the cursor arrives;
-                touch screens have no hover, so they see the plain photo */}
+            {/* hover-only, so touch users get the plain photo */}
             <span
               aria-hidden
               className="ease-out-expo pointer-events-none absolute inset-0 hidden bg-[#3d6bd9]/25 mix-blend-multiply transition-[clip-path] duration-700 [clip-path:inset(0_0_0_0)] group-hover:[clip-path:inset(0_0_100%_0)] motion-reduce:transition-none [@media(hover:hover)]:block"

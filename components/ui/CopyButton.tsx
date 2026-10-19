@@ -13,13 +13,6 @@ type CopyButtonProps = {
 
 const RESET_AFTER_MS = 1800;
 
-/**
- * Shows a value (an email address, say) as a button that copies it. The icon
- * swaps to a check on a spring and a live region confirms for screen readers.
- * @param text - the value to copy and display
- * @param label - what the value is, for the accessible name
- * @returns the copy button
- */
 const CopyButton = ({ text, label }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -30,7 +23,7 @@ const CopyButton = ({ text, label }: CopyButtonProps) => {
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      // Clipboard can be blocked; selecting the text by hand still works
+      // clipboard can be blocked, nothing else to do
       return;
     }
     setCopied(true);

@@ -11,14 +11,6 @@ type NavLinksProps = {
   active: string;
 };
 
-/**
- * Desktop section links. The power dot marks the section in view and slides
- * to whichever link is hovered or focused to preview the destination, then
- * springs back to the current section when the pointer leaves.
- * @param items - section ids, also their labels
- * @param active - id of the section in view
- * @returns the link row
- */
 const NavLinks = ({ items, active }: NavLinksProps) => {
   const [previewed, setPreviewed] = useState<string | null>(null);
   const marked = previewed ?? active;

@@ -2,11 +2,6 @@ import Reveal from "@/components/ui/Reveal";
 import { works } from "@/constants";
 import WorkStack from "./WorkStack";
 
-/**
- * Works: the projects as a stack of cards that slide over each other as you
- * scroll, each opening into a full case study.
- * @returns the works section
- */
 const Works = () => (
   <section
     id="works"

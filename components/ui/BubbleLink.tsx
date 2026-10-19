@@ -13,26 +13,13 @@ import { springs } from "@/lib/motion";
 
 type BubbleLinkProps = {
   href: string;
-  /** Text inside the cursor bubble. */
   label: string;
-  /** Accessible name; the visible children are decorative display type. */
   children: React.ReactNode;
   className?: string;
 };
 
 const follow = { stiffness: 230, damping: 24, mass: 0.6 };
 
-/**
- * A big link that swaps the cursor for a labelled bubble while the mouse is
- * over it. The bubble trails the pointer on a spring (directly, with reduced
- * motion), pops in and out, and the link text takes the accent colour. Touch
- * visitors get no bubble, just the link; keyboard focus gets the colour.
- * @param href - destination
- * @param label - words inside the bubble
- * @param children - the link's content
- * @param className - styling for the link
- * @returns the link
- */
 const BubbleLink = ({
   href,
   label,
@@ -53,7 +40,7 @@ const BubbleLink = ({
     const py = e.clientY - rect.top;
     x.set(px);
     y.set(py);
-    // On entry the bubble appears under the cursor instead of flying in
+    // jump to the cursor on enter instead of animating in from 0,0
     if (jump) {
       springX.jump(px);
       springY.jump(py);

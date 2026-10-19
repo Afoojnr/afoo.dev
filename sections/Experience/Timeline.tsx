@@ -16,21 +16,11 @@ import { experiences } from "@/constants";
 import { springs } from "@/lib/motion";
 import DurationChip from "./DurationChip";
 
-// Centre of an entry's dot, measured from the entry's top
 const DOT_CENTRE = 14;
 
-/** How many stops the line has reached at a given progress (0 to 1). */
 const reachedAt = (stops: number[], progress: number) =>
   stops.filter(stop => progress >= stop).length;
 
-/**
- * The career timeline. A dark line grows down a grey rail as you scroll, on a
- * spring, with a glowing tip. Each dot fills as the line reaches it, and the
- * role the line is at takes the focus while the others sit softer. Only
- * transforms and opacity animate, and nothing hijacks the scroll. With
- * reduced motion the line is fully drawn and every role is fully visible.
- * @returns the timeline
- */
 const Timeline = () => {
   const reduceMotion = usePrefersReducedMotion();
   const rail = useRef<HTMLDivElement>(null);
@@ -53,7 +43,6 @@ const Timeline = () => {
     setReached(reachedAt(stops.current, v))
   );
 
-  // Re-measure where each dot sits whenever the rail changes size
   useEffect(() => {
     const node = rail.current;
     if (!node) return;

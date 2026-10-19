@@ -19,14 +19,6 @@ type MobileSheetProps = {
 const DISMISS_DISTANCE = 120;
 const DISMISS_VELOCITY = 600;
 
-/**
- * Phone navigation as a bottom sheet: it tracks the finger 1:1, and a short
- * fast flick or a long slow drag both dismiss it, carrying the gesture's
- * velocity into the close.
- * @param items - section ids, also their labels
- * @param active - id of the section in view
- * @returns the menu key and its sheet
- */
 const MobileSheet = ({ items, active }: MobileSheetProps) => {
   const [open, setOpen] = useState(false);
 

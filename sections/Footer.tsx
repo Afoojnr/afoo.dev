@@ -1,8 +1,3 @@
-/**
- * The page's last line: the copyright and a way back to the top. The social
- * links live in Contact, right above, so they aren't repeated here.
- * @returns the footer
- */
 const Footer = () => (
   <footer className="px-gutter max-w-page mx-auto w-full pb-10">
     <div className="border-line flex items-center justify-between gap-6 border-t pt-6">

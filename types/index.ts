@@ -8,18 +8,15 @@ export type WorkItem = {
   image: StaticImageData;
   images?: StaticImageData[];
   type: "web" | "mobile" | "fullstack" | "other";
-  /** Where it was built, matching a company in the Experience list. */
   company?: string;
-  /** CSS object-position that keeps the best part of the image in view. */
+  // object-position for the card crop
   focus?: string;
-  /** Show the whole image instead of cropping it, on this backdrop (any CSS background). */
+  // show the whole image on this background instead of cropping
   letterbox?: string;
-  /** Letterbox only on wide screens; phones keep the cropped fill. */
   letterboxLgOnly?: boolean;
   tech: string[];
   webUrl?: string;
   mobileUrl?: string;
-  /** Google Play listing, for apps shipped to both stores. */
   playStoreUrl?: string;
   githubUrl?: string;
 };

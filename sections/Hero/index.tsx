@@ -18,22 +18,13 @@ const rise = (delay: number) => ({
   transition: { ...springs.settle, delay }
 });
 
-/**
- * First viewport: a masthead strip naming the role, then the name staggered
- * on a diagonal (Afolabi top-left, Abdulhamid. right-aligned beneath). The
- * bio fills the notch beside "Afolabi", the social links sit in the strip,
- * and the foot row pairs the tagline with the one primary action.
- * @returns the hero section
- */
 const Hero = () => (
   <section
     id="home"
     data-catalogue
     className="px-gutter max-w-page mx-auto flex min-h-svh w-full flex-col pt-24 pb-10 [--hero-gap-sm:clamp(1rem,3.8svh,2.25rem)] [--hero-gap:clamp(1.5rem,5.7svh,3.5rem)] lg:pt-28"
   >
-    {/* Phones: the whole cluster sits together, centred in the screen, on an
-        8-point rhythm (32 between groups, 24 within). From md up the wrapper
-        disappears: the strip tops the page and the foot anchors to the bottom. */}
+    {/* centres everything on phones; md:contents removes it on larger screens */}
     <div className="flex flex-1 flex-col justify-center md:contents">
       <motion.div
         className="mb-(--hero-gap) flex justify-between gap-6 text-sm font-medium tracking-wide uppercase md:mb-0"
@@ -42,7 +33,7 @@ const Hero = () => (
         <p className="role-label text-ink">
           Software Engineer · Web &amp; Mobile
         </p>
-        {/* Phones reach these through the menu sheet instead */}
+        {/* in the menu sheet on phones */}
         <ul className="hidden gap-6 sm:flex">
           {socialLinks.map(({ href, label }) => (
             <li key={label}>
@@ -76,7 +67,6 @@ const Hero = () => (
             ))}
           </h1>
 
-          {/* Top-right notch beside "Afolabi" */}
           <motion.p
             className="text-ink md:text-ink-soft mt-(--hero-gap-sm) max-w-[46ch] text-[clamp(1.25rem,5.8vw,1.5rem)] leading-[1.25] text-pretty md:mt-6 md:text-[length:var(--text-body)] md:leading-[1.6] xl:absolute xl:top-4 xl:right-0 xl:mt-0 xl:w-96"
             {...rise(0.38)}

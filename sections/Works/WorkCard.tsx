@@ -11,7 +11,6 @@ type WorkCardProps = {
   work: WorkItem;
   index: number;
   total: number;
-  /** 0 while the card is in full view, 1 once the next card has covered it. */
   progress: MotionValue<number>;
   cardRef: (el: HTMLElement | null) => void;
   onOpen: () => void;
@@ -19,15 +18,6 @@ type WorkCardProps = {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/**
- * One project as a card: description and the way in on one side, a large
- * screenshot on the other (stacked, image first, on phones and tablets). As
- * the next card slides over it, it shrinks a little and dims, so the stack
- * reads as layers. The whole card opens the case study.
- * @param work - the project
- * @param progress - how far the next card has covered this one
- * @returns the project card
- */
 const WorkCard = ({
   work,
   index,

@@ -193,7 +193,7 @@ export const works: WorkItem[] = [
     image: images.digisign,
     company: "DigiSign Technologies Limited",
     focus: "50% 50%",
-    // Bars sampled from the screenshot's top and bottom rows, so they blend in
+    // colours sampled from the screenshot edges
     letterbox:
       "linear-gradient(to right, #121821 0%, #11171f 20%, #11171f 40%, #11171f 50%, #11171f 60%, #11171f 80%, #151e2a 100%) top / 100% 50% no-repeat, linear-gradient(to right, #203148 0%, #1b293b 20%, #192535 40%, #192535 50%, #1a2636 60%, #1d2b3f 80%, #22354e 100%) bottom / 100% 50% no-repeat",
     type: "web",
@@ -211,7 +211,6 @@ export const works: WorkItem[] = [
     image: images.klierfeld,
     company: "Neo64 GmbH",
     focus: "50% 0%",
-    // Whole page on desktop, with light bars above and below
     letterbox: "#f6f6f6",
     letterboxLgOnly: true,
     type: "web",
@@ -234,7 +233,6 @@ export const skills: SkillItem[] = [
   { name: "Figma", icon: images.figma }
 ];
 
-/** How to reach Afolabi directly: the Contact section's main action. */
 export const contact = {
   email: "afolabiabdulhamid4@gmail.com"
 };

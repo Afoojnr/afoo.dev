@@ -2,11 +2,6 @@ type PowerDotProps = {
   className?: string;
 };
 
-/**
- * The power-on indicator: marks what is current or live, never decoration.
- * @param className - size or spacing overrides
- * @returns a small power-green dot
- */
 const PowerDot = ({ className = "" }: PowerDotProps) => (
   <span
     aria-hidden

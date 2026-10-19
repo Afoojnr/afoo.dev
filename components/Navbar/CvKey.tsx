@@ -2,10 +2,6 @@ type CvKeyProps = {
   className?: string;
 };
 
-/**
- * Download icon in two parts: a fixed tray, and an arrow that drops into it
- * on hover or focus. Only the arrow moves; the tray stays put.
- */
 const DownloadIcon = () => (
   <svg
     aria-hidden
@@ -25,11 +21,6 @@ const DownloadIcon = () => (
   </svg>
 );
 
-/**
- * Secondary hardware key that downloads the CV. Graphite, never orange:
- * orange belongs to the page's one primary action.
- * @returns the CV download key
- */
 const CvKey = ({ className = "" }: CvKeyProps) => (
   <a
     href="/afoo_cv.pdf"

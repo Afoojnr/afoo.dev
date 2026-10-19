@@ -8,19 +8,9 @@ const subscribe = () => () => {};
 
 type DurationChipProps = {
   range: string;
-  /** Shown while the role has the focus; hover also reveals it. */
   active: boolean;
 };
 
-/**
- * A small chip with how long the role lasted, worked out from its dates. It
- * appears while the role has the focus or is hovered, so touch visitors see
- * it as they scroll. "Present" runs to today, which only the browser knows,
- * so the chip is empty on the server and fills in after hydration.
- * @param range - the role's dates
- * @param active - whether the role currently has the focus
- * @returns the chip, or nothing until the browser can compute it
- */
 const DurationChip = ({ range, active }: DurationChipProps) => {
   const label = useSyncExternalStore(
     subscribe,

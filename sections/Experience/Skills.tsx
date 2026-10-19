@@ -7,11 +7,6 @@ import Reveal from "@/components/ui/Reveal";
 import { skills } from "@/constants";
 import { reveal, stagger } from "@/lib/motion";
 
-/**
- * The skills strip: a labelled block under the timeline. Icons arrive in a
- * short stagger, and each lifts slightly when hovered.
- * @returns the skills strip
- */
 const Skills = () => (
   <div className="mt-16 md:mt-20">
     <Reveal>

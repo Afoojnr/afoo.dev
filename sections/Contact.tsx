@@ -11,14 +11,6 @@ import Reveal from "@/components/ui/Reveal";
 import TextLink from "@/components/ui/TextLink";
 import { contact, socialLinks } from "@/constants";
 
-/**
- * Contact: the page's closing beat. A giant "Let's talk." that opens up under
- * the cursor like the hero name, the question, then the ways in: one primary
- * key (email), a copy-email button, the CV and the social links. There is no
- * form: a direct message is faster for
- * the people reading this.
- * @returns the contact section
- */
 const Contact = () => (
   <section
     id="contact"

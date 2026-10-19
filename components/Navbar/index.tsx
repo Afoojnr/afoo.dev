@@ -15,12 +15,6 @@ import NavLinks from "./NavLinks";
 
 const sectionLinks = navItems.filter(item => item !== "home");
 
-/**
- * The catalogue's control strip: wordmark, section links with a live
- * position dot, theme switch and CV key. Slides away while reading down,
- * returns the moment the visitor scrolls up.
- * @returns the site navigation
- */
 const Navbar = () => {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);

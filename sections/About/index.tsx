@@ -1,12 +1,6 @@
 import Reveal from "@/components/ui/Reveal";
 import Story from "./Story";
 
-/**
- * About: a heading, then one pinned scene: the portrait on the left and a
- * short story on the right that lights up word by word as you scroll. The
- * career timeline lives in Experience, so no dates appear beyond the story.
- * @returns the about section
- */
 const About = () => (
   <section
     id="about"

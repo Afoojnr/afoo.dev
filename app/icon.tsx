@@ -5,11 +5,6 @@ import { logoMark } from "@/lib/brand";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
-/**
- * The favicon, drawn from the wordmark's "A" so it never drifts from the
- * logo. Graphite tile with a light mark reads on both light and dark tabs.
- * @returns the generated tab icon
- */
 const Icon = () =>
   new ImageResponse(
     <div

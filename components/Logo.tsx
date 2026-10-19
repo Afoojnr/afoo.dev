@@ -43,8 +43,6 @@ const Logo = () => {
           ©
         </motion.span>
       </div>
-
-      {/* COPYRIGHT SUPERSCRIPT */}
     </div>
   );
 };

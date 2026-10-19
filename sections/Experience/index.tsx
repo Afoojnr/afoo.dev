@@ -2,10 +2,6 @@ import Reveal from "@/components/ui/Reveal";
 import Skills from "./Skills";
 import Timeline from "./Timeline";
 
-/**
- * Experience: the career as a scroll-driven timeline, then the skills strip.
- * @returns the experience section
- */
 const Experience = () => (
   <section
     id="experience"
