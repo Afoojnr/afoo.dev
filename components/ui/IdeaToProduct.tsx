@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const IDEA = "ideas";
-// Each letter of the rough idea leans and drifts its own way
 const TILT = [-5, 4, -3, 5, -4];
 const DRIFT = [2, -3, 2, -2, 3];
 
@@ -24,7 +23,6 @@ type LetterProps = {
   progress: MotionValue<number>;
 };
 
-/** One letter of "ideas": rough and light, then upright and solid. */
 const Letter = ({ char, index, progress }: LetterProps) => {
   const rotate = useTransform(progress, [0, 1], [TILT[index] ?? 0, 0]);
   const y = useTransform(progress, [0, 1], [DRIFT[index] ?? 0, 0]);
@@ -44,15 +42,6 @@ const Letter = ({ char, index, progress }: LetterProps) => {
   );
 };
 
-/**
- * "I turn ideas into products." made literal. At rest the word "ideas" is
- * rough: light, tilted, a spark of orange above it. Hover, focus or tap and
- * it straightens and thickens into the solid shape of the other word while
- * the spark lands as the orange full stop: the idea, shipped. It plays once
- * on its own so touch visitors see it too. Reduced motion shows the finished
- * sentence.
- * @returns the tagline
- */
 const IdeaToProduct = () => {
   const reduceMotion = usePrefersReducedMotion();
   const [active, setActive] = useState(false);
@@ -70,7 +59,7 @@ const IdeaToProduct = () => {
     return () => controls.stop();
   }, [on, progress]);
 
-  // One demonstration after the hero settles, unless the visitor got there first
+  // play once on load so touch users see it too
   useEffect(() => {
     if (reduceMotion || touched) return;
     const open = window.setTimeout(() => setActive(true), 1900);

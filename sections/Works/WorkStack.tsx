@@ -14,15 +14,6 @@ import WorkSheet from "./WorkSheet";
 
 const clamp = (n: number) => Math.min(1, Math.max(0, n));
 
-/**
- * The stack of project cards. Every card sticks at the same spot, so each new
- * card slides over the last and covers it completely; while it does, the
- * covered card shrinks and dims. The same behaviour runs on phones. An empty
- * block after the last card gives it room to stay pinned, otherwise it would
- * scroll away and uncover the card behind it. With reduced motion the cards
- * simply scroll past one after another.
- * @returns the card stack and its case study sheet
- */
 const WorkStack = () => {
   const reduceMotion = useReducedMotion();
   const [selected, setSelected] = useState<number | null>(null);
@@ -32,7 +23,6 @@ const WorkStack = () => {
   const [progress] = useState(() => works.map(() => motionValue(0)));
   const { scrollY } = useScroll();
 
-  // How far each card has been covered, measured from where the next one is
   const update = useCallback(() => {
     const stick = parseFloat(getComputedStyle(wraps.current[0]!).top) || 0;
     works.forEach((_, i) => {
@@ -44,8 +34,7 @@ const WorkStack = () => {
     });
   }, [progress]);
 
-  // On phones the cards size to their text, so give every card the height of
-  // the tallest. Otherwise a taller card would stick out beneath a shorter one.
+  // phones: match the tallest card so taller ones don't peek out underneath
   const equalise = useCallback(() => {
     const node = stack.current;
     if (!node) return;
@@ -96,7 +85,7 @@ const WorkStack = () => {
             />
           </div>
         ))}
-        {/* Room for the last card to stay pinned while the stack finishes */}
+        {/* keeps the last card pinned, otherwise it scrolls off and reveals the one below */}
         <div aria-hidden className="h-[30svh] motion-reduce:hidden" />
       </div>
 

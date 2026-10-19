@@ -3,30 +3,24 @@
 import { useEffect, useRef } from "react";
 
 type Axes = {
-  /** Variable-font width axis, as a percentage of normal. */
   wdth: number;
-  /** Variable-font weight axis. */
   wght: number;
 };
 
 type ProximityTextProps = {
   text: string;
-  /** Shape of a letter away from the pointer. */
   rest?: Axes;
-  /** Shape of a letter directly under the pointer. */
   peak?: Axes;
-  /** Pointer distance in px beyond which a letter stays at rest. */
   radius?: number;
 };
 
 type Anchor = { x: number; y: number };
 
-// Entrance animations finish by then, so letter positions are final
+// wait for the entrance animation so positions are final
 const READY_AFTER_MS = 1400;
-// Half-lives in seconds: open up quickly, relax slowly so a sweep leaves a trail
+// half-lives in seconds
 const RISE = 0.12;
 const FALL = 0.18;
-// Vertical distance counts for less, so sweeping along a line stays smooth
 const VERTICAL_WEIGHT = 0.6;
 const SETTLED = 0.004;
 
@@ -38,20 +32,6 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const round = (n: number) => Math.round(n * 10) / 10;
 const settings = ({ wdth, wght }: Axes) => `"wdth" ${wdth}, "wght" ${wght}`;
 
-/**
- * Display text whose letters open up (wider and lighter) as the cursor nears
- * them and ease back as it leaves, like pressing into the type.
- *
- * Letter centres are measured once while the text is at rest, so changing
- * letters never feed back into the maths, and every frame is plain arithmetic
- * with direct style writes. The pointer is ignored while over the site header,
- * and touch and reduced-motion visitors get plain static text.
- * @param text - the string to render
- * @param rest - width and weight of a letter at rest
- * @param peak - width and weight of the letter under the pointer
- * @param radius - how far the effect reaches from the pointer
- * @returns the text, with an accessible plain-text copy for screen readers
- */
 const ProximityText = ({
   text,
   rest = REST_DEFAULT,
@@ -73,7 +53,6 @@ const ProximityText = ({
     const letters = Array.from(
       container.querySelectorAll<HTMLElement>("[data-letter]")
     );
-    // 0 = at rest, 1 = fully open
     const progress = letters.map(() => 0);
     const goal = letters.map(() => 0);
     let anchors: Anchor[] = [];
@@ -138,7 +117,6 @@ const ProximityText = ({
         release();
         return;
       }
-      // Ignore the pointer unless it is near the text at all
       const box = container.getBoundingClientRect();
       const near =
         e.clientX > box.left - radius &&
@@ -150,8 +128,7 @@ const ProximityText = ({
         return;
       }
 
-      // Measure only while every letter is truly at rest, so positions are
-      // never read mid-change and growing letters cannot feed back
+      // only measure at rest, otherwise growing letters feed back into the maths
       if (!frame && progress.every(p => p === 0)) measure();
       if (anchors.length === 0) return;
 

@@ -8,11 +8,6 @@ export const alt = site.title;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/**
- * The link preview card, built in code (Archivo is bundled in assets/) in the site's catalogue look: matte
- * ground, huge graphite name, one orange dot, the role as a small caps label.
- * @returns the generated 1200x630 preview image
- */
 const OpenGraphImage = async () => {
   const [extraBold, semiBold] = await Promise.all(
     [800, 600].map(weight =>

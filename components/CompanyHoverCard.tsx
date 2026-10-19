@@ -7,7 +7,7 @@ import PowerDot from "@/components/ui/PowerDot";
 import TextLink from "@/components/ui/TextLink";
 import { experiences, works } from "@/constants";
 
-// Propatis HQ is the first entry in both lists
+// assumes Propatis is first in both lists
 const company = experiences[0];
 const product = works[0];
 
@@ -18,15 +18,6 @@ type CompanyHoverCardProps = {
   arrowClassName?: string;
 };
 
-/**
- * A link to the company that opens a small card on hover or keyboard focus:
- * logo, role, dates and a one-line description, all from the Experience and
- * Works data. A quick proof point without leaving the section. Touch
- * visitors simply follow the link.
- * @param href - the company's site
- * @param children - the link text
- * @returns the link with its card
- */
 const CompanyHoverCard = ({
   href,
   children,

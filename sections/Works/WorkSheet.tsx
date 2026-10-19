@@ -26,7 +26,6 @@ const DISMISS_VELOCITY = 600;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** "B2B: Manage properties…" becomes a bold label and the rest. */
 const Line = ({ text }: { text: string }) => {
   const match = text.match(/^([^:]{2,24}):\s+(.*)$/);
   return match ? (
@@ -38,13 +37,6 @@ const Line = ({ text }: { text: string }) => {
   );
 };
 
-/**
- * The case study: a sheet that rises from the bottom on a spring. Drag the
- * handle down, press Escape or tap the backdrop to close; the content itself
- * scrolls normally. Everything shown comes from the project's own data.
- * @param work - the open project, or null when closed
- * @returns the sheet
- */
 const WorkSheet = ({ work, index, total, onClose }: WorkSheetProps) => {
   const controls = useDragControls();
 
@@ -119,7 +111,7 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
 
   return (
     <>
-      {/* The handle is the only drag target, so the content can scroll */}
+      {/* drag only from the handle so the content can still scroll */}
       <div
         onPointerDown={startDrag}
         className="bg-ground sticky top-0 z-10 flex cursor-grab touch-none items-center justify-between pt-3 pb-4 active:cursor-grabbing"

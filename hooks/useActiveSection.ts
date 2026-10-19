@@ -2,12 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-/**
- * Tracks which section sits in the middle band of the viewport, so the nav
- * can show the visitor where "now" is on the page.
- * @param ids - section element ids in page order
- * @returns the id of the section currently in view
- */
 export const useActiveSection = (ids: string[]) => {
   const [active, setActive] = useState(ids[0]);
 

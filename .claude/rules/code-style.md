@@ -21,4 +21,5 @@ paths:
   segment that can fail has `error.tsx`.
 - Pages/layouts orchestrate, components render. Components read server state through
   TanStack Query hooks, with query keys defined next to the hook.
-- JSDoc on exported functions explains why it exists, with `@param`/`@returns`.
+- Comment the why, not the what. Skip JSDoc on self-explanatory components;
+  add a short one on utilities or anything non-obvious.

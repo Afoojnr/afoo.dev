@@ -13,14 +13,6 @@ const INTERACTIVE =
   "a[href], button, [role='button'], [role='switch'], summary, label, input, select, textarea";
 const follow = { stiffness: 260, damping: 28, mass: 0.5 };
 
-/**
- * The site's cursor: a small orange dot locked to the pointer inside a thin
- * ring that trails it on a spring. The ring grows over links and buttons,
- * shrinks while pressed, and steps aside where an element asks for it with
- * data-cursor="none". It only exists for mouse and trackpad users, and the
- * system cursor is hidden only while it is running.
- * @returns the cursor, or nothing on touch devices
- */
 const Cursor = () => {
   const finePointer = useFinePointer();
   const reduceMotion = usePrefersReducedMotion();
@@ -75,7 +67,7 @@ const Cursor = () => {
 
   return (
     <>
-      {/* A white ring with a thin dark edge reads on light, dark and dimmed backgrounds */}
+      {/* dark edge keeps the ring visible on light and dimmed backgrounds */}
       <motion.div
         aria-hidden
         data-cursor-part="ring"

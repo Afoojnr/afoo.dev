@@ -9,13 +9,6 @@ import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 const follow = { stiffness: 110, damping: 22, mass: 0.9 };
 const SIZE = 900;
 
-/**
- * A large, soft glow that follows the mouse behind the page: a lift of light
- * on the background, never over text, photos or cards. It is one fixed layer
- * moved with a transform, so the browser never repaints a full-screen
- * gradient. Mouse and trackpad only; the tone comes from --spot in the theme.
- * @returns the glow, or nothing on touch devices
- */
 const Spotlight = () => {
   const finePointer = useFinePointer();
   const reduceMotion = usePrefersReducedMotion();

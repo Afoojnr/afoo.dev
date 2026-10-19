@@ -23,8 +23,6 @@ const dotVariants = {
   press: { scale: 0.9, transition: springs.press }
 };
 
-// The dot leans toward the cursor from well outside the button, like a drop
-// of liquid reaching for it, and stretches along the pull
 const REACH = 190;
 const MAX_PULL = 16;
 const STRETCH = 0.16;
@@ -32,16 +30,6 @@ const magnet = { stiffness: 120, damping: 13, mass: 0.9 };
 
 const smoothstep = (t: number) => t * t * (3 - 2 * t);
 
-/**
- * The page's one primary action: a round signal-orange key that leans toward
- * the cursor, presses in on pointer-down and springs back on release, like a
- * hardware button. The dot reaches for the cursor from a distance and
- * stretches along the pull.
- * @param label - visible action name, also the accessible name
- * @param href - renders a link when set, otherwise a button
- * @param pending - shows the working state and blocks presses
- * @returns the primary action control
- */
 const DotButton = ({
   label,
   href,
@@ -76,7 +64,7 @@ const DotButton = ({
       const node = dot.current;
       if (!node || e.pointerType !== "mouse") return;
       const rect = node.getBoundingClientRect();
-      // The dot's own pull moves its box, so measure from where it rests
+      // undo the current pull, otherwise the dot chases itself
       const dx = e.clientX - (rect.left + rect.width / 2 - pullX.get());
       const dy = e.clientY - (rect.top + rect.height / 2 - pullY.get());
       const distance = Math.hypot(dx, dy);
@@ -84,7 +72,6 @@ const DotButton = ({
         release();
         return;
       }
-      // Closer means a stronger pull, easing in so it never snaps on
       const weight = smoothstep(1 - distance / REACH);
       const scale =
         distance > 0 ? Math.min(distance * 0.3, MAX_PULL) / distance : 0;

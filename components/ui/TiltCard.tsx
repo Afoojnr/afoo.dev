@@ -18,14 +18,6 @@ type TiltCardProps = {
 const MAX_TILT = 5;
 const follow = { stiffness: 170, damping: 18 };
 
-/**
- * A card that leans toward the cursor on a spring and shifts its shadow the
- * opposite way, as if it were a physical object on a desk. It settles flat
- * when the cursor leaves. Touch and reduced-motion visitors get a still card.
- * @param children - the card's content
- * @param className - sizing and shape classes for the card
- * @returns the tilting card
- */
 const TiltCard = ({ children, className = "" }: TiltCardProps) => {
   const reduceMotion = useReducedMotion();
   const tiltX = useSpring(0, follow);

@@ -6,7 +6,7 @@ import { contact, socialLinks } from "@/constants";
 import { site } from "@/lib/brand";
 import "./globals.css";
 
-// Variable on both weight and width: the hero name morphs along both axes
+// width axis is needed for the hero name effect
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
@@ -14,7 +14,6 @@ const archivo = Archivo({
   display: "swap"
 });
 
-// Mokoto is reserved for the AFOO wordmark
 const mokoto = localFont({
   src: "../public/Mokoto.ttf",
   variable: "--font-mokoto",

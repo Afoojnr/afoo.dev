@@ -10,15 +10,6 @@ type RevealProps = {
   delay?: number;
 };
 
-/**
- * Lets a block rise into place the first time it scrolls into view. The
- * delay sits inside the animation's own transition, so staggering several
- * blocks works. Reduced-motion visitors get the content without the movement.
- * @param children - the content to reveal
- * @param className - layout classes for the wrapper
- * @param delay - seconds to wait before revealing
- * @returns the revealing wrapper
- */
 const Reveal = ({ children, className, delay = 0 }: RevealProps) => (
   <motion.div
     className={className}

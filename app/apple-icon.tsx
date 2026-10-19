@@ -5,11 +5,6 @@ import { logoMark } from "@/lib/brand";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-/**
- * The home-screen icon for iOS: the same mark on a full-bleed graphite
- * square (iOS rounds the corners itself).
- * @returns the generated touch icon
- */
 const AppleIcon = () =>
   new ImageResponse(
     <div

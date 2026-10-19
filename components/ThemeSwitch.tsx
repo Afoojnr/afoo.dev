@@ -14,16 +14,10 @@ const KNOB = 24;
 const KNOB_PRESSED = 30;
 const TRAVEL = 28;
 
-/**
- * A two-position hardware slide switch for light and dark. Pressing the knob
- * stretches it like an iPhone toggle, and it rides the track on a spring, so
- * a quick double flick reverses mid-travel.
- * @returns the theme switch
- */
 const ThemeSwitch = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [pressed, setPressed] = useState(false);
-  // false during SSR/hydration, true on the client afterwards
+  // false on the server so the icon doesn't mismatch on hydration
   const mounted = useSyncExternalStore(
     subscribe,
     () => true,
@@ -51,7 +45,6 @@ const ThemeSwitch = () => {
         aria-hidden
         initial={false}
         animate={{
-          // grows toward the open side: right when off, left when on
           x: isDark ? TRAVEL - stretch : 0,
           width: KNOB + stretch
         }}

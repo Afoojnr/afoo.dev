@@ -4,16 +4,14 @@ import { useEffect, useRef } from "react";
 
 type WaveTextProps = {
   text: string;
-  /** Pointer distance in px beyond which a letter stays still. */
   radius?: number;
-  /** How far, in px, letters are pushed out of the pointer's way. */
   push?: number;
 };
 
 type Anchor = { x: number; y: number };
 
 const READY_AFTER_MS = 1400;
-// Half-lives in seconds: respond quickly, settle slowly so a sweep leaves a wake
+// half-lives in seconds
 const RISE = 0.1;
 const FALL = 0.22;
 const SETTLED = 0.004;
@@ -23,16 +21,6 @@ const STRETCH = 0.2;
 const smoothstep = (t: number) => t * t * (3 - 2 * t);
 const round = (n: number) => Math.round(n * 100) / 100;
 
-/**
- * Body text that moves like water around the cursor: letters near it part
- * and rise, stretch a little and darken, then drift back slowly so a sweep
- * leaves a wake. Only transforms and colour change, never width, so the
- * paragraph never reflows. Touch and reduced-motion visitors get plain text.
- * @param text - the sentence to render
- * @param radius - how far the effect reaches from the pointer
- * @param push - how far letters are pushed away from the pointer
- * @returns the text, with an accessible plain copy for screen readers
- */
 const WaveText = ({ text, radius = 130, push = 7 }: WaveTextProps) => {
   const root = useRef<HTMLSpanElement>(null);
 
@@ -127,8 +115,7 @@ const WaveText = ({ text, radius = 130, push = 7 }: WaveTextProps) => {
         return;
       }
 
-      // Measure only while every letter is at rest, so moving letters
-      // never feed back into where the maths thinks they are
+      // only measure at rest, otherwise moved letters feed back into the maths
       if (!frame && progress.every(p => p === 0)) measure();
       if (anchors.length === 0) return;
 
