@@ -9,7 +9,7 @@ Package manager is yarn (`yarn.lock`); the README mentions npm but the lockfile 
 - `yarn dev` — dev server at http://localhost:3000
 - `yarn build` / `yarn start` — production build / serve
 - `yarn lint` / `yarn lint:fix` — ESLint (flat config in `eslint.config.mjs`, extends next + prettier)
-- `yarn format` — Prettier (`prettier-plugin-tailwindcss` sorts Tailwind classes; no trailing commas, double quotes, no parens on single-arg arrows)
+- `yarn format:check` / `yarn format:fix` — Prettier (`prettier-plugin-tailwindcss` sorts Tailwind classes; no trailing commas, double quotes, no parens on single-arg arrows)
 
 ## Architecture
 

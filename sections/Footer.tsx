@@ -1,21 +1,29 @@
-"use client";
+/**
+ * The page's last line: the copyright and a way back to the top. The social
+ * links live in Contact, right above, so they aren't repeated here.
+ * @returns the footer
+ */
+const Footer = () => (
+  <footer className="px-gutter max-w-page mx-auto w-full pb-10">
+    <div className="border-line flex items-center justify-between gap-6 border-t pt-6">
+      <p className="text-caption text-ink-soft uppercase">
+        © {new Date().getFullYear()} Abdulhamid Afolabi
+      </p>
 
-import SectionWrap from "@/components/SectionWrap";
-import SocialMedia from "@/components/SocialMedia";
+      <a
+        href="#home"
+        className="group text-ink text-caption inline-flex items-center gap-2 font-medium uppercase"
+      >
+        Back to top
+        <span
+          aria-hidden
+          className="ease-out-expo inline-block transition-transform duration-300 group-hover:-translate-y-1"
+        >
+          ↑
+        </span>
+      </a>
+    </div>
+  </footer>
+);
 
-const Footer = () => {
-  return (
-    <footer className="flex w-full flex-col gap-5 px-2 py-8">
-      <div className="md:hidden">
-        <SocialMedia />
-      </div>
-
-      <div className="text-center">
-        <p>&copy; {new Date().getFullYear()} Abdulhamid Afolabi</p>
-        <p>All rights reserved.</p>
-      </div>
-    </footer>
-  );
-};
-
-export default SectionWrap(Footer);
+export default Footer;

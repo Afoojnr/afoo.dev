@@ -1,20 +1,20 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
-import { ThemeProvider } from "next-themes";
-import { images } from "@/constants/images";
+import Providers from "@/components/Providers";
+import { contact, socialLinks } from "@/constants";
+import { site } from "@/lib/brand";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"]
+// Variable on both weight and width: the hero name morphs along both axes
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap"
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"]
-});
-
+// Mokoto is reserved for the AFOO wordmark
 const mokoto = localFont({
   src: "../public/Mokoto.ttf",
   variable: "--font-mokoto",
@@ -22,22 +22,44 @@ const mokoto = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AFOO",
-  description: "Afolabi's Tech Portfolio",
-  icons: {
-    icon: [
-      {
-        media: "(prefers-color-scheme: light)",
-        url: images.logoLight.src,
-        href: images.logoLight.src
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
-        url: images.logoDark.src,
-        href: images.logoDark.src
-      }
-    ]
+  metadataBase: new URL(site.url),
+  title: { default: site.title, template: `%s | ${site.name}` },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: "en_US"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    creator: "@Afoojnr"
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#e4e3df" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1c1a" }
+  ]
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: "Software Engineer",
+  url: site.url,
+  email: `mailto:${contact.email}`,
+  worksFor: { "@type": "Organization", name: "Propatis HQ" },
+  sameAs: socialLinks.map(link => link.href)
 };
 
 export default function RootLayout({
@@ -47,12 +69,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${mokoto.variable} antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+      <body className={`${archivo.variable} ${mokoto.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

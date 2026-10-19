@@ -1,64 +1,76 @@
-# Afolabi's Portfolio
+# Afolabi Abdulhamid — Portfolio
 
-Hi 👋, I'm Afolabi. I'm a software engineer who builds modern, interactive web experiences with a strong focus on frontend craftsmanship, but I also design end-to-end solutions that span backend, tooling, and product design. This portfolio highlights my best work, the problems I solve, and the technologies I use.
+Personal portfolio of Afolabi Abdulhamid, a software engineer who builds web and mobile products from idea to launch. It covers my story, experience, and selected projects.
 
-## Overview
+**Live site:** [afoo.dev](https://afoo.dev)
 
-Built with **Next.js 16**, this portfolio features:
+## Highlights
 
-- ✨ **Smooth animations** using Framer Motion
-- 🌐 **3D interactive elements** powered by Three.js
-- 🎨 **Dark/Light theme support** with next-themes
-- 📱 **Fully responsive design** with Tailwind CSS
-- ⌨️ **Keyboard accessible** navigation
-- 🎯 **Sections**: Hero, About, Experience, Works, and Contact
+- **Single-page, five sections:** Hero, About, Experience, Works, Contact.
+- **Motion with purpose:** spring-based animation, scroll-driven scenes (pinned About story, stacking project cards), and cursor-responsive typography.
+- **Case studies:** each project opens a sheet with the description, key features, stack, and links, with the main action always in view.
+- **Light and dark themes** with a crossfade on switch, following the system setting by default.
+- **Accessible by default:** keyboard navigation, visible focus, reduced-motion support, and a plain-text copy of animated text for screen readers.
+- **SEO ready:** metadata, generated Open Graph image and favicon, sitemap, robots, and structured data.
 
 ## Tech Stack
 
-- **Framework**: [Next.js 16](https://nextjs.org) with App Router
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
-- **Animations**: [Framer Motion](https://www.framer.com/motion)
-- **3D Graphics**: [Three.js](https://threejs.org) with React Three Fiber
-- **UI Components**: Radix UI
-- **Icons**: React Icons
-- **Email**: EmailJS for contact form
-- **Language**: TypeScript
+| Area      | Tools                                      |
+| --------- | ------------------------------------------ |
+| Framework | Next.js 16 (App Router), React 19          |
+| Language  | TypeScript                                 |
+| Styling   | Tailwind CSS 4                             |
+| Motion    | Motion (`motion/react`)                    |
+| UI        | Radix UI (dialog, hover card), React Icons |
+| Theming   | next-themes                                |
+| Tooling   | ESLint, Prettier, Husky, commitlint        |
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+
-- npm/yarn/pnpm
-
-### Installation
+Requires Node.js 20.9 or later and [Yarn](https://yarnpkg.com).
 
 ```bash
-npm install
-npm run dev
+yarn install
+yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Available Scripts
+### Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Run production build
-- `npm run lint` - Run ESLint
+| Command             | What it does                   |
+| ------------------- | ------------------------------ |
+| `yarn dev`          | Start the development server   |
+| `yarn build`        | Create a production build      |
+| `yarn start`        | Serve the production build     |
+| `yarn lint`         | Run ESLint                     |
+| `yarn ts-check`     | Type-check without emitting    |
+| `yarn format:check` | Check formatting with Prettier |
+| `yarn format:fix`   | Format the codebase            |
+
+### Configuration
+
+Optional: set `NEXT_PUBLIC_SITE_URL` to your deployed address so links and previews use the right domain (it defaults to `https://afoo.dev`).
 
 ## Project Structure
 
 ```
-├── app/              # Next.js app directory
-├── components/       # Reusable UI components
-├── sections/         # Page sections (Hero, About, Works, etc.)
-├── constants/        # Constants and configuration
-├── types/            # TypeScript type definitions
-├── public/           # Static assets (images, GeoJSON)
-└── styles/           # Global styles
+app/          Routes, layout, metadata, generated icons and Open Graph image
+components/   Shared UI (navigation, cursor, themed controls, motion primitives)
+sections/     Page sections: Hero, About, Experience, Works, Contact, Footer
+constants/    Content: experience, projects, skills, links
+hooks/        Reusable hooks (pointer, reduced motion, active section)
+lib/          Helpers: motion presets, theme transition, project parsing
+types/        Shared TypeScript types
+public/       Images, fonts, and the CV
 ```
 
-## Development
+All page content lives in `constants/`, so projects and experience can be updated without touching components.
 
-The site is organized into logical sections with smooth scroll navigation. Each section is a React component with built-in animations and responsive layouts.
+## Contributing
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org) (`feat:`, `fix:`, `chore:`), enforced by commitlint. A pre-commit hook runs type-check, lint, and formatting on staged files.
+
+## Contact
+
+[afolabiabdulhamid4@gmail.com](mailto:afolabiabdulhamid4@gmail.com) · [GitHub](https://github.com/Afoojnr) · [LinkedIn](https://www.linkedin.com/in/abdulhamid-afolabi-065b38160)
