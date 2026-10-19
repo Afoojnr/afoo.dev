@@ -103,7 +103,7 @@ const Timeline = () => {
               className={`absolute top-1.5 -left-10 size-4 rounded-full border-2 transition-colors duration-500 group-hover:scale-125 md:-left-14 ${
                 isReached
                   ? isCurrent
-                    ? "bg-live border-live motion-safe:animate-pulse-ring"
+                    ? "bg-live border-live text-live motion-safe:animate-pulse-ring"
                     : "bg-ink border-ink"
                   : "bg-ground border-line"
               }`}

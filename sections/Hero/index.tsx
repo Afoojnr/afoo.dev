@@ -52,7 +52,7 @@ const Hero = () => (
               <span
                 key={line}
                 className={`block overflow-x-visible overflow-y-clip pb-[0.06em] ${
-                  i === 1 ? "sm:text-right" : ""
+                  i === 1 ? "sm:landscape:text-right" : ""
                 }`}
               >
                 <motion.span

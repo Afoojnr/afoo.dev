@@ -82,7 +82,7 @@ const A = () => {
 
       <motion.path
         d="M103 194 L150 110 L197 194 Z"
-        className="fill-live transition-[filter] duration-500 ease-out group-hover/logo:filter-[drop-shadow(0_0_7px_color-mix(in_srgb,var(--live)_85%,transparent))_brightness(1.3)] group-focus-visible/logo:filter-[drop-shadow(0_0_7px_color-mix(in_srgb,var(--live)_85%,transparent))_brightness(1.3)]"
+        className="fill-live text-live motion-safe:animate-glow transition-[filter] duration-500 ease-out group-hover/logo:animate-none group-hover/logo:filter-[drop-shadow(0_0_7px_color-mix(in_srgb,var(--live)_85%,transparent))_brightness(1.3)] group-focus-visible/logo:animate-none group-focus-visible/logo:filter-[drop-shadow(0_0_7px_color-mix(in_srgb,var(--live)_85%,transparent))_brightness(1.3)] motion-safe:[animation-delay:1.2s]"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.7 }}
