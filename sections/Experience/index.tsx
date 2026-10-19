@@ -1,36 +1,35 @@
-"use client";
-
-import { VerticalTimeline } from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
-import "react-vertical-timeline-component/style.min.css";
-
-import { experiences } from "@/constants";
-import ExperienceCard from "./ExperienceCard";
+import Reveal from "@/components/ui/Reveal";
 import Skills from "./Skills";
-import SectionWrap from "@/components/SectionWrap";
+import Timeline from "./Timeline";
 
-const Experience = () => {
-  return (
-    <section
-      id="experience"
-      className="flex flex-col items-center justify-center"
-    >
-      <motion.div>
-        <h1 className="section-title">
-          Skills <span className="text-primary"> & </span> Experience
-        </h1>
-      </motion.div>
-
-      <div className="flex w-full flex-col overflow-hidden">
-        <VerticalTimeline lineColor="var(--accent)">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
-        </VerticalTimeline>
+/**
+ * Experience: the career as a scroll-driven timeline, then the skills strip.
+ * @returns the experience section
+ */
+const Experience = () => (
+  <section
+    id="experience"
+    data-catalogue
+    aria-labelledby="experience-title"
+    className="px-gutter max-w-page mx-auto w-full scroll-mt-16 py-24"
+  >
+    <Reveal>
+      <div className="border-ink flex items-baseline justify-between border-t-2 pt-4">
+        <h2 id="experience-title" className="text-lead font-semibold">
+          Experience
+        </h2>
+        <p className="text-caption text-ink-soft uppercase">
+          Dec 2022 — Present
+        </p>
       </div>
-      <Skills />
-    </section>
-  );
-};
+    </Reveal>
 
-export default SectionWrap(Experience);
+    <div className="mt-10 md:mt-14">
+      <Timeline />
+    </div>
+
+    <Skills />
+  </section>
+);
+
+export default Experience;

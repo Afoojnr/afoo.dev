@@ -1,0 +1,15 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [".impeccable/mocks/decision/model-pick.html"],
+        "createdAt": "2026-10-17T12:49:59.736Z",
+        "reason": "user chose this decision sketch's palette (#e7e5e0 Braun matte grey) on the direction page; sketch is a decision artifact, not shipped"
+      }
+    ]
+  }
+}

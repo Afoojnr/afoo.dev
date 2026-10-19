@@ -1,104 +1,82 @@
 "use client";
 
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
-import Globe from "@/components/Globe";
-import SectionWrap from "@/components/SectionWrap";
-import TypingText from "@/components/TypingText";
+import CvKey from "@/components/Navbar/CvKey";
+import DotButton from "@/components/ui/DotButton";
+import BubbleLink from "@/components/ui/BubbleLink";
+import CopyButton from "@/components/ui/CopyButton";
+import ProximityText from "@/components/ui/ProximityText";
+import Reveal from "@/components/ui/Reveal";
+import TextLink from "@/components/ui/TextLink";
+import { contact, socialLinks } from "@/constants";
 
-const Contact = () => {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
-  const [messageSent, setMessageSent] = useState(false);
-
-  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!formRef.current) return;
-
-    setLoading(true);
-
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
-        publicKey: PUBLIC_KEY
-      })
-      .then(
-        () => {
-          setLoading(false);
-          setMessageSent(true);
-          formRef.current?.reset();
-        },
-        () => {
-          setLoading(false);
-          alert("Oops, something went wrong. Try again.");
-        }
-      );
-  };
-
-  return (
-    <section id="contact">
-      {/* Header */}
-      <motion.div className="mb-10 text-center">
-        <h1 className="section-title">
-          <span className="text-primary">Contact</span> Me
-        </h1>
-      </motion.div>
-
-      <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-2">
-        {/* Form */}
-        <form
-          ref={formRef}
-          onSubmit={sendEmail}
-          className="grid grid-cols-1 gap-6"
-        >
-          <TypingText text="Have a project, collaboration, or just want to say hi? Send me a message!" />
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Your Name"
-            className="bg-border/20 border-border focus:ring-primary rounded-lg border p-3 focus:ring-2 focus:outline-none"
-            required
-          />
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Your Email"
-            className="bg-border/20 border-border focus:ring-primary rounded-lg border p-3 focus:ring-2 focus:outline-none"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            className="bg-border/20 border-border focus:ring-primary h-32 resize-none rounded-lg border p-3 focus:ring-2 focus:outline-none"
-            required
-          />
-          <button
-            type="submit"
-            className="btn-primary mt-2 mb-2 w-full cursor-pointer lg:mt-6 lg:mb-0"
-            disabled={loading}
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
-
-          {messageSent && (
-            <p className="text-success font-medium">
-              Message sent successfully! I will get back to you soon.
-            </p>
-          )}
-        </form>
-
-        <div className="flex h-[300px] w-full items-center justify-center lg:h-full">
-          <Globe lat={6.5244} lon={3.3792} />
-          {/* <Globe lat={45.76342} lon={4.834277} />*/}
-        </div>
+/**
+ * Contact: the page's closing beat. A giant "Let's talk." that opens up under
+ * the cursor like the hero name, the question, then the ways in: one primary
+ * key (email), a copy-email button, the CV and the social links. There is no
+ * form: a direct message is faster for
+ * the people reading this.
+ * @returns the contact section
+ */
+const Contact = () => (
+  <section
+    id="contact"
+    data-catalogue
+    aria-labelledby="contact-title"
+    className="px-gutter max-w-page mx-auto flex w-full scroll-mt-16 flex-col pt-24 pb-16 [--contact-gap:clamp(1.25rem,4svh,3rem)] lg:min-h-svh lg:justify-center lg:pb-12"
+  >
+    <Reveal>
+      <div className="border-ink flex items-baseline justify-between border-t-2 pt-4">
+        <h2 id="contact-title" className="text-lead font-semibold">
+          Contact
+        </h2>
+        <p className="text-caption text-ink-soft uppercase">Say hello</p>
       </div>
-    </section>
-  );
-};
+    </Reveal>
 
-export default SectionWrap(Contact);
+    <div className="@container mt-(--contact-gap)">
+      <Reveal delay={0.06}>
+        <BubbleLink href={`mailto:${contact.email}`} label="Say hello">
+          <span className="block text-[length:min(23.5cqi,34svh)] leading-[0.92] font-extrabold tracking-[-0.02em]">
+            <ProximityText text="Let’s talk." />
+          </span>
+          <span className="sr-only">Send me an email</span>
+        </BubbleLink>
+      </Reveal>
+    </div>
+
+    <Reveal delay={0.14} className="mt-(--contact-gap)">
+      <p className="text-lead max-w-[28ch] font-semibold text-balance">
+        Have a project, collaboration, or just want to say hi?{" "}
+        <span className="text-ink-soft">Send me a message!</span>
+      </p>
+    </Reveal>
+
+    <motion.div
+      className="mt-(--contact-gap) flex flex-wrap items-center gap-x-8 gap-y-6"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ type: "spring", duration: 0.7, bounce: 0.12, delay: 0.22 }}
+    >
+      <DotButton label="Say hello" href={`mailto:${contact.email}`} />
+      <CopyButton text={contact.email} label="email address" />
+      <CvKey />
+    </motion.div>
+
+    <Reveal delay={0.3} className="mt-(--contact-gap)">
+      <ul className="flex flex-wrap gap-x-8 gap-y-3">
+        {socialLinks.map(({ href, label }) => (
+          <li key={label}>
+            <TextLink href={href} external>
+              {label}
+            </TextLink>
+          </li>
+        ))}
+      </ul>
+    </Reveal>
+  </section>
+);
+
+export default Contact;

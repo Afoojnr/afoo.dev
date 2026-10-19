@@ -1,119 +1,236 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Product Catalogue world: matte plastic grey ground, graphite ink,
+ * signal orange reserved for the one primary action, power-green for "live".
+ */
 :root {
-  /* Light theme colors */
-  --background: #ffffff;
-  --foreground: #6b7688;
-  --primary: #313bac;
-  --primary-foreground: #ffffff;
-  --secondary: #f59e0b;
-  --secondary-foreground: #ffffff;
-  --accent: #edf2f8;
-  --accent-foreground: #6b7688;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --border: #e5e7eb;
-  --card: #ffffff;
-  --card-foreground: #171717;
-  --destructive: #ef4444;
-  --success: #5d9a17;
-  --destructive-foreground: #ffffff;
-  --dark: #030303;
-  --font-base: "DM Sans", sans-serif;
+  --ground: #e4e3df;
+  --surface: #eeedea;
+  --ink: #1e1e1c;
+  --ink-soft: #55534e;
+  --line: #c4c2bc;
+  --signal: #f25a1d;
+  --signal-ink: #b13d0e;
+  --live: #5b7f5a;
+  --danger: #b3261e;
+  /* The mouse-following glow: a lift of light on the light page */
+  --spot: rgb(255 255 255 / 0.6);
+  --track: #d3d1cb;
+  --knob: #fafaf8;
+
+  --elev-raised:
+    inset 0 1px 0 rgb(255 255 255 / 0.55), 0 1px 2px rgb(30 30 28 / 0.12),
+    0 4px 12px rgb(30 30 28 / 0.1);
+  --elev-pressed: inset 0 2px 4px rgb(30 30 28 / 0.25);
 }
 
 .dark {
-  /* Dark theme colors */
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --dark: #ffffff;
-  --primary: #818cf8;
-  --primary-foreground: #1e1b4b;
-  --secondary: #fbbf24;
-  --secondary-foreground: #78350f;
-  --accent: #1c212a;
-  --accent-foreground: #aab4c6;
-  --muted: #1f2937;
-  --muted-foreground: #9ca3af;
-  --border: #374151;
-  --card: #111827;
-  --card-foreground: #ededed;
-  --destructive: #f87171;
-  --success: #a6e05a;
-  --destructive-foreground: #7f1d1d;
+  --ground: #1c1c1a;
+  --surface: #262624;
+  --ink: #e4e3df;
+  --ink-soft: #a3a19b;
+  --line: #3a3936;
+  --signal: #f2622a;
+  --signal-ink: #ff8350;
+  --live: #7fa77e;
+  --danger: #f2827a;
+  /* ...and a faint warm glow on the dark one */
+  --spot: rgb(255 214 180 / 0.075);
+  --track: #111110;
+  --knob: #4a4945;
+
+  --elev-raised:
+    inset 0 1px 0 rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.4),
+    0 4px 12px rgb(0 0 0 / 0.35);
+  --elev-pressed: inset 0 2px 4px rgb(0 0 0 / 0.5);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-dark: var(--dark);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-success: var(--success);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-live: var(--live);
+  --color-danger: var(--danger);
+  --color-track: var(--track);
+  --color-knob: var(--knob);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mokoto: var(--font-mokoto);
+
+  --shadow-raised: var(--elev-raised);
+  --shadow-pressed: var(--elev-pressed);
+}
+
+@theme {
+  /* Type scale: one display voice, steps you can see */
+  /* Sized from its container so the longest name line always fits */
+  --text-display: clamp(3.25rem, 18.2cqi, 10.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.02em;
+  --text-title: clamp(2.25rem, 1.4rem + 3.4vw, 4.5rem);
+  --text-title--line-height: 1;
+  --text-title--letter-spacing: -0.035em;
+  --text-lead: clamp(1.625rem, 1.1rem + 1.2vw, 2.5rem);
+  --text-lead--line-height: 1.15;
+  --text-lead--letter-spacing: -0.02em;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0.1em;
+
+  --radius-plate: 6px;
+
+  --spacing-gutter: clamp(1rem, 0.4rem + 3vw, 4rem);
+  --spacing-section: clamp(6rem, 3.5rem + 9vw, 11rem);
+  --container-page: 82rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* The download arrow drops into its tray, overshoots a hair, and settles */
+  --animate-dip: dip 0.6s var(--ease-out-expo);
+  /* A soft ring that breathes out from the live role's dot */
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 45%, transparent);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 10px transparent;
+    }
+  }
+
+  --animate-card-in: card-in 0.22s var(--ease-out-expo);
+  --animate-card-out: card-out 0.12s ease-in forwards;
+
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes card-out {
+    to {
+      opacity: 0;
+      transform: translateY(4px) scale(0.98);
+    }
+  }
+
+  @keyframes dip {
+    0% {
+      transform: translateY(0);
+    }
+    35% {
+      transform: translateY(4px);
+    }
+    70% {
+      transform: translateY(-1px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--ground);
+    color-scheme: light;
+    scrollbar-color: var(--line) var(--ground);
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    caret-color: var(--signal);
+  }
+
+  /* Theme changes crossfade the whole page as one image */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: var(--ease-out-expo);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+
+  /* The system cursor is hidden only while the custom one is running */
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: none !important;
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: #1e1e1c;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  table {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @layer components {
-  .section-title {
-    @apply text-dark mb-10 text-center text-3xl font-extrabold capitalize md:text-4xl lg:text-5xl;
+  /*
+   * The role label: regular-width semibold caps with open tracking. Tracking
+   * eases on phones so the full title stays on one line.
+   */
+  .role-label {
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variation-settings:
+      "wdth" 100,
+      "wght" 600;
   }
 
-  section {
-    @apply min-h-screen px-8 pt-16 pb-8 md:px-18 lg:px-32 lg:pt-22 lg:pb-20;
+  @media (max-width: 40rem) {
+    .role-label {
+      font-size: 0.8125rem;
+      letter-spacing: 0.05em;
+    }
   }
-
-  .btn-primary {
-    @apply bg-primary text-primary-foreground rounded-xl px-8 py-3 font-medium shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg;
-  }
-
-  .btn-circle {
-    @apply bg-card lg:border-border hover:bg-primary hover:border-primary m-1 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full transition-all duration-300 ease-in-out lg:border 2xl:m-2 2xl:h-[70px] 2xl:w-[70px];
-  }
-
-  .btn-circle-icon {
-    @apply text-primary group-hover:text-card h-5 w-5 2xl:h-8 2xl:w-8;
-  }
-
-  .link {
-    @apply relative no-underline;
-  }
-
-  .link::after {
-    content: "";
-    @apply absolute left-0 h-0.5 w-0;
-    bottom: -2px;
-    background-color: currentColor; /* underline matches text color */
-    transition: width 0.3s ease;
-  }
-
-  .link:hover::after {
-    @apply w-full;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-base);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
 }

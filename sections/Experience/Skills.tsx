@@ -1,55 +1,51 @@
-import Image, { StaticImageData } from "next/image";
-import { motion, easeOut } from "framer-motion";
+"use client";
 
+import { motion } from "motion/react";
+import Image from "next/image";
+
+import Reveal from "@/components/ui/Reveal";
 import { skills } from "@/constants";
+import { reveal, stagger } from "@/lib/motion";
 
-const Skills = () => {
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+/**
+ * The skills strip: a labelled block under the timeline. Icons arrive in a
+ * short stagger, and each lifts slightly when hovered.
+ * @returns the skills strip
+ */
+const Skills = () => (
+  <div className="mt-16 md:mt-20">
+    <Reveal>
+      <div className="border-ink border-t-2 pt-4">
+        <h3 className="text-lead font-semibold">Skills</h3>
+      </div>
+    </Reveal>
 
-  const skillAnim = {
-    hidden: { opacity: 0, scale: 0.8 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.4, ease: easeOut }
-    }
-  };
-
-  return (
-    <motion.div
-      className="mt-10 flex flex-row flex-wrap justify-center gap-2 md:w-2/3 lg:gap-10"
-      variants={container}
+    <motion.ul
+      className="mt-6 flex flex-wrap gap-x-8 gap-y-4"
+      variants={stagger(0.05)}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      whileInView="shown"
+      viewport={{ once: true, amount: 0.4 }}
     >
-      {skills.map((s, index) => (
-        <motion.div key={s.name + index} variants={skillAnim}>
-          <SkillIcon name={s.name} icon={s.icon} />
-        </motion.div>
+      {skills.map(skill => (
+        <motion.li
+          key={skill.name}
+          variants={reveal}
+          whileHover={{ y: -3 }}
+          className="text-ink flex items-center gap-2.5"
+        >
+          <Image
+            src={skill.icon}
+            alt=""
+            width={22}
+            height={22}
+            className="size-[22px] object-contain"
+          />
+          <span>{skill.name}</span>
+        </motion.li>
       ))}
-    </motion.div>
-  );
-};
-
-export default Skills;
-
-const SkillIcon = ({ name, icon }: { name: string; icon: StaticImageData }) => (
-  <div className="flex flex-col items-center">
-    <div className="bg-muted border-border flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border hover:scale-110 lg:h-20 lg:w-20">
-      <Image
-        src={icon}
-        alt={name}
-        className="h-8 w-8 object-contain lg:h-12 lg:w-12"
-      />
-    </div>
-    <p className="text-muted-foreground mt-2 text-sm">{name}</p>
+    </motion.ul>
   </div>
 );
+
+export default Skills;
