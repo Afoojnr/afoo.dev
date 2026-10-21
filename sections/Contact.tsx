@@ -30,7 +30,7 @@ const Contact = () => (
     <div className="@container mt-(--contact-gap)">
       <Reveal delay={0.06}>
         <BubbleLink href={`mailto:${contact.email}`} label="Say hello">
-          <span className="block text-[length:min(23.5cqi,34svh)] leading-[0.92] font-extrabold tracking-[-0.02em]">
+          <span className="block text-[length:min(23.5cqi,34svh)] leading-[0.92] font-extrabold tracking-[-0.02em] whitespace-nowrap">
             <ProximityText text="Let’s talk." />
           </span>
           <span className="sr-only">Send me an email</span>
