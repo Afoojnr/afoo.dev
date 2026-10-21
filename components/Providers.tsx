@@ -4,6 +4,7 @@ import { MotionConfig } from "motion/react";
 import { ThemeProvider } from "next-themes";
 
 import Cursor from "./Cursor";
+import HashScroll from "./HashScroll";
 import Spotlight from "./Spotlight";
 
 type ProvidersProps = {
@@ -21,6 +22,7 @@ const Providers = ({ children }: ProvidersProps) => (
     <MotionConfig reducedMotion="user">
       {children}
       <Spotlight />
+      <HashScroll />
       <Cursor />
     </MotionConfig>
   </ThemeProvider>

@@ -133,8 +133,10 @@ export const works: WorkItem[] = [
       "Built with Next.js and Tailwind, with Sanity as the headless CMS.",
     image: images.perryluscious,
     company: "Freelance",
-    focus: "50% 50%",
-    letterbox: "#fef9f2",
+    focus: "50% 0%",
+    // maroon banner on top, cream page below
+    letterbox: "linear-gradient(#622a30 50%, #f3e3d0 50%)",
+    letterboxLgOnly: true,
     type: "web",
     tech: ["Next.js", "Tailwind", "Sanity"],
     webUrl: "https://perryluscious.com",
@@ -234,7 +236,7 @@ export const skills: SkillItem[] = [
 ];
 
 export const contact = {
-  email: "afolabiabdulhamid4@gmail.com"
+  email: "hello@afoo.dev"
 };
 
 export const socialLinks = [
