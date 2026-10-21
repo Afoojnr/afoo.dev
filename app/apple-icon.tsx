@@ -17,11 +17,11 @@ const AppleIcon = () =>
         background: "#1c1c1a"
       }}
     >
-      <svg width="120" height="109" viewBox={logoMark.viewBox}>
+      <svg width="140" height="124" viewBox={logoMark.tightViewBox}>
         {logoMark.outer.map((d, i) => (
-          <path key={i} d={d} fill="#e4e3df" />
+          <path key={i} d={d} fill="#f5f4f0" />
         ))}
-        <path d={logoMark.inner} fill="#7fa77e" />
+        <path d={logoMark.inner} fill="#8fc48d" />
       </svg>
     </div>,
     size

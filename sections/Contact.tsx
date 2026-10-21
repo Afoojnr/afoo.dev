@@ -6,10 +6,11 @@ import CvKey from "@/components/Navbar/CvKey";
 import DotButton from "@/components/ui/DotButton";
 import BubbleLink from "@/components/ui/BubbleLink";
 import CopyButton from "@/components/ui/CopyButton";
+import PowerDot from "@/components/ui/PowerDot";
 import ProximityText from "@/components/ui/ProximityText";
 import Reveal from "@/components/ui/Reveal";
 import TextLink from "@/components/ui/TextLink";
-import { contact, socialLinks } from "@/constants";
+import { availability, contact, socialLinks } from "@/constants";
 
 const Contact = () => (
   <section
@@ -40,8 +41,8 @@ const Contact = () => (
 
     <Reveal delay={0.14} className="mt-(--contact-gap)">
       <p className="text-lead max-w-[28ch] font-semibold text-balance">
-        Have a project, collaboration, or just want to say hi?{" "}
-        <span className="text-ink-soft">Send me a message!</span>
+        Hiring, or want to collaborate?{" "}
+        <span className="text-ink-soft block">{availability.start}</span>
       </p>
     </Reveal>
 
@@ -57,7 +58,10 @@ const Contact = () => (
       <CvKey />
     </motion.div>
 
-    <Reveal delay={0.3} className="mt-(--contact-gap)">
+    <Reveal
+      delay={0.3}
+      className="mt-(--contact-gap) flex flex-wrap items-baseline justify-between gap-x-8 gap-y-4"
+    >
       <ul className="flex flex-wrap gap-x-8 gap-y-3">
         {socialLinks.map(({ href, label }) => (
           <li key={label}>
@@ -67,6 +71,10 @@ const Contact = () => (
           </li>
         ))}
       </ul>
+      <p className="text-ink-soft flex items-center gap-3.5">
+        <PowerDot className="text-live motion-safe:animate-pulse-ring" />
+        {availability.location}
+      </p>
     </Reveal>
   </section>
 );

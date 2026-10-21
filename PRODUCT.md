@@ -27,8 +27,9 @@ Visitors skim on desktop or phone, often as part of reviewing several candidates
 - Sections: Hero, About, Experience, Works, Contact, Footer, with a fixed navigation bar that hides while reading down and returns on scroll up.
 - Contact is a `mailto:` link, a copy-email button, the CV download and social links (GitHub, LinkedIn, Twitter). There is no contact form.
 - CV is served as a PDF at `public/afoo_cv.pdf`.
-- Work history: Propatis HQ (2024 to present), Neo64 GmbH (2023 to 2024), DigiSign Technologies Limited (2022 to 2023).
-- Projects (8): Propatis HQ, Applyd Hub, Lab Brain (open source), Perry Luscious (freelance), Rungis Express, Fideco, DigiSign, Klierfeld. Each opens a case-study sheet with a pinned action bar for its links.
+- Work history: Propatis HQ (2024 to present), Applyd Hub as solo founder under Afoo Inc (2026 to present), Neo64 GmbH (2023 to 2024), DigiSign Technologies Limited (2022 to 2023).
+- Availability: the hero carries a status line (PhD ends Sept 2027, full-time from Oct 2027, Lyon, open to relocation and remote), kept in `availability` in `constants/`.
+- Projects (8): four featured case studies (Applyd Hub, Propatis HQ, Perry Luscious, Lab Brain) in the stacked cards, each structured as problem, role, what I did and result; then a "More work" list (Rungis Express, Fideco, DigiSign, Klierfeld). Both open the same sheet with a pinned action bar for its links.
 - Link previews, favicon and Open Graph image are generated in code; metadata, sitemap, robots and structured data are set in `app/`.
 - Accessibility: keyboard reachable, visible focus, reduced-motion respected (motion degrades to still or instant), animated text keeps a plain-text copy for screen readers, touch devices get no pointer-only effects.
 
@@ -45,7 +46,7 @@ Visitors skim on desktop or phone, often as part of reviewing several candidates
 
 ## Evidence on Hand
 
-Real experience entries and project write-ups with screenshots in `public/images`. Links to live sites, the App Store and Google Play, and the Lab Brain repository. No testimonials, metrics or client quotes exist; future work must not fabricate any.
+Real experience entries and project write-ups with screenshots in `public/images`. Links to live sites, the App Store and Google Play, and the Lab Brain repository. Metrics supplied by Afolabi: Propatis ~200 daily visitors and 80+ sign-ups (team of 4), Applyd Hub 30+ downloads, Perry Luscious ~80% of orders (about 20 a month) via the website. The Perry Luscious testimonial is the owner's own verbal review, condensed. Testimonials marked `placeholder` render only in development. Future work must not fabricate proof or present a placeholder as real.
 
 ## Product Principles
 

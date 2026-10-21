@@ -71,7 +71,7 @@ const Hero = () => (
             className="text-ink md:text-ink-soft mt-(--hero-gap-sm) max-w-[46ch] text-[clamp(1.25rem,5.8vw,1.5rem)] leading-[1.25] text-pretty md:mt-6 md:text-[length:var(--text-body)] md:leading-[1.6] xl:absolute xl:top-4 xl:right-0 xl:mt-0 xl:w-96"
             {...rise(0.38)}
           >
-            <WaveText text="I take products from idea to launch, and I obsess over how they feel as much as how they work." />
+            <WaveText text="I take products from idea to launch, and I obsess over how they feel as much as how they work. As a PhD researcher in Materials Chemistry, I also build software for scientists." />
           </motion.p>
         </div>
       </div>

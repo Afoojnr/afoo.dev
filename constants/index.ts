@@ -5,6 +5,11 @@ import { BsLinkedin, BsTwitter } from "react-icons/bs";
 
 export const navItems = ["home", "about", "experience", "works", "contact"];
 
+export const availability = {
+  start: "Available full-time from Oct 2027.",
+  location: "Lyon, France · open to relocation"
+};
+
 export const experiences: ExperienceItem[] = [
   {
     title: "Founding Engineer & Product Lead",
@@ -12,10 +17,21 @@ export const experiences: ExperienceItem[] = [
     icon: images.propatisLogo,
     date: "May 2024 - Present",
     points: [
-      "Co-founded the startup and architected the frontend infrastructure for both mobile (React Native) and the B2C web platform.",
-      "Acting as Product Manager: Defining the roadmap, strategy, and feature requirements to deliver our solutions.",
-      "Leading the product design team, overseeing UI/UX decisions from concept to execution.",
-      "Spearheading marketing initiatives and driving brand awareness."
+      "Built the React Native mobile app on my own, now in App Store and Google Play review, and lead the web front end, in a team of 4.",
+      "Took over product design when our designer stepped back. User feedback showed both the B2B and B2C flows were hard to use, so I redesigned the landing page and am redesigning B2B next, then B2C.",
+      "Run the product: roadmap, Jira backlog, and pitching and onboarding clients one on one. ~200 daily visitors and 80+ sign-ups so far.",
+      "Set up the growth stack: technical SEO, Google Analytics, paid campaigns on Google Ads, TikTok and LinkedIn, and content."
+    ]
+  },
+  {
+    title: "Solo Founder & Engineer",
+    company_name: "Applyd Hub (Afoo Inc)",
+    icon: images.applydhubLogo,
+    date: "Mar 2026 - Present",
+    points: [
+      "Designed, built and shipped a full-stack app to the App Store and Google Play (Expo, React Native, NativeWind, Express, PostgreSQL), with AI that tailors career documents.",
+      "Started it as a tool for my own job search, then tested it with potential users before publishing. 30+ downloads so far.",
+      "Handle everything after launch myself: store listings, marketing and support."
     ]
   },
   {
@@ -24,9 +40,9 @@ export const experiences: ExperienceItem[] = [
     icon: images.neo64,
     date: "Jul 2023 – Aug 2024",
     points: [
-      "Contributed to the development of Rungis Express and Fideco e-commerce mobile apps using Flutter",
-      "Built dynamic corporate websites like 'Klierfeld GmbH' using Svelte, SCSS, and Storyblok CMS.",
-      "Contributed to the 'Wedflix' streaming platform dashboard using Svelte, TypeScript, and Tailwind."
+      "Built Flutter screens and the login, cart and checkout logic for B2B grocery apps Rungis Express (Germany and Austria) and Fideco (Switzerland), working from another agency's designs against a third-party backend.",
+      "Adapted one shared codebase to launch the Swiss app with its own branding, routing and data storage.",
+      "Built a corporate site for Klierfeld GmbH (SvelteKit, Storyblok CMS) and dashboard features for the Wedflix streaming platform (Svelte, TypeScript, Tailwind)."
     ]
   },
   {
@@ -35,54 +51,31 @@ export const experiences: ExperienceItem[] = [
     icon: images.digisignLogo,
     date: "Dec 2022 – May 2023",
     points: [
-      "Contributed to the development of DigiSign, a secure document management system featuring biometric signing capabilities.",
-      "Developed reusable UI components and dashboard functionality using Next.js, TypeScript, and Ant Design.",
-      "Wrote comprehensive E2E and unit tests using Jest to ensure system reliability."
+      "Built reusable UI components for a document-signing dashboard with biometric verification (Next.js, TypeScript, Ant Design).",
+      "Wrote unit tests with Jest and end-to-end tests with Playwright."
     ]
   }
 ];
 
 export const works: WorkItem[] = [
   {
-    id: 1,
-    title: "Propatis HQ",
-    shortDescription:
-      "A comprehensive real estate platform that simplifies property management and tenant interactions for businesses and individuals.",
-    fullDescription:
-      "Propatis HQ is a complete solution for real estate management:\n\n" +
-      "B2B: Manage properties, tenants, and requests efficiently for real estate businesses.\n" +
-      "Private B2C: Allow B2B clients to list their properties on their own websites.\n" +
-      "Public B2C: A marketplace for public property listings.\n\n" +
-      "Key Features:\n" +
-      "• Website creation for B2B clients\n" +
-      "• Property and tenant management\n" +
-      "• Request workflow handling\n" +
-      "• Real estate listings with search and filter\n" +
-      "• Cross-platform availability (Web & Mobile)",
-    image: images.propatis,
-    company: "Propatis HQ",
-    focus: "100% 50%",
-    letterbox: "#0b0d12",
-    type: "mobile",
-    tech: ["React Native", "Next.js", "TypeScript", "Figma"],
-    mobileUrl: "https://propatishq.com",
-    webUrl: "https://propatishq.com",
-    githubUrl: ""
-  },
-  {
     id: 6,
     title: "Applyd Hub",
     shortDescription:
       "A career document and application manager that ends tailoring fatigue for job and scholarship seekers.",
-    fullDescription:
-      "Applyd Hub keeps your career story in one place and turns it into the right documents for every opportunity, so you never rewrite a CV from scratch.\n\n" +
-      "Key Features:\n" +
-      "• One profile as the single source of truth for your career data\n" +
-      "• Multiple tailored resumes and supporting documents generated from it\n" +
-      "• Job and scholarship tracking from saved to offer\n" +
-      "• Compatibility scores that show your fit before you apply\n" +
-      "• AI that improves documents step by step instead of starting over\n\n" +
-      "Built with Expo and React Native, styled with NativeWind, on an Express and PostgreSQL backend.",
+    caseStudy: {
+      problem:
+        "Every job or scholarship application means rewriting your CV from scratch. I was facing this myself.",
+      role: "Solo: product, design, mobile, backend, launch and marketing.",
+      approach: [
+        "Built it for my own applications first. When I showed it to a few people, they wanted it too, so I turned it into a product.",
+        "One profile works as the single source of truth, and tailored documents are generated from it.",
+        "Instead of starting over, the AI improves a document step by step.",
+        "Tracks each job and scholarship from saved to offer, with a compatibility score before you apply."
+      ],
+      result:
+        "Live on the App Store and Google Play, with 30+ downloads and growing."
+    },
     image: images.applydhub,
     company: "Afoo Inc",
     focus: "50% 50%",
@@ -96,41 +89,56 @@ export const works: WorkItem[] = [
     githubUrl: ""
   },
   {
-    id: 7,
-    title: "Lab Brain",
+    id: 1,
+    title: "Propatis HQ",
     shortDescription:
-      "An open-source research workspace that links samples, characterization, analysis and conclusions for materials science.",
-    fullDescription:
-      "Built for my own lab work. Lab Brain replaces scattered folders, spreadsheets, slides and personal notes with one connected system, so every result can be traced back to the sample that produced it.\n\n" +
-      "Key Features:\n" +
-      "• A linked data model: sample, characterization, analysis, conclusion\n" +
-      "• Projects and experiments with searchable sample tables and imports\n" +
-      "• Simple characterization calculations and plots (EDX, ellipsometry, FTIR)\n" +
-      "• Export of the whole chain for a future reader\n" +
-      "• An AI assistant that answers from your own records, with your own API key\n\n" +
-      "Open source on GitHub, with a live demo.",
-    image: images.labBrain,
-    company: "Open source",
-    focus: "50% 50%",
-    letterbox: "#111111",
-    type: "web",
-    tech: ["Next.js", "Tailwind", "AI assistant", "Open source"],
-    webUrl: "https://lab-brain-demo.onrender.com",
-    githubUrl: "https://github.com/Afoojnr/lab-brain"
+      "A comprehensive real estate platform that simplifies property management and tenant interactions for businesses and individuals.",
+    caseStudy: {
+      problem:
+        "Real estate businesses run properties, tenants and requests across scattered tools, and their listings live on separate sites.",
+      role: "Founding engineer and product lead in a team of 4.",
+      approach: [
+        "Built the mobile app by myself and set the product roadmap.",
+        "After launch, user feedback showed both the B2B and B2C experiences were hard to use, so I took over design: the landing page is redesigned, B2B is next, then B2C.",
+        "Ran paid campaigns, set up analytics to see where users come from, and pitched and onboarded clients one on one.",
+        "One platform covers three sides: management for businesses, listings on their own websites, and a public marketplace."
+      ],
+      result:
+        "~200 daily visitors and 80+ sign-ups. The new landing page is done, and the mobile app is awaiting App Store and Google Play approval."
+    },
+    image: images.propatis,
+    company: "Propatis HQ",
+    focus: "100% 50%",
+    letterbox: "#0b0d12",
+    type: "mobile",
+    tech: ["React Native", "Next.js", "TypeScript", "Figma"],
+    mobileUrl: "https://propatishq.com",
+    webUrl: "https://propatishq.com",
+    githubUrl: ""
   },
   {
     id: 8,
     title: "Perry Luscious",
     shortDescription:
       "A website for a Lyon-based bakery to showcase its cakes and take customer orders.",
-    fullDescription:
-      "A website for Perry Luscious, an artisan pâtisserie in Lyon, made to show off the creations and turn visitors into orders.\n\n" +
-      "Key Features:\n" +
-      "• A showcase of custom cakes, platters and gift boxes\n" +
-      "• Ordering with a cart, so customers can order straight from the site\n" +
-      "• French and English versions\n" +
-      "• Content the baker can update herself through a headless CMS\n\n" +
-      "Built with Next.js and Tailwind, with Sanity as the headless CMS.",
+    caseStudy: {
+      problem:
+        "A Lyon pâtisserie took orders through social media messages, which meant a lot of back and forth over designs, details and delivery.",
+      role: "Freelance: product thinking, design, build, SEO and analytics.",
+      approach: [
+        "Designed ordering around how she works: customers pick a design, customise it and set delivery in one flow, so orders arrive complete.",
+        "Kept the path from browsing to checkout deliberately short, with her creations shown so customers see what to expect.",
+        "Built a French and English site the owner can update herself through Sanity.",
+        "Added SEO, plus Google Tag Manager connected to TikTok and Instagram, so she can see which channel brings customers and put her effort there."
+      ],
+      result:
+        "Around 80% of her orders, about 20 a month, now come through the website, with far less back and forth.",
+      testimonial: {
+        quote:
+          "The website is very seamless. Customers can put in every detail they want and customise their order, and see their choices without asking lots of questions. It gave my business a premium look, helped me keep customers and brought in new ones.",
+        name: "Owner, Perry Luscious"
+      }
+    },
     image: images.perryluscious,
     company: "Freelance",
     focus: "50% 0%",
@@ -143,12 +151,50 @@ export const works: WorkItem[] = [
     githubUrl: ""
   },
   {
+    id: 7,
+    title: "Lab Brain",
+    shortDescription:
+      "An open-source research workspace that links samples, characterization, analysis and conclusions for materials science.",
+    caseStudy: {
+      problem:
+        "Research data ends up scattered across folders, spreadsheets, slides and notes, so results can't be traced back to the sample that produced them.",
+      role: "Solo, built for my own PhD research.",
+      approach: [
+        "I had a Python workflow in VS Code. When a labmate asked me about my analysis, I realised the same tools could help people who don't code, so I built a UI on top.",
+        "It links sample, characterization, analysis and conclusion, so the next researcher can pick up my work and my supervisor can follow my progress easily.",
+        "Runs characterization calculations and plots (EDX, ellipsometry, FTIR), with an AI assistant that answers from your own records.",
+        "Tested with Vitest and Playwright."
+      ],
+      result:
+        "I use it several times a week to log and analyse my experiments, and it's open source with a live demo.",
+      contribution: {
+        name: "OPTIMEO",
+        href: "https://optimeo.streamlit.app/",
+        description: "our lab's Bayesian optimisation web app"
+      }
+    },
+    image: images.labBrain,
+    company: "Open source",
+    focus: "50% 50%",
+    letterbox: "#111111",
+    type: "web",
+    tech: [
+      "Next.js",
+      "Tailwind",
+      "Vitest",
+      "Playwright",
+      "AI assistant (bring your own key)"
+    ],
+    webUrl: "https://lab-brain-demo.onrender.com",
+    githubUrl: "https://github.com/Afoojnr/lab-brain"
+  },
+  {
     id: 2,
     title: "Rungis Express App",
     shortDescription:
       "A B2B e-commerce mobile app for a major food trading company operating in Germany and Austria.",
     fullDescription:
-      "Contributed to the development of the mobile commerce experience for Rungis Express GmbH.\n\n" +
+      "Built the mobile commerce experience for Rungis Express GmbH at Neo64, working from another agency's designs against a third-party backend.\n\n" +
       "Key Contributions:\n" +
       "• Engineered login, cart and checkout logic\n" +
       "• Built UI components and screens, connecting them to the backend\n" +
@@ -170,7 +216,7 @@ export const works: WorkItem[] = [
     shortDescription:
       "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
     fullDescription:
-      "Created for Fideco AG, a Swiss partner of Rungis Express. This project utilized a parallel development approach.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
+      "Created for Fideco AG, a Swiss partner of Rungis Express, from the same monorepo as the Rungis Express app.\n\nKey Contributions:\n• Adapted the core e-commerce logic for the Swiss market\n• Customized UI components to match Fideco's specific branding\n• Managed separate routing and data storage requirements while maintaining a shared codebase.",
     image: images.fideco,
     company: "Neo64 GmbH",
     focus: "0% 0%",
@@ -186,10 +232,10 @@ export const works: WorkItem[] = [
     shortDescription:
       "A secure document management dashboard featuring biometric signing capabilities for identity verification.",
     fullDescription:
-      "Contributed to a high-security dashboard ensuring authenticity of digital signers.\n\n" +
+      "My first role: a high-security dashboard ensuring authenticity of digital signers.\n\n" +
       "Key Contributions:\n" +
       "• Developed reusable UI components for a seamless user experience\n" +
-      "• Wrote comprehensive unit and end-to-end (E2E) tests\n" +
+      "• Wrote unit tests with Jest and end-to-end tests with Playwright\n" +
       "• Collaborated on secure onboarding and authentication flows\n" +
       "• Supported dashboard features for document tracking",
     image: images.digisign,
@@ -199,7 +245,14 @@ export const works: WorkItem[] = [
     letterbox:
       "linear-gradient(to right, #121821 0%, #11171f 20%, #11171f 40%, #11171f 50%, #11171f 60%, #11171f 80%, #151e2a 100%) top / 100% 50% no-repeat, linear-gradient(to right, #203148 0%, #1b293b 20%, #192535 40%, #192535 50%, #1a2636 60%, #1d2b3f 80%, #22354e 100%) bottom / 100% 50% no-repeat",
     type: "web",
-    tech: ["Next.js", "TypeScript", "Ant Design", "Redux", "Jest"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Ant Design",
+      "Redux",
+      "Jest",
+      "Playwright"
+    ],
     webUrl: "https://www.digisignit.com/",
     githubUrl: ""
   },
@@ -221,6 +274,9 @@ export const works: WorkItem[] = [
     githubUrl: ""
   }
 ];
+
+export const featuredWorks = works.filter(work => work.caseStudy);
+export const moreWorks = works.filter(work => !work.caseStudy);
 
 export const skills: SkillItem[] = [
   { name: "React", icon: images.react },
@@ -247,7 +303,7 @@ export const socialLinks = [
   },
   {
     icon: BsLinkedin,
-    href: "https://www.linkedin.com/in/abdulhamid-afolabi-065b38160",
+    href: "https://www.linkedin.com/in/abdulhamidafolabi",
     label: "LinkedIn"
   },
   {

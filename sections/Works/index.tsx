@@ -1,6 +1,6 @@
 import Reveal from "@/components/ui/Reveal";
 import { works } from "@/constants";
-import WorkStack from "./WorkStack";
+import Catalogue from "./Catalogue";
 
 const Works = () => (
   <section
@@ -21,7 +21,7 @@ const Works = () => (
     </Reveal>
 
     <div className="mt-10 md:mt-14">
-      <WorkStack />
+      <Catalogue />
     </div>
   </section>
 );

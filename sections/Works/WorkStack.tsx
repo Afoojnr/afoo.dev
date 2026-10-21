@@ -8,15 +8,18 @@ import {
 } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { works } from "@/constants";
+import type { WorkItem } from "@/types";
 import WorkCard from "./WorkCard";
-import WorkSheet from "./WorkSheet";
 
 const clamp = (n: number) => Math.min(1, Math.max(0, n));
 
-const WorkStack = () => {
+type WorkStackProps = {
+  works: WorkItem[];
+  onOpen: (index: number) => void;
+};
+
+const WorkStack = ({ works, onOpen }: WorkStackProps) => {
   const reduceMotion = useReducedMotion();
-  const [selected, setSelected] = useState<number | null>(null);
   const wraps = useRef<(HTMLDivElement | null)[]>([]);
   const cards = useRef<(HTMLElement | null)[]>([]);
   const stack = useRef<HTMLDivElement>(null);
@@ -32,7 +35,7 @@ const WorkStack = () => {
       const gap = next.getBoundingClientRect().top - stick;
       progress[i].set(clamp(1 - gap / card.offsetHeight));
     });
-  }, [progress]);
+  }, [progress, works]);
 
   // phones: match the tallest card so taller ones don't peek out underneath
   const equalise = useCallback(() => {
@@ -60,42 +63,30 @@ const WorkStack = () => {
   });
 
   return (
-    <>
-      <div
-        ref={stack}
-        className="relative [--stick:4.5rem] md:[--stick:5.25rem]"
-      >
-        {works.map((work, i) => (
-          <div
-            key={work.id}
-            ref={el => {
-              wraps.current[i] = el;
+    <div ref={stack} className="relative [--stick:4.5rem] md:[--stick:5.25rem]">
+      {works.map((work, i) => (
+        <div
+          key={work.id}
+          ref={el => {
+            wraps.current[i] = el;
+          }}
+          className="sticky top-(--stick) mb-[10svh] last:mb-0 motion-reduce:static"
+        >
+          <WorkCard
+            work={work}
+            index={i}
+            total={works.length}
+            progress={progress[i]}
+            cardRef={el => {
+              cards.current[i] = el;
             }}
-            className="sticky top-(--stick) mb-[10svh] last:mb-0 motion-reduce:static"
-          >
-            <WorkCard
-              work={work}
-              index={i}
-              total={works.length}
-              progress={progress[i]}
-              cardRef={el => {
-                cards.current[i] = el;
-              }}
-              onOpen={() => setSelected(i)}
-            />
-          </div>
-        ))}
-        {/* keeps the last card pinned, otherwise it scrolls off and reveals the one below */}
-        <div aria-hidden className="h-[30svh] motion-reduce:hidden" />
-      </div>
-
-      <WorkSheet
-        work={selected === null ? null : works[selected]}
-        index={selected ?? 0}
-        total={works.length}
-        onClose={() => setSelected(null)}
-      />
-    </>
+            onOpen={() => onOpen(i)}
+          />
+        </div>
+      ))}
+      {/* keeps the last card pinned, otherwise it scrolls off and reveals the one below */}
+      <div aria-hidden className="h-[30svh] motion-reduce:hidden" />
+    </div>
   );
 };
 

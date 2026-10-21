@@ -73,4 +73,4 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org) (`fea
 
 ## Contact
 
-[afolabiabdulhamid4@gmail.com](mailto:afolabiabdulhamid4@gmail.com) · [GitHub](https://github.com/Afoojnr) · [LinkedIn](https://www.linkedin.com/in/abdulhamid-afolabi-065b38160)
+[hello@afoo.dev](mailto:hello@afoo.dev) · [GitHub](https://github.com/Afoojnr) · [LinkedIn](https://www.linkedin.com/in/abdulhamidafolabi)

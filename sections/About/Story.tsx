@@ -45,18 +45,37 @@ const PIECES: Piece[] = [
   ...words("Hi, I’m Abdulhamid, and I love"),
   ...words("building things people use.", true),
   ...words(
-    "I started coding in 2019 to apply machine learning to my chemistry work. In 2021 I tried HTML and CSS just to see what it’s like, and watching my first page appear on screen made me fall in love with frontend. After two startups, I now co-found"
+    "I started coding in 2019 to apply machine learning to my chemistry work. In 2021 I tried HTML and CSS just to see what it’s like, and watching my first page appear on screen made me fall in love with frontend. I co-founded"
   ),
   {
     node: (
-      <CompanyHoverCard href="https://propatishq.com" arrowClassName={ARROW}>
+      <CompanyHoverCard
+        company="Propatis HQ"
+        work="Propatis HQ"
+        href="https://propatishq.com"
+        arrowClassName={ARROW}
+      >
         Propatis HQ
       </CompanyHoverCard>
     ),
     emphasis: true
   },
+  ...words(", and on my own I built and shipped"),
+  {
+    node: (
+      <CompanyHoverCard
+        company="Applyd Hub (Afoo Inc)"
+        work="Applyd Hub"
+        href="https://www.applydhub.com"
+        arrowClassName={ARROW}
+      >
+        Applyd Hub
+      </CompanyHoverCard>
+    ),
+    emphasis: true
+  },
   ...words(
-    ". I’m also pursuing a PhD in Materials Chemistry, and I share what I learn in"
+    "to the App Store and Google Play. I’m also pursuing a PhD in Materials Chemistry, and I share what I learn in"
   ),
   {
     node: (
@@ -127,7 +146,7 @@ const Story = () => {
   const last = Math.max(1, PIECES.length - 1);
 
   return (
-    <div ref={ref} className={reduceMotion ? "" : "h-[270svh]"}>
+    <div ref={ref} className={reduceMotion ? "" : "h-[180svh]"}>
       <div
         className={
           reduceMotion ? "py-12" : "sticky top-0 flex h-svh items-center pt-16"

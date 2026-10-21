@@ -13,6 +13,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { parseDescription, workKind, workLinks } from "@/lib/works";
 import { springs } from "@/lib/motion";
 import type { WorkItem } from "@/types";
+import CaseStudy from "./CaseStudy";
 
 type WorkSheetProps = {
   work: WorkItem | null;
@@ -148,61 +149,65 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
         </h2>
       </Dialog.Title>
 
-      <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
-        <div>
-          <Dialog.Description asChild>
-            <p className="text-ink-soft max-w-[50ch]">{intro}</p>
-          </Dialog.Description>
+      {work.caseStudy ? (
+        <CaseStudy study={work.caseStudy} tech={work.tech} />
+      ) : (
+        <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
+          <div>
+            <Dialog.Description asChild>
+              <p className="text-ink-soft max-w-[50ch]">{intro}</p>
+            </Dialog.Description>
 
-          {blocks
-            .filter(block => !block.bullets.length)
-            .map((block, i) => (
-              <div
-                key={i}
-                className="text-ink-soft mt-4 max-w-[50ch] space-y-2"
-              >
-                {block.lines.map(line => (
-                  <Line key={line} text={line} />
-                ))}
-              </div>
-            ))}
-
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {work.tech.map(item => (
-              <li
-                key={item}
-                className="border-line text-ink-soft rounded-full border px-3 py-0.5 text-[0.8125rem]"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-8">
-          {blocks
-            .filter(block => block.bullets.length)
-            .map((block, i) => (
-              <div key={i}>
-                {block.heading && (
-                  <h3 className="text-caption text-ink-soft mb-3 font-semibold uppercase">
-                    {block.heading}
-                  </h3>
-                )}
-                <ul className="text-ink-soft space-y-1.5">
-                  {block.bullets.map(point => (
-                    <li
-                      key={point}
-                      className="before:bg-ink-soft relative pl-5 before:absolute before:top-[0.65em] before:left-0 before:size-[5px] before:rounded-full before:content-['']"
-                    >
-                      {point}
-                    </li>
+            {blocks
+              .filter(block => !block.bullets.length)
+              .map((block, i) => (
+                <div
+                  key={i}
+                  className="text-ink-soft mt-4 max-w-[50ch] space-y-2"
+                >
+                  {block.lines.map(line => (
+                    <Line key={line} text={line} />
                   ))}
-                </ul>
-              </div>
-            ))}
+                </div>
+              ))}
+
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {work.tech.map(item => (
+                <li
+                  key={item}
+                  className="border-line text-ink-soft rounded-full border px-3 py-0.5 text-[0.8125rem]"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            {blocks
+              .filter(block => block.bullets.length)
+              .map((block, i) => (
+                <div key={i}>
+                  {block.heading && (
+                    <h3 className="text-caption text-ink-soft mb-3 font-semibold uppercase">
+                      {block.heading}
+                    </h3>
+                  )}
+                  <ul className="text-ink-soft space-y-1.5">
+                    {block.bullets.map(point => (
+                      <li
+                        key={point}
+                        className="before:bg-ink-soft relative pl-5 before:absolute before:top-[0.65em] before:left-0 before:size-[5px] before:rounded-full before:content-['']"
+                      >
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {links.length > 0 && (
         <div className="bg-ground border-line sticky bottom-0 z-10 -mx-5 mt-10 border-t px-5 pt-3 pb-[max(0.875rem,env(safe-area-inset-bottom))] sm:-mx-10 sm:px-10">

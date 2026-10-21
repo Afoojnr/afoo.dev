@@ -5,6 +5,7 @@ import { logoMark } from "@/lib/brand";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
+// PNG fallback for browsers without SVG favicons (Safari); icon.svg adapts to dark mode
 const Icon = () =>
   new ImageResponse(
     <div
@@ -13,16 +14,14 @@ const Icon = () =>
         height: "100%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
-        background: "#1c1c1a",
-        borderRadius: 14
+        justifyContent: "center"
       }}
     >
-      <svg width="44" height="40" viewBox={logoMark.viewBox}>
+      <svg width="64" height="57" viewBox={logoMark.tightViewBox}>
         {logoMark.outer.map((d, i) => (
-          <path key={i} d={d} fill="#e4e3df" />
+          <path key={i} d={d} fill="#1e1e1c" />
         ))}
-        <path d={logoMark.inner} fill="#7fa77e" />
+        <path d={logoMark.inner} fill="#5b7f5a" />
       </svg>
     </div>,
     size

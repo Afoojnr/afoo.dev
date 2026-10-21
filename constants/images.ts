@@ -15,6 +15,7 @@ import headshot from "@/public/images/headshot.png";
 
 import propatisLogo from "@/public/images/propatis-logo.png";
 import applydhub from "@/public/images/applydhub.png";
+import applydhubLogo from "@/public/images/applydhub-logo.png";
 import labBrain from "@/public/images/lab-brain.png";
 import perryluscious from "@/public/images/perryluscious.png";
 import propatis from "@/public/images/propatis.png";
@@ -39,6 +40,7 @@ export const images = {
   figma,
   headshot,
   applydhub,
+  applydhubLogo,
   labBrain,
   perryluscious,
   propatis,
