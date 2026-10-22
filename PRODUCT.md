@@ -46,7 +46,7 @@ Visitors skim on desktop or phone, often as part of reviewing several candidates
 
 ## Evidence on Hand
 
-Real experience entries and project write-ups with screenshots in `public/images`. Links to live sites, the App Store and Google Play, and the Lab Brain repository. Metrics supplied by Afolabi: Propatis ~200 daily visitors and 80+ sign-ups (team of 4), Applyd Hub 30+ downloads, Perry Luscious ~80% of orders (about 20 a month) via the website. The Perry Luscious testimonial is the owner's own verbal review, condensed. Testimonials marked `placeholder` render only in development. Future work must not fabricate proof or present a placeholder as real.
+Real experience entries and project write-ups with screenshots in `public/images`. Links to live sites, the App Store and Google Play, and the Lab Brain repository. Metrics supplied by Afolabi: Propatis ~200 daily visitors (team of 5; sign-ups left out until there's a real number to show), Applyd Hub 30+ downloads, Perry Luscious ~80% of orders (about 20 a month) via the website. The Perry Luscious testimonial is the owner's own verbal review, condensed. Testimonials marked `placeholder` render only in development. Future work must not fabricate proof or present a placeholder as real.
 
 ## Product Principles
 
