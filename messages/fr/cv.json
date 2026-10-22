@@ -1,0 +1,63 @@
+{
+  "documentTitle": "CV",
+  "title": "Ingénieur logiciel · Web & mobile",
+  "location": "Lyon, France",
+  "status": "Autorisé à travailler en France",
+  "headings": {
+    "profile": "Profil",
+    "experience": "Expérience",
+    "projects": "Projets choisis",
+    "skills": "Compétences",
+    "education": "Formation",
+    "languages": "Langues"
+  },
+  "summaries": {
+    "product": "Ingénieur logiciel qui mène des produits web et mobile de l’idée au lancement : ingénieur fondateur et responsable produit d’une startup immobilière, et créateur en solo d’une application disponible sur l’App Store et Google Play. Doctorant en chimie des matériaux, avec une formation en machine learning.",
+    "research": "Ingénieur logiciel et doctorant en chimie des matériaux qui développe des outils pour les scientifiques. Mémoire en machine learning sur le calcul des énergies d’adsorption, un espace de travail de recherche open source que j’utilise pour mes propres travaux, et plus de 3 ans à livrer des produits web et mobile avec React, Next.js, React Native et Node.js."
+  },
+  "roleLocations": {
+    "propatis": "Lagos, Nigeria · À distance",
+    "applyd-hub": "Lyon, France",
+    "neo64": "Darmstadt, Allemagne",
+    "digisign": "Lagos, Nigeria"
+  },
+  "expected": "{date} (prévu)",
+  "education": {
+    "phd": {
+      "degree": "Doctorat, chimie des matériaux",
+      "school": "Université Claude Bernard Lyon 1 (LMI)",
+      "detail": "Thèse : synthèse et caractérisation du borophène."
+    },
+    "grenoble": {
+      "degree": "Master, science et génie des matériaux",
+      "school": "Grenoble INP, Phelma",
+      "detail": "Mention Très Bien (16,75/20). Mémoire : couches minces BxC riches en bore par dépôt chimique en phase vapeur."
+    },
+    "darmstadt": {
+      "degree": "Master, science des matériaux",
+      "school": "Technische Universität Darmstadt",
+      "detail": "Sehr gut (1,40). Mémoire : accélérer le calcul des énergies d’adsorption par machine learning (AdsorbML)."
+    },
+    "funaab": {
+      "degree": "Licence (BSc), chimie",
+      "school": "Federal University of Agriculture, Abeokuta",
+      "detail": "Second Class Upper (4,24/5,00)."
+    }
+  },
+  "languages": [
+    {
+      "name": "Anglais",
+      "level": "Courant"
+    },
+    {
+      "name": "Français",
+      "level": "B1, en cours vers B2"
+    }
+  ],
+  "skillGroups": {
+    "languages": "Langages",
+    "frameworks": "Frameworks et bibliothèques",
+    "testing": "Tests",
+    "tools": "Outils et plateformes"
+  }
+}

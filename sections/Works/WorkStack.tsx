@@ -37,7 +37,7 @@ const WorkStack = ({ works, onOpen }: WorkStackProps) => {
     });
   }, [progress, works]);
 
-  // phones: match the tallest card so taller ones don't peek out underneath
+  // match the tallest card so taller ones don't peek out underneath the stack
   const equalise = useCallback(() => {
     const node = stack.current;
     if (!node) return;

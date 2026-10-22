@@ -20,15 +20,15 @@ An engineer who also leads product. Afolabi is Founding Engineer & Product Lead 
 
 ## Operating Context
 
-Visitors skim on desktop or phone, often as part of reviewing several candidates. The site is a Next.js 16 App Router app (React 19, Tailwind CSS 4, TypeScript, Motion, Radix UI, next-themes) managed with yarn. Light and dark themes follow the system setting, and switching crossfades the whole page. All content (experience, projects, skills, links) lives in `constants/`. There is no backend, form or CMS: contact is a direct email.
+Visitors skim on desktop or phone, often as part of reviewing several candidates. The site is a Next.js 16 App Router app (React 19, Tailwind CSS 4, TypeScript, Motion, Radix UI, next-themes, next-intl) managed with yarn. Light and dark themes follow the system setting; the theme switch sits in the footer (low priority), and switching crossfades the whole page. English and French: an EN/FR switch in the navbar and mobile menu, remembered in the `NEXT_LOCALE` cookie; first visits follow the browser language. The French site links to the French CV. All visible text lives in `messages/<locale>/<section>.json` (one file per section, loaded by `i18n/`); `constants/` holds only data that doesn't change by language (images, links, dates, tech tags). There is no backend, form or CMS: contact is a direct email. Page views are counted with Vercel Web Analytics, which is cookieless, so no consent banner is needed; the only cookie is the visitor's language choice.
 
 ## Capabilities and Constraints
 
 - Sections: Hero, About, Experience, Works, Contact, Footer, with a fixed navigation bar that hides while reading down and returns on scroll up.
 - Contact is a `mailto:` link, a copy-email button, the CV download and social links (GitHub, LinkedIn, Twitter). There is no contact form.
-- CV is served as a PDF at `public/afoo_cv.pdf`.
+- CV: generated from the site's own text at `/cv` and exported with `yarn cv:export` to `public/Abdulhamid-Afolabi-CV.pdf` and `-FR.pdf`; it opens in a new tab. Variants per kind of job live in `constants/cv.ts`.
 - Work history: Propatis HQ (2024 to present), Applyd Hub as solo founder under Afoo Inc (2026 to present), Neo64 GmbH (2023 to 2024), DigiSign Technologies Limited (2022 to 2023).
-- Availability: the hero carries a status line (PhD ends Sept 2027, full-time from Oct 2027, Lyon, open to relocation and remote), kept in `availability` in `constants/`.
+- Availability: Contact says "Available full-time from Oct 2027" and "Lyon, France · open to relocation" (`messages/<locale>/contact.json`).
 - Projects (8): four featured case studies (Applyd Hub, Propatis HQ, Perry Luscious, Lab Brain) in the stacked cards, each structured as problem, role, what I did and result; then a "More work" list (Rungis Express, Fideco, DigiSign, Klierfeld). Both open the same sheet with a pinned action bar for its links.
 - Link previews, favicon and Open Graph image are generated in code; metadata, sitemap, robots and structured data are set in `app/`.
 - Accessibility: keyboard reachable, visible focus, reduced-motion respected (motion degrades to still or instant), animated text keeps a plain-text copy for screen readers, touch devices get no pointer-only effects.

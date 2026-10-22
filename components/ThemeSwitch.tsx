@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useState, useSyncExternalStore } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
@@ -15,6 +16,7 @@ const KNOB_PRESSED = 30;
 const TRAVEL = 28;
 
 const ThemeSwitch = () => {
+  const t = useTranslations("common");
   const { resolvedTheme, setTheme } = useTheme();
   const [pressed, setPressed] = useState(false);
   // false on the server so the icon doesn't mismatch on hydration
@@ -31,7 +33,7 @@ const ThemeSwitch = () => {
       type="button"
       role="switch"
       aria-checked={isDark}
-      aria-label="Dark mode"
+      aria-label={t("darkMode")}
       onClick={() => crossfadeTheme(() => setTheme(isDark ? "light" : "dark"))}
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}

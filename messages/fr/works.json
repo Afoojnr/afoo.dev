@@ -1,0 +1,127 @@
+{
+  "title": "Projets",
+  "count": "{count} projets",
+  "openProject": "Voir le projet",
+  "screenshot": "Capture d’écran de {title}",
+  "moreWork": "Autres projets",
+  "archive": "Archives",
+  "openWork": "Ouvrir {title}",
+  "headings": {
+    "problem": "Le problème",
+    "role": "Mon rôle",
+    "approach": "Ce que j’ai fait",
+    "result": "Résultat"
+  },
+  "contribution": "En parallèle, je contribue à <link>{name}</link>, {description}.",
+  "sampleQuote": "Citation d’exemple · développement uniquement, à remplacer avant publication",
+  "projects": {
+    "applyd-hub": {
+      "company": "Afoo Inc",
+      "short": "Un gestionnaire de documents et de candidatures qui évite de réécrire son CV à chaque candidature à un emploi ou à une bourse.",
+      "problem": "Chaque candidature à un emploi ou à une bourse oblige à réécrire son CV. J’y étais moi-même confronté.",
+      "role": "En solo : produit, design, mobile, backend, lancement et marketing.",
+      "approach": [
+        "Je l’ai d’abord créé pour mes propres candidatures. Quand je l’ai montré à quelques personnes, elles l’ont voulu aussi, alors j’en ai fait un produit.",
+        "Un seul profil sert de source de vérité, et les documents adaptés sont générés à partir de lui.",
+        "Au lieu de tout recommencer, l’IA améliore un document étape par étape.",
+        "Il suit chaque offre d’emploi et chaque bourse, de la sauvegarde jusqu’à la proposition, avec un score de compatibilité avant de postuler."
+      ],
+      "result": "Disponible sur l’App Store et Google Play, avec plus de 30 téléchargements et en croissance."
+    },
+    "propatis": {
+      "company": "Propatis HQ",
+      "short": "Une plateforme immobilière complète qui simplifie la gestion des biens et les échanges avec les locataires, pour les professionnels comme pour les particuliers.",
+      "problem": "Les professionnels de l’immobilier gèrent leurs biens, leurs locataires et leurs demandes avec des outils dispersés, et leurs annonces sont publiées sur des sites séparés.",
+      "role": "Ingénieur fondateur et responsable produit : je dirige une équipe de 4 personnes, je fixe la roadmap et je répartis le travail.",
+      "approach": [
+        "J’ai développé seul l’application mobile, et je développe l’application web avec l’équipe.",
+        "Les retours utilisateurs ont montré que les expériences B2B et B2C étaient difficiles à utiliser, alors je repense l’interface : la page d’accueil est terminée, le B2B est la prochaine étape, puis le B2C.",
+        "J’ai mené des campagnes payantes, mis en place l’analytics pour savoir d’où viennent les utilisateurs, et présenté le produit aux clients un par un pour les accompagner.",
+        "Une seule plateforme couvre trois usages : la gestion pour les professionnels, les annonces sur leur propre site et une marketplace publique."
+      ],
+      "result": "Environ 200 visiteurs par jour et plus de 80 inscriptions. La nouvelle page d’accueil est terminée, et l’application mobile attend la validation de l’App Store et de Google Play."
+    },
+    "perry-luscious": {
+      "company": "Freelance",
+      "short": "Un site pour une pâtisserie lyonnaise, pour présenter ses gâteaux et prendre les commandes, avec un configurateur de gâteaux en 3D développé avec Three.js.",
+      "problem": "Une pâtisserie lyonnaise prenait ses commandes par messages sur les réseaux sociaux, avec beaucoup d’allers-retours sur les modèles, les détails et la livraison.",
+      "role": "Freelance : réflexion produit, design, développement, SEO et analytics.",
+      "approach": [
+        "J’ai conçu la commande autour de sa façon de travailler : les clients choisissent un modèle, le personnalisent et indiquent la livraison en un seul parcours, pour que les commandes arrivent complètes.",
+        "J’ai développé un configurateur de gâteaux en 3D avec Three.js, pour que les clients voient leur gâteau avant de commander.",
+        "J’ai gardé un parcours volontairement court jusqu’au paiement, en mettant ses créations en avant pour que les clients sachent à quoi s’attendre.",
+        "J’ai développé un site en français et en anglais que la gérante peut mettre à jour elle-même grâce à Sanity.",
+        "J’ai ajouté le SEO et Google Tag Manager, connecté à TikTok et Instagram, pour qu’elle voie quel canal lui amène des clients et y concentre ses efforts."
+      ],
+      "result": "Environ 80 % de ses commandes, soit une vingtaine par mois, passent désormais par le site, avec beaucoup moins d’allers-retours.",
+      "testimonial": {
+        "quote": "Le site est vraiment fluide. Les clients peuvent indiquer tous les détails qu’ils veulent, personnaliser leur commande et voir leurs choix sans avoir à poser plein de questions. Il a donné une image haut de gamme à mon activité, m’a aidée à fidéliser mes clients et m’en a amené de nouveaux.",
+        "name": "Perry, gérante de Perry Luscious"
+      }
+    },
+    "lab-brain": {
+      "company": "Open source",
+      "short": "Un espace de recherche open source qui relie échantillons, caractérisations, analyses et conclusions en science des matériaux.",
+      "extraTech": ["Assistant IA (avec votre propre clé)"],
+      "problem": "Les données de recherche finissent éparpillées entre dossiers, tableurs, présentations et notes, si bien qu’on ne peut plus relier un résultat à l’échantillon qui l’a produit.",
+      "role": "En solo, conçu pour ma propre recherche doctorale.",
+      "approach": [
+        "J’avais un workflow Python dans VS Code. Quand une collègue du labo m’a posé des questions sur mon analyse, j’ai compris que ces outils pouvaient aider ceux qui ne codent pas, alors j’ai construit une interface par-dessus.",
+        "Il relie échantillon, caractérisation, analyse et conclusion, pour que le prochain chercheur puisse reprendre mon travail et que mon directeur de thèse suive facilement mes progrès.",
+        "Il réalise des calculs et des graphiques de caractérisation (EDX, ellipsométrie, FTIR), avec un assistant IA qui répond à partir de vos propres données.",
+        "Testé avec Vitest et Playwright."
+      ],
+      "result": "Je l’utilise plusieurs fois par semaine pour consigner et analyser mes expériences.",
+      "contribution": {
+        "name": "OPTIMEO",
+        "description": "l’application web d’optimisation bayésienne de notre laboratoire"
+      }
+    },
+    "rungis": {
+      "company": "Neo64 GmbH",
+      "short": "Une application mobile e-commerce B2B pour un grand distributeur alimentaire présent en Allemagne et en Autriche.",
+      "intro": "J’ai développé l’expérience de commande mobile de Rungis Express GmbH chez Neo64, à partir des maquettes d’une autre agence et sur un backend tiers.",
+      "heading": "Contributions clés",
+      "bullets": [
+        "Logique de connexion, de panier et de paiement",
+        "Composants et écrans d’interface, reliés au backend",
+        "Shared preferences pour conserver les données utilisateur",
+        "Des interactions fluides et réactives dans toute l’application"
+      ]
+    },
+    "fideco": {
+      "company": "Neo64 GmbH",
+      "short": "Une application mobile e-commerce B2B pour le marché suisse, construite sur une architecture partagée et évolutive.",
+      "intro": "Réalisée pour Fideco AG, partenaire suisse de Rungis Express, à partir du même monorepo que l’application Rungis Express.",
+      "heading": "Contributions clés",
+      "bullets": [
+        "Adaptation de la logique e-commerce principale au marché suisse",
+        "Personnalisation des composants d’interface selon l’identité visuelle de Fideco",
+        "Routage et stockage de données distincts, sur une base de code commune."
+      ]
+    },
+    "digisign": {
+      "company": "DigiSign Technologies Limited",
+      "short": "Un tableau de bord sécurisé de gestion de documents, avec signature biométrique pour vérifier l’identité.",
+      "intro": "Mon premier poste : un tableau de bord hautement sécurisé qui garantit l’authenticité des signataires.",
+      "heading": "Contributions clés",
+      "bullets": [
+        "Composants d’interface réutilisables pour une expérience fluide",
+        "Tests unitaires avec Jest et tests end-to-end avec Playwright",
+        "Participation aux parcours sécurisés d’inscription et d’authentification",
+        "Fonctionnalités de suivi des documents dans le tableau de bord"
+      ]
+    },
+    "klierfeld": {
+      "company": "Neo64 GmbH",
+      "short": "Un site vitrine moderne pour une entreprise allemande d’installation photovoltaïque.",
+      "intro": "Un site vitrine responsive pour Klierfeld GmbH, une entreprise allemande, conçu pour présenter ses services d’énergie verte.",
+      "heading": "Contributions clés",
+      "bullets": [
+        "Gestion de contenu intégrée avec Storyblok CMS",
+        "Styles en SCSS pour un rendu moderne et sur mesure",
+        "Optimisation de la vitesse et du SEO."
+      ]
+    }
+  }
+}

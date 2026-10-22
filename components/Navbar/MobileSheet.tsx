@@ -2,17 +2,18 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion, type PanInfo } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import ThemeSwitch from "@/components/ThemeSwitch";
+import LocaleSwitch from "@/components/LocaleSwitch";
 import PowerDot from "@/components/ui/PowerDot";
 import TextLink from "@/components/ui/TextLink";
-import { socialLinks } from "@/constants";
+import { socialLinks, type NavItem } from "@/constants";
 import { springs } from "@/lib/motion";
 import CvKey from "./CvKey";
 
 type MobileSheetProps = {
-  items: string[];
+  items: NavItem[];
   active: string;
 };
 
@@ -20,6 +21,7 @@ const DISMISS_DISTANCE = 120;
 const DISMISS_VELOCITY = 600;
 
 const MobileSheet = ({ items, active }: MobileSheetProps) => {
+  const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
 
   const handleDragEnd = (_: PointerEvent, info: PanInfo) => {
@@ -34,7 +36,7 @@ const MobileSheet = ({ items, active }: MobileSheetProps) => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="bg-surface shadow-raised active:shadow-pressed text-ink h-9 rounded-full px-4 text-sm font-semibold active:scale-[0.97] md:hidden">
-        Menu
+        {t("menu")}
       </Dialog.Trigger>
 
       <AnimatePresence>
@@ -66,12 +68,12 @@ const MobileSheet = ({ items, active }: MobileSheetProps) => {
                   aria-hidden
                   className="bg-line mx-auto mb-6 h-1.5 w-10 rounded-full"
                 />
-                <Dialog.Title className="sr-only">Menu</Dialog.Title>
+                <Dialog.Title className="sr-only">{t("menu")}</Dialog.Title>
                 <Dialog.Description className="sr-only">
-                  Sections, theme and links
+                  {t("menuDescription")}
                 </Dialog.Description>
 
-                <nav aria-label="Sections">
+                <nav aria-label={t("sections")}>
                   <ul className="border-ink border-t-2">
                     {items.map(item => (
                       <li key={item} className="border-line border-b">
@@ -81,9 +83,9 @@ const MobileSheet = ({ items, active }: MobileSheetProps) => {
                           aria-current={
                             item === active ? "location" : undefined
                           }
-                          className="flex items-center justify-between py-4 text-2xl font-semibold capitalize"
+                          className="flex items-center justify-between py-4 text-2xl font-semibold"
                         >
-                          {item}
+                          {t(`items.${item}`)}
                           {item === active && <PowerDot />}
                         </a>
                       </li>
@@ -92,7 +94,7 @@ const MobileSheet = ({ items, active }: MobileSheetProps) => {
                 </nav>
 
                 <div className="mt-6 flex items-center justify-between">
-                  <ThemeSwitch />
+                  <LocaleSwitch />
                   <CvKey />
                 </div>
 

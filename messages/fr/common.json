@@ -1,0 +1,40 @@
+{
+  "close": "Fermer",
+  "present": "Aujourd’hui",
+  "years": "{count, plural, one {# an} other {# ans}}",
+  "months": "{count, plural, other {# mois}}",
+  "copy": "Copier l’{label} : {text}",
+  "copied": "{label} copiée",
+  "darkMode": "Mode sombre",
+  "language": "Langue",
+  "openCv": "Ouvrir le CV dans un nouvel onglet",
+  "kinds": {
+    "webAndMobile": "Web & mobile",
+    "mobile": "Mobile",
+    "web": "Web",
+    "fullstack": "Full stack",
+    "other": "Projet"
+  },
+  "links": {
+    "website": {
+      "label": "Voir le site",
+      "short": "Site"
+    },
+    "appStore": {
+      "label": "Voir sur l’App Store",
+      "short": "App Store"
+    },
+    "app": {
+      "label": "Ouvrir l’application",
+      "short": "Application"
+    },
+    "googlePlay": {
+      "label": "Disponible sur Google Play",
+      "short": "Google Play"
+    },
+    "code": {
+      "label": "Voir le code",
+      "short": "Code"
+    }
+  }
+}

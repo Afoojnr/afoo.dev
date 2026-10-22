@@ -8,7 +8,11 @@ const Logo = () => {
   const letters = ["F", "O", "O"];
 
   return (
-    <div className="group/logo relative flex items-center justify-center gap-1">
+    // decorative: the link around it carries the accessible name
+    <div
+      aria-hidden
+      className="group/logo relative flex items-center justify-center gap-1"
+    >
       <A />
 
       <div className="flex">

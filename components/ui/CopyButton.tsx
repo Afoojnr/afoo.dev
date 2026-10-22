@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { FiCheck, FiCopy } from "react-icons/fi";
 
 import { springs } from "@/lib/motion";
@@ -14,6 +15,7 @@ type CopyButtonProps = {
 const RESET_AFTER_MS = 1800;
 
 const CopyButton = ({ text, label }: CopyButtonProps) => {
+  const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -35,7 +37,7 @@ const CopyButton = ({ text, label }: CopyButtonProps) => {
     <button
       type="button"
       onClick={copy}
-      aria-label={`Copy ${label}: ${text}`}
+      aria-label={t("copy", { label, text })}
       className="group text-ink border-line hover:border-ink inline-flex max-w-full items-center gap-3 rounded-full border py-3 pr-4 pl-6 font-semibold transition-[border-color,transform] duration-200 active:scale-[0.97]"
     >
       <span className="min-w-0 text-left break-all">{text}</span>
@@ -61,7 +63,7 @@ const CopyButton = ({ text, label }: CopyButtonProps) => {
         </AnimatePresence>
       </span>
       <span role="status" className="sr-only">
-        {copied ? `${label} copied` : ""}
+        {copied ? t("copied", { label }) : ""}
       </span>
     </button>
   );

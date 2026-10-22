@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const useActiveSection = (ids: string[]) => {
+export const useActiveSection = (ids: readonly string[]) => {
   const [active, setActive] = useState(ids[0]);
 
   useEffect(() => {

@@ -1,0 +1,14 @@
+{
+  "main": "Principale",
+  "backToTop": "AFOO, retour en haut",
+  "menu": "Menu",
+  "menuDescription": "Sections, thème et liens",
+  "sections": "Sections",
+  "items": {
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Expérience",
+    "works": "Projets",
+    "contact": "Contact"
+  }
+}

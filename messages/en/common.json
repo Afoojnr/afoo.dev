@@ -1,0 +1,25 @@
+{
+  "close": "Close",
+  "present": "Present",
+  "years": "{count, plural, one {# yr} other {# yrs}}",
+  "months": "{count, plural, one {# mo} other {# mos}}",
+  "copy": "Copy {label}: {text}",
+  "copied": "{label} copied",
+  "darkMode": "Dark mode",
+  "language": "Language",
+  "openCv": "Open CV in a new tab",
+  "kinds": {
+    "webAndMobile": "Web & Mobile",
+    "mobile": "Mobile",
+    "web": "Web",
+    "fullstack": "Full stack",
+    "other": "Project"
+  },
+  "links": {
+    "website": { "label": "Visit website", "short": "Website" },
+    "appStore": { "label": "View on the App Store", "short": "App Store" },
+    "app": { "label": "Open the app", "short": "App" },
+    "googlePlay": { "label": "Get it on Google Play", "short": "Google Play" },
+    "code": { "label": "View the code", "short": "Code" }
+  }
+}

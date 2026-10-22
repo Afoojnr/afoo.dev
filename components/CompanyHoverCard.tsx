@@ -2,15 +2,19 @@
 
 import * as HoverCard from "@radix-ui/react-hover-card";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import PowerDot from "@/components/ui/PowerDot";
 import TextLink from "@/components/ui/TextLink";
 import { experiences, works } from "@/constants";
+import { useDateRange } from "@/hooks/useDateRange";
+import { useWorkText } from "@/hooks/useWorkText";
+import type { RoleId, WorkSlug } from "@/types";
 
 type CompanyHoverCardProps = {
-  // experience company_name and work title to show in the card
-  company: string;
-  work: string;
+  // the experience role and the work whose text the card shows
+  company: RoleId;
+  work: WorkSlug;
   href: string;
   children: React.ReactNode;
   className?: string;
@@ -18,15 +22,18 @@ type CompanyHoverCardProps = {
 };
 
 const CompanyHoverCard = ({
-  company: companyName,
-  work: workTitle,
+  company: roleId,
+  work: slug,
   href,
   children,
   className,
   arrowClassName
 }: CompanyHoverCardProps) => {
-  const company = experiences.find(role => role.company_name === companyName);
-  const product = works.find(work => work.title === workTitle);
+  const t = useTranslations("experience.roles");
+  const dateRange = useDateRange();
+  const workText = useWorkText();
+  const company = experiences.find(role => role.id === roleId);
+  const product = works.find(work => work.slug === slug);
 
   const link = (
     <TextLink
@@ -63,17 +70,19 @@ const CompanyHoverCard = ({
             />
             <div>
               <p className="text-ink leading-tight font-semibold">
-                {company.company_name}
+                {t(`${company.id}.company`)}
               </p>
               <p className="text-caption text-ink-soft mt-1 flex items-center gap-2 uppercase">
                 <PowerDot />
-                {company.date}
+                {dateRange(company.start, company.end)}
               </p>
             </div>
           </div>
-          <p className="text-ink mt-3 text-sm font-medium">{company.title}</p>
+          <p className="text-ink mt-3 text-sm font-medium">
+            {t(`${company.id}.title`)}
+          </p>
           <p className="text-ink-soft mt-1 text-sm leading-snug">
-            {product?.shortDescription}
+            {product && workText(product).short}
           </p>
         </HoverCard.Content>
       </HoverCard.Portal>

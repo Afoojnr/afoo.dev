@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import LocaleSwitch from "@/components/LocaleSwitch";
 import Logo from "@/components/Logo";
-import ThemeSwitch from "@/components/ThemeSwitch";
 import { navItems } from "@/constants";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { springs } from "@/lib/motion";
@@ -16,6 +17,7 @@ import NavLinks from "./NavLinks";
 const sectionLinks = navItems.filter(item => item !== "home");
 
 const Navbar = () => {
+  const t = useTranslations("nav");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -37,10 +39,12 @@ const Navbar = () => {
       }`}
     >
       <nav
-        aria-label="Main"
+        aria-label={t("main")}
         className="px-gutter max-w-page mx-auto flex h-16 items-center justify-between gap-6"
       >
-        <Link href="#home" aria-label="AFOO, back to top">
+        {/* named by hidden text, not aria-label, so the name and visible logo never disagree */}
+        <Link href="#home">
+          <span className="sr-only">{t("backToTop")}</span>
           <Logo />
         </Link>
 
@@ -50,7 +54,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <div className="hidden items-center gap-3 md:flex">
-            <ThemeSwitch />
+            <LocaleSwitch />
             <CvKey />
           </div>
           <MobileSheet items={sectionLinks} active={active} />

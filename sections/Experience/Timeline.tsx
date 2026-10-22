@@ -8,11 +8,13 @@ import {
   useTransform
 } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import PowerDot from "@/components/ui/PowerDot";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { experiences } from "@/constants";
+import { useDateRange } from "@/hooks/useDateRange";
 import { springs } from "@/lib/motion";
 import DurationChip from "./DurationChip";
 
@@ -22,6 +24,8 @@ const reachedAt = (stops: number[], progress: number) =>
   stops.filter(stop => progress >= stop).length;
 
 const Timeline = () => {
+  const t = useTranslations("experience.roles");
+  const dateRange = useDateRange();
   const reduceMotion = usePrefersReducedMotion();
   const rail = useRef<HTMLDivElement>(null);
   const entries = useRef<(HTMLElement | null)[]>([]);
@@ -79,11 +83,12 @@ const Timeline = () => {
       {experiences.map((role, i) => {
         const isReached = reduceMotion || reached > i;
         const isActive = !reduceMotion && reached === i + 1;
-        const isCurrent = role.date.includes("Present");
+        const isCurrent = !role.end;
+        const points = t.raw(`${role.id}.points`) as string[];
 
         return (
           <motion.article
-            key={role.company_name}
+            key={role.id}
             ref={el => {
               entries.current[i] = el;
             }}
@@ -111,11 +116,15 @@ const Timeline = () => {
 
             <p className="text-caption text-ink-soft flex items-center gap-2 uppercase">
               {isCurrent && <PowerDot />}
-              {role.date}
-              <DurationChip range={role.date} active={isActive} />
+              {dateRange(role.start, role.end)}
+              <DurationChip
+                start={role.start}
+                end={role.end}
+                active={isActive}
+              />
             </p>
             <h3 className="mt-1.5 max-w-[24ch] text-[clamp(1.5rem,1rem+1.8vw,2.375rem)] leading-[1.1] font-bold tracking-tight text-balance">
-              {role.title}
+              {t(`${role.id}.title`)}
             </h3>
             <div className="text-ink-soft mt-2 flex items-center gap-2.5">
               <Image
@@ -125,11 +134,11 @@ const Timeline = () => {
                 height={24}
                 className="size-6 rounded-sm object-contain"
               />
-              <p className="font-medium">{role.company_name}</p>
+              <p className="font-medium">{t(`${role.id}.company`)}</p>
             </div>
 
             <ul className="text-ink-soft mt-4 max-w-[64ch] space-y-1.5 text-base md:text-(length:--text-body)">
-              {role.points.map(point => (
+              {points.map(point => (
                 <li
                   key={point}
                   className="before:bg-ink-soft relative pl-5 before:absolute before:top-[0.65em] before:left-0 before:size-[5px] before:rounded-full before:content-['']"

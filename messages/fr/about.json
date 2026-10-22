@@ -1,0 +1,19 @@
+{
+  "title": "À propos",
+  "greeting": "Bonjour, je suis Abdulhamid, et j’aime",
+  "greetingEmphasis": "créer des choses que les gens utilisent.",
+  "story": "J’ai commencé à coder en 2019 pour appliquer le machine learning à mes travaux de chimie. En 2021, j’ai essayé HTML et CSS par simple curiosité, et voir ma première page s’afficher à l’écran m’a fait tomber amoureux du frontend. J’ai cofondé",
+  "afterPropatis": ", et j’ai conçu et publié seul",
+  "afterApplyd": "sur l’App Store et Google Play. Je prépare aussi un doctorat en chimie des matériaux, et je partage ce que j’apprends dans des",
+  "articles": "articles",
+  "and": "et des",
+  "videos": "vidéos",
+  "quote": {
+    "lead": "Une citation qui me guide :",
+    "first": "Voir",
+    "word": "grand",
+    "mid": " ? ",
+    "second": "Faire",
+    "end": " !"
+  }
+}

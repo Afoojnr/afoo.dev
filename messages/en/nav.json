@@ -1,0 +1,14 @@
+{
+  "main": "Main",
+  "backToTop": "AFOO, back to top",
+  "menu": "Menu",
+  "menuDescription": "Sections, theme and links",
+  "sections": "Sections",
+  "items": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "works": "Works",
+    "contact": "Contact"
+  }
+}

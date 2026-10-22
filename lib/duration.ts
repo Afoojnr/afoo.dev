@@ -1,43 +1,17 @@
-const MONTHS = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
-  "may",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec"
-];
-
-const parseMonth = (text: string) => {
-  const match = text.trim().match(/^([A-Za-z]{3})\w*\s+(\d{4})$/);
-  if (!match) return null;
-  const month = MONTHS.indexOf(match[1].toLowerCase());
-  return month < 0 ? null : Number(match[2]) * 12 + month;
+// "2023-07" -> months since year 0, so ranges can be subtracted
+const toMonths = (month: string) => {
+  const [year, index] = month.split("-").map(Number);
+  return year * 12 + index - 1;
 };
 
-// "Jul 2023 - Aug 2024" -> "1 yr 2 mos" (both months counted)
-export const durationLabel = (range: string, now = new Date()) => {
-  const [startText, endText = ""] = range.split(/\s+[-–—]\s+/);
-  const start = parseMonth(startText);
-  const end = /present/i.test(endText)
-    ? now.getFullYear() * 12 + now.getMonth()
-    : parseMonth(endText);
+// "2023-07" to "2024-08" -> 14 (both months counted); no end runs to today
+export const roleMonths = (start: string, end?: string, now = new Date()) => {
+  const last = end ? toMonths(end) : now.getFullYear() * 12 + now.getMonth();
+  return Math.max(0, last - toMonths(start) + 1);
+};
 
-  if (start === null || end === null || end < start) return "";
-
-  const months = end - start + 1;
-  const years = Math.floor(months / 12);
-  const rest = months % 12;
-
-  return [
-    years ? `${years} ${years === 1 ? "yr" : "yrs"}` : "",
-    rest ? `${rest} ${rest === 1 ? "mo" : "mos"}` : ""
-  ]
-    .filter(Boolean)
-    .join(" ");
+// mid-month in UTC, so no time zone can push it into the next or previous month
+export const monthDate = (month: string) => {
+  const [year, index] = month.split("-").map(Number);
+  return new Date(Date.UTC(year, index - 1, 15));
 };

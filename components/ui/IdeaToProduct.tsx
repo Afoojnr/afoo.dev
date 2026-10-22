@@ -7,11 +7,11 @@ import {
   useTransform,
   type MotionValue
 } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
-const IDEA = "ideas";
 const TILT = [-5, 4, -3, 5, -4];
 const DRIFT = [2, -3, 2, -2, 3];
 
@@ -43,6 +43,8 @@ const Letter = ({ char, index, progress }: LetterProps) => {
 };
 
 const IdeaToProduct = () => {
+  const t = useTranslations("hero");
+  const idea = t("turnWord");
   const reduceMotion = usePrefersReducedMotion();
   const [active, setActive] = useState(false);
   const [touched, setTouched] = useState(false);
@@ -85,11 +87,11 @@ const IdeaToProduct = () => {
       onBlur={() => engage(false)}
       className="text-lead text-ink cursor-default font-semibold text-balance"
     >
-      I turn{" "}
+      {t("turnBefore")}{" "}
       <span className="relative inline-block">
-        <span className="sr-only">{IDEA}</span>
+        <span className="sr-only">{idea}</span>
         <span aria-hidden className="relative inline-block">
-          {IDEA.split("").map((char, i) => (
+          {idea.split("").map((char, i) => (
             <Letter key={i} char={char} index={i} progress={progress} />
           ))}
           <motion.span
@@ -103,7 +105,7 @@ const IdeaToProduct = () => {
           style={{ y: sparkY, opacity: sparkOpacity }}
         />
       </span>{" "}
-      into products
+      {t("turnAfter")}
       <motion.span
         aria-hidden
         className="bg-signal ml-[0.04em] inline-block size-[0.2em] rounded-full"

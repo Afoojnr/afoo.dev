@@ -8,6 +8,7 @@ import {
   type MotionValue
 } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Fragment, useRef, type ReactNode } from "react";
 
 import CompanyHoverCard from "@/components/CompanyHoverCard";
@@ -41,71 +42,72 @@ const words = (text: string, emphasis = false): Piece[] =>
     .filter(Boolean)
     .map(word => ({ node: word, emphasis }));
 
-const PIECES: Piece[] = [
-  ...words("Hi, I’m Abdulhamid, and I love"),
-  ...words("building things people use.", true),
-  ...words(
-    "I started coding in 2019 to apply machine learning to my chemistry work. In 2021 I tried HTML and CSS just to see what it’s like, and watching my first page appear on screen made me fall in love with frontend. I co-founded"
-  ),
-  {
-    node: (
-      <CompanyHoverCard
-        company="Propatis HQ"
-        work="Propatis HQ"
-        href="https://propatishq.com"
-        arrowClassName={ARROW}
-      >
-        Propatis HQ
-      </CompanyHoverCard>
-    ),
-    emphasis: true
-  },
-  ...words(", and on my own I built and shipped"),
-  {
-    node: (
-      <CompanyHoverCard
-        company="Applyd Hub (Afoo Inc)"
-        work="Applyd Hub"
-        href="https://www.applydhub.com"
-        arrowClassName={ARROW}
-      >
-        Applyd Hub
-      </CompanyHoverCard>
-    ),
-    emphasis: true
-  },
-  ...words(
-    "to the App Store and Google Play. I’m also pursuing a PhD in Materials Chemistry, and I share what I learn in"
-  ),
-  {
-    node: (
-      <TextLink
-        href="https://medium.com/@afoojnr"
-        external
-        className="font-semibold"
-        arrowClassName={ARROW}
-      >
-        articles
-      </TextLink>
-    )
-  },
-  ...words("and"),
-  {
-    node: (
-      <>
+// built per language; the links and emphasis sit between translated runs of words
+const usePieces = (): Piece[] => {
+  const t = useTranslations("about");
+
+  return [
+    ...words(t("greeting")),
+    ...words(t("greetingEmphasis"), true),
+    ...words(t("story")),
+    {
+      node: (
+        <CompanyHoverCard
+          company="propatis"
+          work="propatis"
+          href="https://propatishq.com"
+          arrowClassName={ARROW}
+        >
+          Propatis HQ
+        </CompanyHoverCard>
+      ),
+      emphasis: true
+    },
+    ...words(t("afterPropatis")),
+    {
+      node: (
+        <CompanyHoverCard
+          company="applyd-hub"
+          work="applyd-hub"
+          href="https://www.applydhub.com"
+          arrowClassName={ARROW}
+        >
+          Applyd Hub
+        </CompanyHoverCard>
+      ),
+      emphasis: true
+    },
+    ...words(t("afterApplyd")),
+    {
+      node: (
         <TextLink
-          href="https://www.youtube.com/@codewithafoo"
+          href="https://medium.com/@afoojnr"
           external
           className="font-semibold"
           arrowClassName={ARROW}
         >
-          videos
+          {t("articles")}
         </TextLink>
-        .
-      </>
-    )
-  }
-];
+      )
+    },
+    ...words(t("and")),
+    {
+      node: (
+        <>
+          <TextLink
+            href="https://www.youtube.com/@codewithafoo"
+            external
+            className="font-semibold"
+            arrowClassName={ARROW}
+          >
+            {t("videos")}
+          </TextLink>
+          .
+        </>
+      )
+    }
+  ];
+};
 
 type UnitProps = {
   piece: Piece;
@@ -122,15 +124,29 @@ const Unit = ({ piece, from, progress }: UnitProps) => {
   );
 };
 
-const Quote = () => (
-  <p className="text-sm italic opacity-70 md:text-base">
-    A quote I try to live by: Dream{" "}
-    <ProximityText text="big" rest={BIG_REST} peak={BIG_PEAK} radius={90} />? Do{" "}
-    <ProximityText text="big" rest={BIG_REST} peak={BIG_PEAK} radius={90} />!
-  </p>
-);
+const Quote = () => {
+  const t = useTranslations("about.quote");
+  const word = (
+    <ProximityText
+      text={t("word")}
+      rest={BIG_REST}
+      peak={BIG_PEAK}
+      radius={90}
+    />
+  );
+
+  return (
+    <p className="text-sm italic opacity-70 md:text-base">
+      {t("lead")} {t("first")} {word}
+      {t("mid")}
+      {t("second")} {word}
+      {t("end")}
+    </p>
+  );
+};
 
 const Story = () => {
+  const pieces = usePieces();
   const reduceMotion = usePrefersReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -143,7 +159,7 @@ const Story = () => {
     mass: 0.4
   });
   const quoteOpacity = useTransform(progress, [QUOTE_FROM, QUOTE_TO], [0, 1]);
-  const last = Math.max(1, PIECES.length - 1);
+  const last = Math.max(1, pieces.length - 1);
 
   return (
     <div ref={ref} className={reduceMotion ? "" : "h-[180svh]"}>
@@ -170,7 +186,7 @@ const Story = () => {
 
           <div>
             <p className="text-[length:clamp(1.125rem,0.5rem+3.4vw,1.5rem)] leading-[1.22] font-semibold tracking-tight md:text-[length:min(clamp(1.5rem,0.9rem+1.6vw,2.375rem),5.2svh)]">
-              {PIECES.map((piece, i) => (
+              {pieces.map((piece, i) => (
                 <Fragment key={i}>
                   {reduceMotion ? (
                     <span className={piece.emphasis ? EMPHASIS : ""}>

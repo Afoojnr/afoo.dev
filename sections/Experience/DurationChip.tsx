@@ -1,22 +1,35 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useSyncExternalStore } from "react";
 
-import { durationLabel } from "@/lib/duration";
+import { roleMonths } from "@/lib/duration";
 
 const subscribe = () => () => {};
 
 type DurationChipProps = {
-  range: string;
+  start: string;
+  end?: string;
   active: boolean;
 };
 
-const DurationChip = ({ range, active }: DurationChipProps) => {
-  const label = useSyncExternalStore(
+const DurationChip = ({ start, end, active }: DurationChipProps) => {
+  const t = useTranslations("common");
+  // "now" differs between server and client, so the label only renders on the client
+  const total = useSyncExternalStore(
     subscribe,
-    () => durationLabel(range),
-    () => ""
+    () => roleMonths(start, end),
+    () => 0
   );
+  const years = Math.floor(total / 12);
+  const months = total % 12;
+  const label = [
+    years ? t("years", { count: years }) : "",
+    months ? t("months", { count: months }) : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   if (!label) return null;
 
   return (

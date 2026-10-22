@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
-import Providers from "@/components/Providers";
+import { Analytics } from "@vercel/analytics/next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { contact, socialLinks } from "@/constants";
 import { site } from "@/lib/brand";
 import "./globals.css";
@@ -20,27 +22,34 @@ const mokoto = localFont({
   display: "swap"
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: { default: site.title, template: `%s | ${site.name}` },
-  description: site.description,
-  applicationName: site.name,
-  authors: [{ name: site.name, url: site.url }],
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    url: "/",
-    siteName: site.name,
-    title: site.title,
-    description: site.description,
-    locale: "en_US"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.title,
-    description: site.description,
-    creator: "@Afoojnr"
-  }
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const t = await getTranslations("metadata");
+  const title = t("title");
+  const description = t("description");
+
+  return {
+    metadataBase: new URL(site.url),
+    title: { default: title, template: `%s | ${site.name}` },
+    description,
+    applicationName: site.name,
+    authors: [{ name: site.name, url: site.url }],
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      url: "/",
+      siteName: site.name,
+      title,
+      description,
+      locale: locale === "fr" ? "fr_FR" : "en_US"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@Afoojnr"
+    }
+  };
 };
 
 export const viewport: Viewport = {
@@ -61,19 +70,23 @@ const personSchema = {
   sameAs: socialLinks.map(link => link.href)
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${archivo.variable} ${mokoto.variable} antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <Providers>{children}</Providers>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        {/* cookieless page views; only reports on Vercel deployments */}
+        <Analytics />
       </body>
     </html>
   );

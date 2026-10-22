@@ -1,80 +1,35 @@
-import type { WorkItem } from "@/types";
+import type { CaseStudyText, WorkItem, WorkText } from "@/types";
 
-export type WorkBlock = {
-  heading?: string;
-  lines: string[];
-  bullets: string[];
-};
+export type WorkKind =
+  "webAndMobile" | "mobile" | "web" | "fullstack" | "other";
+export type WorkLinkKind =
+  "website" | "appStore" | "app" | "googlePlay" | "code";
 
-// fullDescription format: blocks split by blank lines, bullets start with "•",
-// and a line ending in ":" right above bullets becomes their heading
-export const parseDescription = (text = "") => {
-  const [rawIntro = "", ...rest] = text
-    .split("\n\n")
-    .map(part => part.trim())
-    .filter(Boolean);
-
-  const blocks: WorkBlock[] = rest.map(part => {
-    const lines = part
-      .split("\n")
-      .map(line => line.trim())
-      .filter(Boolean);
-    const bullets = lines
-      .filter(line => line.startsWith("•"))
-      .map(line => line.replace(/^•\s*/, ""));
-    const plain = lines.filter(line => !line.startsWith("•"));
-    const heading =
-      bullets.length && plain[0]?.endsWith(":")
-        ? plain[0].slice(0, -1)
-        : undefined;
-
-    return { heading, lines: heading ? plain.slice(1) : plain, bullets };
-  });
-
-  const intro = blocks[0]?.lines.length
-    ? rawIntro.replace(/:$/, ".")
-    : rawIntro;
-
-  return { intro, blocks };
-};
-
-export const workKind = (work: WorkItem) => {
-  if (work.webUrl && (work.mobileUrl || work.playStoreUrl))
-    return "Web & Mobile";
-  const kinds = {
-    mobile: "Mobile",
-    web: "Web",
-    fullstack: "Full stack",
-    other: "Project"
-  };
-  return kinds[work.type];
-};
+export const workKind = (work: WorkItem): WorkKind =>
+  work.webUrl && (work.mobileUrl || work.playStoreUrl)
+    ? "webAndMobile"
+    : work.type;
 
 export const workLinks = (work: WorkItem) => {
-  const links: { label: string; short: string; href: string }[] = [];
+  const links: { kind: WorkLinkKind; href: string }[] = [];
 
-  if (work.webUrl)
-    links.push({ label: "Visit website", short: "Website", href: work.webUrl });
+  if (work.webUrl) links.push({ kind: "website", href: work.webUrl });
   if (work.mobileUrl && work.mobileUrl !== work.webUrl) {
     const store = work.mobileUrl.includes("apps.apple.com");
-    links.push({
-      label: store ? "View on the App Store" : "Open the app",
-      short: store ? "App Store" : "App",
-      href: work.mobileUrl
-    });
+    links.push({ kind: store ? "appStore" : "app", href: work.mobileUrl });
   }
   if (work.playStoreUrl)
-    links.push({
-      label: "Get it on Google Play",
-      short: "Google Play",
-      href: work.playStoreUrl
-    });
-  if (work.githubUrl)
-    links.push({
-      label: "View the code",
-      short: "Code",
-      href: work.githubUrl
-    });
+    links.push({ kind: "googlePlay", href: work.playStoreUrl });
+  if (work.githubUrl) links.push({ kind: "code", href: work.githubUrl });
 
   return links;
 };
+
+// translated tags (like Lab Brain's AI assistant note) follow the fixed ones
+export const workTech = (work: WorkItem, text: WorkText) => [
+  ...work.tech,
+  ...(text.extraTech ?? [])
+];
+
+export const isCaseStudy = (text: WorkText): text is WorkText & CaseStudyText =>
+  "problem" in text;

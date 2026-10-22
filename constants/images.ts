@@ -10,6 +10,12 @@ import tailwind from "@/public/images/tailwind.png";
 import next from "@/public/images/next.png";
 import express from "@/public/images/express.png";
 import figma from "@/public/images/figma.png";
+import expo from "@/public/images/expo.svg";
+import jest from "@/public/images/jest.svg";
+import playwright from "@/public/images/playwright.svg";
+import postgresql from "@/public/images/postgresql.svg";
+import jira from "@/public/images/jira.svg";
+import vitest from "@/public/images/vitest.svg";
 
 import headshot from "@/public/images/headshot.png";
 
@@ -38,6 +44,12 @@ export const images = {
   next,
   express,
   figma,
+  expo,
+  jest,
+  playwright,
+  postgresql,
+  jira,
+  vitest,
   headshot,
   applydhub,
   applydhubLogo,

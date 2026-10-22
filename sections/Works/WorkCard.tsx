@@ -2,9 +2,11 @@
 
 import { motion, useTransform, type MotionValue } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { FiArrowRight } from "react-icons/fi";
 
-import { workKind } from "@/lib/works";
+import { useWorkText } from "@/hooks/useWorkText";
+import { workKind, workTech } from "@/lib/works";
 import type { WorkItem } from "@/types";
 
 type WorkCardProps = {
@@ -26,6 +28,9 @@ const WorkCard = ({
   cardRef,
   onOpen
 }: WorkCardProps) => {
+  const t = useTranslations("works");
+  const common = useTranslations("common");
+  const text = useWorkText()(work);
   const scale = useTransform(progress, [0, 1], [1, 0.955]);
   const veil = useTransform(progress, [0, 1], [0, 0.55]);
 
@@ -34,7 +39,7 @@ const WorkCard = ({
       ref={cardRef}
       onClick={onOpen}
       style={{ scale, transformOrigin: "50% 0" }}
-      className="group bg-surface border-line shadow-raised relative grid min-h-(--card-h) cursor-pointer grid-rows-[auto_1fr] overflow-hidden rounded-[0.875rem] border lg:h-[clamp(26rem,58svh,36rem)] lg:min-h-0 lg:grid-cols-[minmax(0,9fr)_minmax(0,11fr)] lg:grid-rows-1"
+      className="group bg-surface border-line shadow-raised relative grid min-h-(--card-h) cursor-pointer grid-rows-[auto_1fr] overflow-hidden rounded-[0.875rem] border lg:min-h-[max(var(--card-h),clamp(26rem,58svh,36rem))] lg:grid-cols-[minmax(0,9fr)_minmax(0,11fr)] lg:grid-rows-1"
     >
       <div
         style={
@@ -48,7 +53,7 @@ const WorkCard = ({
       >
         <Image
           src={work.image}
-          alt={`${work.title} screenshot`}
+          alt={t("screenshot", { title: work.title })}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
           style={
@@ -70,7 +75,7 @@ const WorkCard = ({
         <div>
           <p className="text-caption text-ink-soft flex items-baseline justify-between gap-4 uppercase">
             <span>
-              {work.company} · {workKind(work)}
+              {text.company} · {common(`kinds.${workKind(work)}`)}
             </span>
             <span className="shrink-0 whitespace-nowrap tabular-nums">
               {pad(index + 1)} / {pad(total)}
@@ -83,11 +88,11 @@ const WorkCard = ({
 
         <div>
           <p className="text-ink max-w-[30ch] text-[clamp(1.125rem,0.9rem+0.8vw,1.5rem)] leading-[1.3] tracking-tight">
-            {work.shortDescription}
+            {text.short}
           </p>
 
           <ul className="mt-5 flex flex-wrap gap-2">
-            {work.tech.map(item => (
+            {workTech(work, text).map(item => (
               <li
                 key={item}
                 className="border-line text-ink-soft rounded-full border px-3 py-0.5 text-[0.8125rem]"
@@ -99,14 +104,14 @@ const WorkCard = ({
 
           <button
             type="button"
-            aria-label={`Open the ${work.title} case study`}
+            aria-label={`${t("openProject")}: ${work.title}`}
             onClick={e => {
               e.stopPropagation();
               onOpen();
             }}
             className="bg-ink text-ground mt-6 inline-flex items-center gap-2.5 rounded-full px-6 py-3 font-semibold transition-transform duration-100 active:scale-[0.97]"
           >
-            Open project
+            {t("openProject")}
             <FiArrowRight
               aria-hidden
               className="ease-out-expo size-4 transition-transform duration-300 group-hover:translate-x-1"

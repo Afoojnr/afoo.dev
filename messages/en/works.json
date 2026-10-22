@@ -1,0 +1,127 @@
+{
+  "title": "Works",
+  "count": "{count} projects",
+  "openProject": "Open project",
+  "screenshot": "{title} screenshot",
+  "moreWork": "More work",
+  "archive": "Archive",
+  "openWork": "Open {title}",
+  "headings": {
+    "problem": "The problem",
+    "role": "My role",
+    "approach": "What I did",
+    "result": "Result"
+  },
+  "contribution": "Separately, I contribute to <link>{name}</link>, {description}.",
+  "sampleQuote": "Sample quote · dev only, replace before publishing",
+  "projects": {
+    "applyd-hub": {
+      "company": "Afoo Inc",
+      "short": "A career document and application manager that ends tailoring fatigue for job and scholarship seekers.",
+      "problem": "Every job or scholarship application means rewriting your CV from scratch. I was facing this myself.",
+      "role": "Solo: product, design, mobile, backend, launch and marketing.",
+      "approach": [
+        "Built it for my own applications first. When I showed it to a few people, they wanted it too, so I turned it into a product.",
+        "One profile works as the single source of truth, and tailored documents are generated from it.",
+        "Instead of starting over, the AI improves a document step by step.",
+        "Tracks each job and scholarship from saved to offer, with a compatibility score before you apply."
+      ],
+      "result": "Live on the App Store and Google Play, with 30+ downloads and growing."
+    },
+    "propatis": {
+      "company": "Propatis HQ",
+      "short": "A comprehensive real estate platform that simplifies property management and tenant interactions for businesses and individuals.",
+      "problem": "Real estate businesses run properties, tenants and requests across scattered tools, and their listings live on separate sites.",
+      "role": "Founding engineer and product lead: I lead a team of 4, set the roadmap and assign the work.",
+      "approach": [
+        "Built the mobile app by myself, and build the web app with the team.",
+        "User feedback showed both the B2B and B2C experiences were hard to use, so I'm redesigning the UI: the landing page is done, B2B is next, then B2C.",
+        "Ran paid campaigns, set up analytics to see where users come from, and pitched and onboarded clients one on one.",
+        "One platform covers three sides: management for businesses, listings on their own websites, and a public marketplace."
+      ],
+      "result": "~200 daily visitors and 80+ sign-ups. The new landing page is done, and the mobile app is awaiting App Store and Google Play approval."
+    },
+    "perry-luscious": {
+      "company": "Freelance",
+      "short": "A website for a Lyon-based bakery to showcase its cakes and take customer orders, with a 3D cake designer built in Three.js.",
+      "problem": "A Lyon pâtisserie took orders through social media messages, which meant a lot of back and forth over designs, details and delivery.",
+      "role": "Freelance: product thinking, design, build, SEO and analytics.",
+      "approach": [
+        "Designed ordering around how she works: customers pick a design, customise it and set delivery in one flow, so orders arrive complete.",
+        "Built a 3D cake designer with Three.js, so customers can see their cake before they order.",
+        "Kept the path from browsing to checkout deliberately short, with her creations shown so customers see what to expect.",
+        "Built a French and English site the owner can update herself through Sanity.",
+        "Added SEO, plus Google Tag Manager connected to TikTok and Instagram, so she can see which channel brings customers and put her effort there."
+      ],
+      "result": "Around 80% of her orders, about 20 a month, now come through the website, with far less back and forth.",
+      "testimonial": {
+        "quote": "The website is very seamless. Customers can put in every detail they want and customise their order, and see their choices without asking lots of questions. It gave my business a premium look, helped me keep customers and brought in new ones.",
+        "name": "Perry, owner of Perry Luscious"
+      }
+    },
+    "lab-brain": {
+      "company": "Open source",
+      "short": "An open-source research workspace that links samples, characterization, analysis and conclusions for materials science.",
+      "extraTech": ["AI assistant (bring your own key)"],
+      "problem": "Research data ends up scattered across folders, spreadsheets, slides and notes, so results can't be traced back to the sample that produced them.",
+      "role": "Solo, built for my own PhD research.",
+      "approach": [
+        "I had a Python workflow in VS Code. When a labmate asked me about my analysis, I realised the same tools could help people who don't code, so I built a UI on top.",
+        "It links sample, characterization, analysis and conclusion, so the next researcher can pick up my work and my supervisor can follow my progress easily.",
+        "Runs characterization calculations and plots (EDX, ellipsometry, FTIR), with an AI assistant that answers from your own records.",
+        "Tested with Vitest and Playwright."
+      ],
+      "result": "I use it several times a week to log and analyse my experiments.",
+      "contribution": {
+        "name": "OPTIMEO",
+        "description": "our lab's Bayesian optimisation web app"
+      }
+    },
+    "rungis": {
+      "company": "Neo64 GmbH",
+      "short": "A B2B e-commerce mobile app for a major food trading company operating in Germany and Austria.",
+      "intro": "Built the mobile commerce experience for Rungis Express GmbH at Neo64, working from another agency's designs against a third-party backend.",
+      "heading": "Key Contributions",
+      "bullets": [
+        "Engineered login, cart and checkout logic",
+        "Built UI components and screens, connecting them to the backend",
+        "Implemented shared preferences for persistent user data",
+        "Ensured smooth, responsive user interactions across the app"
+      ]
+    },
+    "fideco": {
+      "company": "Neo64 GmbH",
+      "short": "A B2B e-commerce mobile app for the Swiss market, built on a scalable shared architecture.",
+      "intro": "Created for Fideco AG, a Swiss partner of Rungis Express, from the same monorepo as the Rungis Express app.",
+      "heading": "Key Contributions",
+      "bullets": [
+        "Adapted the core e-commerce logic for the Swiss market",
+        "Customized UI components to match Fideco's specific branding",
+        "Managed separate routing and data storage requirements while maintaining a shared codebase."
+      ]
+    },
+    "digisign": {
+      "company": "DigiSign Technologies Limited",
+      "short": "A secure document management dashboard featuring biometric signing capabilities for identity verification.",
+      "intro": "My first role: a high-security dashboard ensuring authenticity of digital signers.",
+      "heading": "Key Contributions",
+      "bullets": [
+        "Developed reusable UI components for a seamless user experience",
+        "Wrote unit tests with Jest and end-to-end tests with Playwright",
+        "Collaborated on secure onboarding and authentication flows",
+        "Supported dashboard features for document tracking"
+      ]
+    },
+    "klierfeld": {
+      "company": "Neo64 GmbH",
+      "short": "A modern corporate profile website for a German photovoltaic installation service provider.",
+      "intro": "A highly responsive corporate site for Klierfeld GmbH, a German company, designed to showcase its green energy services.",
+      "heading": "Key Contributions",
+      "bullets": [
+        "Seamless content management integration using Storyblok CMS",
+        "Styled using SCSS for a bespoke, modern look",
+        "Optimized for speed and SEO performance."
+      ]
+    }
+  }
+}

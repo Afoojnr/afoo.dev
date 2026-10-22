@@ -15,6 +15,10 @@ Package manager is yarn (`yarn.lock`); the README mentions npm but the lockfile 
 
 Single-page portfolio on Next.js 16 (App Router), React 19, Tailwind CSS 4, TypeScript. Path alias `@/*` maps to the repo root (no `src/` dir).
 
+Site text lives in `messages/<locale>/<section>.json` (next-intl, no locale routes; the language comes from the `NEXT_LOCALE` cookie, then the browser). Edit copy there, not in components. `constants/` holds language-independent data only. `i18n/messages.ts` types every locale against English, so a missing key fails `yarn ts-check`.
+
+The CV is the `/cv` route (`sections/Cv/`), built from the same messages plus `messages/<locale>/cv.json`. `constants/cv.ts` holds the variants (which roles, bullets, projects and skills each CV shows). With a server running, `yarn cv:export` writes `public/Abdulhamid-Afolabi-CV*.pdf` (the `product` variant, linked from the site) and every variant to `cv-exports/` (gitignored). Preview a variant at `/cv?variant=research`. Keep the CV in Arial: other fonts break words and the email apart in the PDF text an ATS reads.
+
 ## Verification
 
 Work is done when `yarn ts-check` and `yarn lint` pass with no errors. Show the

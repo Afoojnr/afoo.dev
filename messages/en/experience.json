@@ -1,0 +1,49 @@
+{
+  "title": "Experience",
+  "skills": "Skills",
+  "skillGroups": {
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend",
+    "testing": "Testing",
+    "product": "Product"
+  },
+  "roles": {
+    "propatis": {
+      "title": "Founding Engineer & Product Lead",
+      "company": "Propatis HQ",
+      "points": [
+        "Lead a team of 5 as product manager: roadmap, Jira backlog, priorities and assigning tasks.",
+        "Built the React Native mobile app (Expo) by myself, now in App Store and Google Play review, and build the web app with the team.",
+        "Lead product design and the UI across web and mobile.",
+        "Pitch and onboard clients one on one. ~200 daily visitors and 80+ sign-ups so far.",
+        "Set up the growth stack: technical SEO, Google Analytics, paid campaigns on Google Ads, TikTok and LinkedIn, and content."
+      ]
+    },
+    "applyd-hub": {
+      "title": "Solo Founder & Engineer",
+      "company": "Applyd Hub (Afoo Inc)",
+      "points": [
+        "Designed, built and shipped a full-stack app to the App Store and Google Play (Expo, React Native, NativeWind, Express, PostgreSQL), with AI that tailors career documents.",
+        "Started it as a tool for my own job search, then tested it with potential users before publishing. 30+ downloads so far.",
+        "Handle everything after launch myself: store listings, marketing and support."
+      ]
+    },
+    "neo64": {
+      "title": "Frontend Developer",
+      "company": "Neo64 GmbH",
+      "points": [
+        "Built Flutter screens and the login, cart and checkout logic for B2B grocery apps Rungis Express (Germany and Austria) and Fideco (Switzerland), sharing one codebase across both markets. Both are live, with 2,000+ downloads across iOS and Android.",
+        "Built a corporate site for Klierfeld GmbH (SvelteKit, Storyblok CMS) and dashboard features for the Wedflix streaming platform (Svelte, TypeScript, Tailwind)."
+      ]
+    },
+    "digisign": {
+      "title": "Frontend Developer",
+      "company": "DigiSign Technologies Limited",
+      "points": [
+        "Built reusable UI components for a document-signing dashboard with biometric verification (Next.js, TypeScript, Ant Design).",
+        "Wrote unit tests with Jest and end-to-end tests with Playwright."
+      ]
+    }
+  }
+}

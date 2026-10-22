@@ -1,12 +1,14 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import TextLink from "@/components/ui/TextLink";
-import type { CaseStudy as CaseStudyData, Testimonial } from "@/types";
+import type { CaseStudyText, Testimonial } from "@/types";
 
 type CaseStudyProps = {
-  study: CaseStudyData;
+  study: CaseStudyText;
   tech: string[];
+  contributionUrl?: string;
 };
 
 // sample quotes help judge the layout locally but must never ship as real proof
@@ -24,33 +26,38 @@ const Part = ({ title, children }: { title: string; children: ReactNode }) => (
   </div>
 );
 
-const Quote = ({ testimonial }: { testimonial: Testimonial }) => (
-  <figure
-    className={
-      testimonial.placeholder
-        ? "border-line rounded-plate border border-dashed p-5"
-        : ""
-    }
-  >
-    {testimonial.placeholder && (
-      <p className="text-caption text-ink-soft mb-3 uppercase">
-        Sample quote · dev only, replace before publishing
-      </p>
-    )}
-    <blockquote className="text-ink text-[clamp(1.25rem,1rem+0.8vw,1.625rem)] leading-[1.3] tracking-tight text-pretty">
-      “{testimonial.quote}”
-    </blockquote>
-    <figcaption className="text-ink-soft mt-3">{testimonial.name}</figcaption>
-  </figure>
-);
+const Quote = ({ testimonial }: { testimonial: Testimonial }) => {
+  const t = useTranslations("works");
 
-const CaseStudy = ({ study, tech }: CaseStudyProps) => {
+  return (
+    <figure
+      className={
+        testimonial.placeholder
+          ? "border-line rounded-plate border border-dashed p-5"
+          : ""
+      }
+    >
+      {testimonial.placeholder && (
+        <p className="text-caption text-ink-soft mb-3 uppercase">
+          {t("sampleQuote")}
+        </p>
+      )}
+      <blockquote className="text-ink text-[clamp(1.25rem,1rem+0.8vw,1.625rem)] leading-[1.3] tracking-tight text-pretty">
+        “{testimonial.quote}”
+      </blockquote>
+      <figcaption className="text-ink-soft mt-3">{testimonial.name}</figcaption>
+    </figure>
+  );
+};
+
+const CaseStudy = ({ study, tech, contributionUrl }: CaseStudyProps) => {
+  const t = useTranslations("works");
   const testimonial = visibleTestimonial(study.testimonial);
 
   return (
     <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
       <div className="space-y-8">
-        <Part title="The problem">
+        <Part title={t("headings.problem")}>
           <Dialog.Description asChild>
             <p className="text-ink max-w-[40ch] text-[clamp(1.125rem,0.95rem+0.6vw,1.375rem)] leading-[1.35] tracking-tight text-pretty">
               {study.problem}
@@ -58,7 +65,7 @@ const CaseStudy = ({ study, tech }: CaseStudyProps) => {
           </Dialog.Description>
         </Part>
 
-        <Part title="My role">
+        <Part title={t("headings.role")}>
           <p className="text-ink-soft max-w-[50ch]">{study.role}</p>
         </Part>
 
@@ -75,7 +82,7 @@ const CaseStudy = ({ study, tech }: CaseStudyProps) => {
       </div>
 
       <div className="space-y-8">
-        <Part title="What I did">
+        <Part title={t("headings.approach")}>
           <ul className="text-ink-soft space-y-1.5">
             {study.approach.map(point => (
               <li
@@ -88,15 +95,18 @@ const CaseStudy = ({ study, tech }: CaseStudyProps) => {
           </ul>
         </Part>
 
-        <Part title="Result">
+        <Part title={t("headings.result")}>
           <p className="text-ink max-w-[50ch] font-semibold">{study.result}</p>
-          {study.contribution && (
+          {study.contribution && contributionUrl && (
             <p className="text-ink-soft mt-3 max-w-[50ch]">
-              Separately, I contribute to{" "}
-              <TextLink href={study.contribution.href} external>
-                {study.contribution.name}
-              </TextLink>
-              , {study.contribution.description}.
+              {t.rich("contribution", {
+                ...study.contribution,
+                link: chunks => (
+                  <TextLink href={contributionUrl} external>
+                    {chunks}
+                  </TextLink>
+                )
+              })}
             </p>
           )}
         </Part>

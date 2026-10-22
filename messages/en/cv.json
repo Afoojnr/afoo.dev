@@ -1,0 +1,63 @@
+{
+  "documentTitle": "CV",
+  "title": "Software Engineer · Web & Mobile",
+  "location": "Lyon, France",
+  "status": "Eligible to work in France",
+  "headings": {
+    "profile": "Profile",
+    "experience": "Experience",
+    "projects": "Selected projects",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages"
+  },
+  "summaries": {
+    "product": "Software engineer who takes web and mobile products from idea to launch: founding engineer and product lead at a real estate startup, and solo builder of an app live on the App Store and Google Play. PhD researcher in Materials Chemistry with a machine learning background.",
+    "research": "Software engineer and PhD researcher in Materials Chemistry who builds tools for scientists. Machine learning thesis on adsorption energy calculations, an open-source research workspace used in my own lab work, and 3+ years shipping web and mobile products with React, Next.js, React Native and Node.js."
+  },
+  "roleLocations": {
+    "propatis": "Lagos, Nigeria · Remote",
+    "applyd-hub": "Lyon, France",
+    "neo64": "Darmstadt, Germany",
+    "digisign": "Lagos, Nigeria"
+  },
+  "expected": "{date} (expected)",
+  "education": {
+    "phd": {
+      "degree": "PhD, Materials Chemistry",
+      "school": "Université Claude Bernard Lyon 1 (LMI)",
+      "detail": "Thesis: synthesis and characterization of borophene."
+    },
+    "grenoble": {
+      "degree": "MSc, Materials Science and Engineering",
+      "school": "Grenoble INP, Phelma",
+      "detail": "Très Bien (16.75/20). Thesis: boron-rich BxC thin films by chemical vapor deposition."
+    },
+    "darmstadt": {
+      "degree": "MSc, Materials Science",
+      "school": "Technische Universität Darmstadt",
+      "detail": "Sehr gut (1.40). Thesis: accelerating adsorption energy calculations with machine learning (AdsorbML)."
+    },
+    "funaab": {
+      "degree": "BSc, Chemistry",
+      "school": "Federal University of Agriculture, Abeokuta",
+      "detail": "Second Class Upper (4.24/5.00)."
+    }
+  },
+  "languages": [
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "French",
+      "level": "B1, working towards B2"
+    }
+  ],
+  "skillGroups": {
+    "languages": "Languages",
+    "frameworks": "Frameworks & libraries",
+    "testing": "Testing",
+    "tools": "Tools & platforms"
+  }
+}

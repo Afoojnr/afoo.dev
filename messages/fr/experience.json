@@ -1,0 +1,49 @@
+{
+  "title": "Expérience",
+  "skills": "Compétences",
+  "skillGroups": {
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend",
+    "testing": "Tests",
+    "product": "Produit"
+  },
+  "roles": {
+    "propatis": {
+      "title": "Ingénieur fondateur & responsable produit",
+      "company": "Propatis HQ",
+      "points": [
+        "Je dirige une équipe de 5 personnes en tant que product manager : roadmap, backlog Jira, priorités et répartition des tâches.",
+        "J’ai développé seul l’application mobile React Native (Expo), en validation sur l’App Store et Google Play, et je développe l’application web avec l’équipe.",
+        "Je pilote le design produit et l’interface, sur le web et le mobile.",
+        "Je présente le produit aux clients et les accompagne un par un. Environ 200 visiteurs par jour et plus de 80 inscriptions.",
+        "J’ai mis en place l’acquisition : SEO technique, Google Analytics, campagnes payantes Google Ads, TikTok et LinkedIn, et contenus."
+      ]
+    },
+    "applyd-hub": {
+      "title": "Fondateur et ingénieur en solo",
+      "company": "Applyd Hub (Afoo Inc)",
+      "points": [
+        "J’ai conçu, développé et publié seul une application full stack sur l’App Store et Google Play (Expo, React Native, NativeWind, Express, PostgreSQL), avec une IA qui adapte les documents de candidature.",
+        "Je l’ai d’abord créée pour ma propre recherche d’emploi, puis testée auprès d’utilisateurs potentiels. Plus de 30 téléchargements à ce jour.",
+        "Je gère seul tout l’après-lancement : fiches sur les stores, marketing et support."
+      ]
+    },
+    "neo64": {
+      "title": "Développeur frontend",
+      "company": "Neo64 GmbH",
+      "points": [
+        "J’ai développé les écrans Flutter et la logique de connexion, de panier et de paiement des applications B2B Rungis Express (Allemagne, Autriche) et Fideco (Suisse) sur une base de code commune. En ligne, plus de 2 000 téléchargements sur iOS et Android.",
+        "J’ai développé le site vitrine de Klierfeld GmbH (SvelteKit, Storyblok CMS) et des fonctionnalités du tableau de bord de la plateforme de streaming Wedflix (Svelte, TypeScript, Tailwind)."
+      ]
+    },
+    "digisign": {
+      "title": "Développeur frontend",
+      "company": "DigiSign Technologies Limited",
+      "points": [
+        "J’ai développé des composants d’interface réutilisables pour un tableau de bord de signature de documents avec vérification biométrique (Next.js, TypeScript, Ant Design).",
+        "J’ai écrit des tests unitaires avec Jest et des tests end-to-end avec Playwright."
+      ]
+    }
+  }
+}

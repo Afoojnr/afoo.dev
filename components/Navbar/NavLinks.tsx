@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import PowerDot from "@/components/ui/PowerDot";
+import type { NavItem } from "@/constants";
 import { springs } from "@/lib/motion";
 
 type NavLinksProps = {
-  items: string[];
+  items: NavItem[];
   active: string;
 };
 
 const NavLinks = ({ items, active }: NavLinksProps) => {
+  const t = useTranslations("nav.items");
   const [previewed, setPreviewed] = useState<string | null>(null);
   const marked = previewed ?? active;
 
@@ -30,7 +33,7 @@ const NavLinks = ({ items, active }: NavLinksProps) => {
               if (e.pointerType === "mouse") setPreviewed(item);
             }}
             onFocus={() => setPreviewed(item)}
-            className={`relative flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium capitalize transition-colors ${
+            className={`relative flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors ${
               item === marked ? "text-ink" : "text-ink-soft"
             }`}
           >
@@ -41,7 +44,7 @@ const NavLinks = ({ items, active }: NavLinksProps) => {
                 </motion.span>
               )}
             </span>
-            {item}
+            {t(item)}
           </a>
         </li>
       ))}

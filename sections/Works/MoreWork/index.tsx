@@ -2,10 +2,12 @@
 
 import { motion, useMotionValue, type Variants } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 import Reveal from "@/components/ui/Reveal";
+import { useWorkText } from "@/hooks/useWorkText";
 import { springs, stagger } from "@/lib/motion";
 import { workKind } from "@/lib/works";
 import type { WorkItem } from "@/types";
@@ -31,6 +33,9 @@ const rule: Variants = {
 };
 
 const MoreWork = ({ works, onOpen }: MoreWorkProps) => {
+  const t = useTranslations("works");
+  const common = useTranslations("common");
+  const workText = useWorkText();
   const list = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<number | null>(null);
   const x = useMotionValue(0);
@@ -49,8 +54,8 @@ const MoreWork = ({ works, onOpen }: MoreWorkProps) => {
     <div>
       <Reveal>
         <div className="border-ink flex items-baseline justify-between border-t-2 pt-4">
-          <h3 className="text-lead font-semibold">More work</h3>
-          <p className="text-caption text-ink-soft uppercase">Archive</p>
+          <h3 className="text-lead font-semibold">{t("moreWork")}</h3>
+          <p className="text-caption text-ink-soft uppercase">{t("archive")}</p>
         </div>
       </Reveal>
 
@@ -75,7 +80,7 @@ const MoreWork = ({ works, onOpen }: MoreWorkProps) => {
                 onFocus={() => setActive(null)}
                 whileTap={{ scale: 0.985 }}
                 transition={springs.press}
-                aria-label={`Open ${work.title}`}
+                aria-label={t("openWork", { title: work.title })}
                 className={`group grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-x-5 gap-y-1 py-5 text-left transition-opacity duration-300 sm:grid-cols-[7rem_minmax(0,1fr)_auto] md:grid-cols-[7rem_minmax(0,0.8fr)_minmax(0,1.2fr)_auto] md:gap-x-8 pointer-fine:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)_auto] ${
                   active !== null && active !== i ? "opacity-45" : ""
                 }`}
@@ -100,7 +105,8 @@ const MoreWork = ({ works, onOpen }: MoreWorkProps) => {
                     {work.title}
                   </span>
                   <span className="text-caption text-ink-soft mt-1 block uppercase">
-                    {work.company} · {workKind(work)}
+                    {workText(work).company} ·{" "}
+                    {common(`kinds.${workKind(work)}`)}
                   </span>
                 </motion.span>
 
@@ -108,7 +114,7 @@ const MoreWork = ({ works, onOpen }: MoreWorkProps) => {
                   variants={rowContent}
                   className={`text-ink-soft col-start-1 max-w-[52ch] sm:col-start-2 md:col-start-auto pointer-fine:col-start-auto`}
                 >
-                  {work.shortDescription}
+                  {workText(work).short}
                 </motion.span>
 
                 <motion.span

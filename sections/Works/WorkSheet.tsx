@@ -8,12 +8,15 @@ import {
   type PanInfo
 } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { FiArrowUpRight } from "react-icons/fi";
 
-import { parseDescription, workKind, workLinks } from "@/lib/works";
+import { useWorkText } from "@/hooks/useWorkText";
+import { isCaseStudy, workKind, workLinks, workTech } from "@/lib/works";
 import { springs } from "@/lib/motion";
 import type { WorkItem } from "@/types";
 import CaseStudy from "./CaseStudy";
+import WorkDetails from "./WorkDetails";
 
 type WorkSheetProps = {
   work: WorkItem | null;
@@ -26,17 +29,6 @@ const DISMISS_DISTANCE = 140;
 const DISMISS_VELOCITY = 600;
 
 const pad = (n: number) => String(n).padStart(2, "0");
-
-const Line = ({ text }: { text: string }) => {
-  const match = text.match(/^([^:]{2,24}):\s+(.*)$/);
-  return match ? (
-    <p>
-      <span className="text-ink font-semibold">{match[1]}</span> {match[2]}
-    </p>
-  ) : (
-    <p>{text}</p>
-  );
-};
 
 const WorkSheet = ({ work, index, total, onClose }: WorkSheetProps) => {
   const controls = useDragControls();
@@ -107,7 +99,10 @@ type SheetBodyProps = {
 };
 
 const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
-  const { intro, blocks } = parseDescription(work.fullDescription);
+  const t = useTranslations("works");
+  const common = useTranslations("common");
+  const text = useWorkText()(work);
+  const tech = workTech(work, text);
   const links = workLinks(work);
 
   return (
@@ -119,15 +114,15 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
       >
         <span aria-hidden className="w-16" />
         <span aria-hidden className="bg-line h-1.5 w-10 rounded-full" />
-        <Dialog.Close className="border-ink text-ink w-16 rounded-full border px-3 py-1 text-sm font-semibold">
-          Close
+        <Dialog.Close className="border-ink text-ink min-w-16 rounded-full border px-3 py-1 text-sm font-semibold">
+          {common("close")}
         </Dialog.Close>
       </div>
 
       <div className="rounded-plate relative aspect-[2/1] max-h-[40svh] w-full overflow-hidden bg-black">
         <Image
           src={work.image}
-          alt={`${work.title} screenshot`}
+          alt={t("screenshot", { title: work.title })}
           fill
           sizes="(min-width: 1120px) 1120px, 96vw"
           className="object-cover object-top"
@@ -136,7 +131,7 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
 
       <p className="text-caption text-ink-soft mt-6 flex items-baseline justify-between gap-4 uppercase">
         <span>
-          {work.company} · {workKind(work)}
+          {text.company} · {common(`kinds.${workKind(work)}`)}
         </span>
         <span className="shrink-0 whitespace-nowrap tabular-nums">
           {pad(index + 1)} / {pad(total)}
@@ -149,64 +144,14 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
         </h2>
       </Dialog.Title>
 
-      {work.caseStudy ? (
-        <CaseStudy study={work.caseStudy} tech={work.tech} />
+      {isCaseStudy(text) ? (
+        <CaseStudy
+          study={text}
+          tech={tech}
+          contributionUrl={work.contributionUrl}
+        />
       ) : (
-        <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-14">
-          <div>
-            <Dialog.Description asChild>
-              <p className="text-ink-soft max-w-[50ch]">{intro}</p>
-            </Dialog.Description>
-
-            {blocks
-              .filter(block => !block.bullets.length)
-              .map((block, i) => (
-                <div
-                  key={i}
-                  className="text-ink-soft mt-4 max-w-[50ch] space-y-2"
-                >
-                  {block.lines.map(line => (
-                    <Line key={line} text={line} />
-                  ))}
-                </div>
-              ))}
-
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {work.tech.map(item => (
-                <li
-                  key={item}
-                  className="border-line text-ink-soft rounded-full border px-3 py-0.5 text-[0.8125rem]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-8">
-            {blocks
-              .filter(block => block.bullets.length)
-              .map((block, i) => (
-                <div key={i}>
-                  {block.heading && (
-                    <h3 className="text-caption text-ink-soft mb-3 font-semibold uppercase">
-                      {block.heading}
-                    </h3>
-                  )}
-                  <ul className="text-ink-soft space-y-1.5">
-                    {block.bullets.map(point => (
-                      <li
-                        key={point}
-                        className="before:bg-ink-soft relative pl-5 before:absolute before:top-[0.65em] before:left-0 before:size-[5px] before:rounded-full before:content-['']"
-                      >
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-          </div>
-        </div>
+        <WorkDetails details={text} tech={tech} />
       )}
 
       {links.length > 0 && (
@@ -225,14 +170,18 @@ const SheetBody = ({ work, index, total, startDrag }: SheetBodyProps) => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={link.label}
+                  aria-label={common(`links.${link.kind}.label`)}
                   className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-[0.9375rem] font-semibold whitespace-nowrap transition-transform duration-100 active:scale-[0.97] ${
                     i === 0
                       ? "bg-ink text-ground max-md:flex-1"
                       : "border-ink text-ink border"
                   }`}
                 >
-                  {i === 0 ? link.label : link.short}
+                  {common(
+                    i === 0
+                      ? `links.${link.kind}.label`
+                      : `links.${link.kind}.short`
+                  )}
                   <FiArrowUpRight aria-hidden className="size-4" />
                 </a>
               ))}
